@@ -1,3 +1,4 @@
+
 # FECAP - Fundação de Comércio Álvares Penteado
 
 <p align="center">
@@ -15,7 +16,7 @@
 ## Descrição
 
 <p align="center">
-<img src="" border="0">
+<img width="838" height="586" alt="TrocaTIcketimg" src="https://github.com/user-attachments/assets/f4ea96e8-e1bc-4267-969d-03bdfe422c03" />" border="0">
   Game by <a href="http://www.nyphotographic.com/">Nick Youngson</a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> <a href="http://pix4free.org/">Pix4free</a>
 </p>
 
