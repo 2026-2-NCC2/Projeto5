@@ -1,0 +1,8 @@
+@import url("../index.css");
+
+.rodape {
+    background: var(--cor-branco);
+    padding: 24px;
+    text-align: center;
+    color: var(--cor-titulo);
+}
