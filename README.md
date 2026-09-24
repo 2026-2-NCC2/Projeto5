@@ -16,17 +16,14 @@
 ## Descrição
 
 <p align="center">
-<img width="838" height="586" alt="TrocaTIcketimg" src="https://github.com/user-attachments/assets/f4ea96e8-e1bc-4267-969d-03bdfe422c03" />" border="0">
-  Game by <a href="http://www.nyphotographic.com/">Nick Youngson</a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> <a href="http://pix4free.org/">Pix4free</a>
+<img width="838" height="586" alt="TrocaTIcketimg" src="https://github.com/user-attachments/assets/f4ea96e8-e1bc-4267-969d-03bdfe422c03" />" 
+<a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> <a href="http://pix4free.org/">Pix4free</a>
 </p>
 
 
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
-<br><br>
-Meu projeto ajuda estudantes FECAP a configurarem seus githubs.
-<br><br>
-May the force be with you!
-<br><br>
+A visão da Troca Ticket é fornecer o melhor fluxo de organização de eventos de ponta a ponta.
+<br>
+A ideia é facilitar o planejamento, deixando em um só lugar os recursos que o usuário precisa para organizar seu evento.
 
 ## 🛠 Estrutura de pastas
 
