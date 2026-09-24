@@ -25,9 +25,9 @@ A Troca Ticket nasceu para descomplicar a produção de eventos, conectando quem
 Em vez de lidar com dezenas de ferramentas e planilhas soltas, nossa visão é centralizar cada etapa da jornada em um só lugar: desde o cadastro de organizadores e fornecedores, com aprovações seguras e relatórios completos, até o envio e seleção de propostas de serviços em tempo real.
 <br>
 
-Na prática, o fluxo funciona de forma simples e direta. O organizador cadastra sua empresa, projeta os custos dos ingressos e escolhe os melhores fornecedores para o seu projeto.<br>
+Na prática, o fluxo funciona de forma simples e direta. O organizador cadastra sua empresa, projeta os custos dos ingressos e escolhe os melhores fornecedores para o seu projeto.
 
-Já os prestadores de serviço encontram oportunidades claras para enviar orçamentos detalhados e acompanhar suas propostas sem enrolação.<br>
+Já os prestadores de serviço encontram oportunidades claras para enviar orçamentos detalhados e acompanhar suas propostas sem enrolação.
 
 Tudo isso sob a supervisão do administrador, que garante a validação dos cadastros, o acompanhamento das métricas e a gestão transparente de todo o ecossistema.
 
