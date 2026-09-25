@@ -12,6 +12,7 @@ function Dashboard() {
     const [usuarios, setUsuarios] = useState([]);
     const [eventos, setEventos] = useState([]);
 
+    // busca dados de forma assincrona e atualiza o estado do componente com os dados recebidos
     useEffect(() => {
         async function carregarDados() {
             const [respostaUsuarios, respostaEventos] = await Promise.all([
@@ -26,10 +27,13 @@ function Dashboard() {
         carregarDados();
     }, []);
 
+    // filtra os eventos ativos e conta o número de organizadores e fornecedores
+    // usados para compor os cards do dashboard
     const eventosAtivos = eventos.filter((evento) => evento.status !== "rascunho").length;
     const organizadores = usuarios.filter((usuario) => usuario.tipo === "organizador").length;
     const fornecedores = usuarios.filter((usuario) => usuario.tipo === "fornecedor").length;
 
+    // define os cards do dashboard com base nos dados carregados
     const cards = [
         {
             titulo: "Eventos",
@@ -76,6 +80,7 @@ function Dashboard() {
                 <h1 id="titulo-dashboard">Painel de controle</h1>
                 <p className="descricao-dashboard">Gestão operacional e acesso rápido aos módulos.</p>
                 <div className="grade-dashboard">
+                    {/* Transmite as informações dos cards para apresentação conforme o componente CardDashboard */}
                     {cards.map((card) => <CardDashboard key={card.titulo} {...card} />)}
                 </div>
             </section>

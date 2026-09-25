@@ -109,6 +109,13 @@
     background: var(--cor-verde-medio);
 }
 
+.erro-login {
+    margin: 12px 0 0;
+    color: #b42318;
+    font-size: 0.72rem;
+    text-align: center;
+}
+
 .separador-login {
     display: flex;
     align-items: center;

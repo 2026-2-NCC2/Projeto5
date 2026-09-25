@@ -12,6 +12,7 @@ function CardDashboard({ titulo, valor, legenda, descricao, status, tags = [], a
 
             <h2>{titulo}</h2>
 
+            {/* Exibe o valor do card se houver ou exibe a descrição passada */}
             {valor !== undefined && valor !== null ? (
                 <p className="valor-card-dashboard">
                     {valor}
