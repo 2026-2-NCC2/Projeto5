@@ -1,6 +1,5 @@
-@import url("../index.css");
-
 .rodape {
+    margin-top: auto;
     background: var(--cor-branco);
     padding: 24px;
     text-align: center;

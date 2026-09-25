@@ -31,7 +31,7 @@ function Home() {
             <div className='botoes-acesso'>
 
                 <button className="botao-login" onClick={() => navigate("/login")}><img src='src/assets/icone-login.png' alt='' aria-hidden="true"/>Login</button>
-                <button className="botao-cadastro" onClick={() => navigate("/login")}><img src='src/assets/icone-cadastro.png' alt='' aria-hidden="true"/>Cadastro</button>
+                <button className="botao-cadastro" onClick={() => navigate("/cadastro")}><img src='src/assets/icone-cadastro.png' alt='' aria-hidden="true"/>Cadastro</button>
             </div>
         </main>
     )
