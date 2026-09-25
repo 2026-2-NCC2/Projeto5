@@ -1,7 +1,14 @@
 .rodape {
     margin-top: auto;
     background: var(--cor-branco);
-    padding: 24px;
+    padding: 16px 24px;
     text-align: center;
     color: var(--cor-titulo);
+}
+
+@media (max-width: 600px) {
+    .rodape {
+        padding: 12px 16px;
+        font-size: 0.75rem;
+    }
 }

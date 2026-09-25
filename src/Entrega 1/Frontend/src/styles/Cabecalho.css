@@ -55,15 +55,37 @@
 
 @media (max-width: 600px) {
     .cabecalho {
-        padding: 10px 16px;
+        padding: 8px 12px;
     }
 
     .nav-cabecalho {
-        gap: 12px;
+        min-width: 0;
+        gap: 8px;
     }
 
     .link-inicio,
     .link-dashboard {
-        font-size: 0.75rem;
+        min-width: 0;
+        font-size: 0.7rem;
+    }
+
+    .logo {
+        max-width: 110px;
+        max-height: 30px;
+    }
+
+    .link-dashboard img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .link-perfil {
+        gap: 4px;
+        font-size: 0.7rem;
+    }
+
+    .link-perfil img {
+        width: 22px;
+        height: 22px;
     }
 }

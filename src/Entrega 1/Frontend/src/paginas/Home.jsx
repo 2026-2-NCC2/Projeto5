@@ -19,12 +19,10 @@ function Home() {
                 <aside className='conexao'>
                     <div className='conexao-org'>
                         <h3>ORGANIZADORES</h3>
-                        <p>Contratações e Demandas</p>
                     </div>
                     <img src='src/assets/icone-setas.png' alt='' aria-hidden='true'/>
                     <div className='conexao-org'>
                         <h3>FORNECEDORES</h3>
-                        <p>Serviços e Orçamentos</p>
                     </div>
                 </aside>
             </div>

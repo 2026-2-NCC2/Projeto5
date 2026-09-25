@@ -28,8 +28,15 @@
    box-sizing: border-box;
 }
 
+html,
+body {
+   max-width: 100%;
+   overflow-x: hidden;
+}
+
 #root {
    min-height: 100vh;
+   min-width: 0;
    display: flex;
    flex-direction: column;
 }
