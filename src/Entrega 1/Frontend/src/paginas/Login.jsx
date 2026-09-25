@@ -1,8 +1,6 @@
 
 function Login() {
-    return (
-        <h1>qualquer coisa</h1>
-    );
+    return
 }
 
 export default Login;

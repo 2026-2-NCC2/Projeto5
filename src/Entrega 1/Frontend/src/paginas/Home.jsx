@@ -5,9 +5,10 @@ import { useNavigate } from 'react-router-dom';
 function Home() {
     const navigate = useNavigate();
 
+    // Traz as informações iniciais da plataforma e direciona para as páginas de login e cadastro
+
     return (
-        // Traz as informações iniciais da plataforma e direciona para o acesso
-        <section className="apresentacao">
+        <main className="container">
             <h1 className="titulo-principal">TrocaTicket</h1>
             <h2 className='subtitulo-principal'>A ponte ágil e segura entre <strong>organizadores</strong> e <strong>fornecedores</strong> no planejamento de eventos.</h2>
             <div className="container-introducao">
@@ -28,10 +29,11 @@ function Home() {
                 </aside>
             </div>
             <div className='botoes-acesso'>
+
                 <button className="botao-login" onClick={() => navigate("/login")}><img src='src/assets/icone-login.png' alt='' aria-hidden="true"/>Login</button>
-                <button className="botao-cadastro" onClick={() => navigate("/cadastro")}><img src='src/assets/icone-cadastro.png' alt='' aria-hidden="true"/>Cadastro</button>
+                <button className="botao-cadastro" onClick={() => navigate("/login")}><img src='src/assets/icone-cadastro.png' alt='' aria-hidden="true"/>Cadastro</button>
             </div>
-        </section>
+        </main>
     )
 }
 

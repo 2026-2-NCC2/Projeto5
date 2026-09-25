@@ -1,8 +1,6 @@
 
 function Dashboard() {
-    return (
-        <h1>qualquer coisa</h1>
-    );
+    return
 }
 
 export default Dashboard;
