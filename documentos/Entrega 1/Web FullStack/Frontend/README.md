@@ -1,16 +1,6 @@
-# React + Vite
+# TrocaTicket | React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+O projeto atual em Frontend apresenta a jornada inicial de acesso à plataforma com páginas home, cadastro, cadastro pendente, login e dashboard.<br>
+No momento da entrega os formulários presentes validam o preenchimento dos campos obrigatórios e o formulário de login possui uma validação feita de forma local, para o preenchimento correto dos campos de e-mail e senha, embora ainda não haja uma autenticação das informações preenchidas pelo usuário.<br>
+As implementações de acessibilidade ainda não foram concluídas, porém o projeto já foi sendo construído com esse requisito em mente, observando o uso de tags semânticas que auxiliam na leitura da página e uso dos recursos `alt` e `aria`.<br>
+O tratamento de erro foi implementado de forma simples para o tratamento de acesso a rotas inexistentes.
