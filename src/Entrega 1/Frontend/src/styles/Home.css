@@ -1,0 +1,96 @@
+@import url(../index.css);
+
+.apresentacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+}
+
+.titulo-principal {
+    font-size: 4rem;
+}
+
+.subtitulo-principal {
+    color: var(--cor-verde-medio);
+    font-weight: 400;
+    text-align: center;
+}
+
+.container-introducao {
+    background: var(--cor-branco);
+    display: flex;
+    flex-direction: row;
+    padding: 48px;
+    border-radius: 12px;
+    align-items: center;
+    margin: 48px;
+}
+
+@media (max-width: 768px) {
+    .container-introducao {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .introducao {text-align: center;}
+}
+
+.introducao {max-width: 447px;}
+.introducao h1 {font-size: 1.8rem;}
+.introducao p {font-size: 1rem; font-weight: 400;}
+
+.conexao {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.conexao div {
+    display: flex;
+    flex-direction: column;
+    background: var(--cor-titulo);
+    max-height: 62px;
+    color: var(--cor-branco);
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+    padding: 12px;
+    border-radius: 12px;
+}
+
+.conexao-org h3 {font-size: .8rem;}
+.conexao-org p {font-size: .55rem;}
+
+
+.conexao img {
+    max-width: 32px;
+    max-height: 32px;
+}
+
+.botoes-acesso {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 24px;
+}
+
+.botao-login {
+    display: flex;
+    justify-content: space-around;
+    background: var(--cor-fundo);
+    width: 208px;
+    padding: 14px 72px;
+    border-radius: 12px;
+    border-width: .15rem;
+}
+
+.botao-cadastro {
+    display: flex;
+    justify-content: space-around;
+    color: var(--cor-branco);
+    background: var(--cor-verde-claro);
+    width: 208px;
+    padding: 14px 72px;
+    border-radius: 12px;
+    border-width: .15rem;
+}
