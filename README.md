@@ -16,8 +16,8 @@
 ## Descrição
 
 <p align="center">
-<img width="838" height="586" alt="TrocaTIcketimg" src="https://github.com/user-attachments/assets/f4ea96e8-e1bc-4267-969d-03bdfe422c03" />" 
-
+<img src="imagens/page-home.PNG" alt="TrocaTicketHomePage" width="838" height="586" /> 
+</p>
 
 <h3>O nosso propósito:</h3>
 A Troca Ticket nasceu para descomplicar a produção de eventos, conectando quem organiza, quem presta serviços e quem administra tudo em uma única plataforma intuitiva.<br>
