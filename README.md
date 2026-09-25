@@ -31,6 +31,13 @@ Já os prestadores de serviço encontram oportunidades claras para enviar orçam
 
 Tudo isso sob a supervisão do administrador, que garante a validação dos cadastros, o acompanhamento das métricas e a gestão transparente de todo o ecossistema.
 
+## Links rápidos para acesso as entregas das disciplinas
+<a href="documentos/Entrega 1/Cálculo II">Entrega Cálculo II</a><br>
+<a href="documentos/Entrega 1/Gestão Empresarial">Entrega Gestão Empresarial</a><br>
+<a href="documentos/Entrega 1/PI Programação Web">Entrega PI Programação Web</a><br>
+<a href="documentos/Entrega 1/Projeto Banco de Dados">Entrega Projeto Banco de Dados</a><br>
+<a href="documentos/Entrega 1/Web FullStack">Entrega Web FullStack</a><br>
+
 ## 🛠 Estrutura de pastas
 
 -Raiz<br>
