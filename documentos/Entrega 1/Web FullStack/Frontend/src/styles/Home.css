@@ -1,0 +1,220 @@
+.container {
+    width: 100%;
+    min-height: calc(100vh - 136px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(12px, 2.5vh, 24px);
+    padding: clamp(8px, 1.5vh, 16px) 12px;
+}
+
+.titulo-principal {
+    margin: 0;
+    font-size: clamp(2.4rem, 5vw, 3.5rem);
+}
+
+.subtitulo-principal {
+    margin: 0;
+    color: var(--cor-verde-medio);
+    font-weight: 400;
+    text-align: center;
+}
+
+.container-introducao {
+    background: var(--cor-branco);
+    display: flex;
+    flex-direction: row;
+    width: min(100%, 900px);
+    padding: clamp(18px, 3vh, 28px) clamp(20px, 4vw, 36px);
+    border-radius: 12px;
+    align-items: center;
+    margin: 0;
+}
+
+.introducao {max-width: 447px;}
+.introducao h1 {margin: 0 0 8px; font-size: 1.8rem;}
+.introducao p {margin: 0; font-size: 1rem; font-weight: 400;}
+
+.conexao {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.conexao div {
+    display: flex;
+    flex-direction: column;
+    background: var(--cor-titulo);
+    max-height: 62px;
+    color: var(--cor-branco);
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+    padding: 12px;
+    border-radius: 12px;
+}
+
+.conexao-org h3 {
+    margin: 0;
+    font-size: .8rem;
+    text-align: center;
+}
+
+
+.conexao img {
+    max-width: 32px;
+    max-height: 32px;
+}
+
+.botoes-acesso {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: clamp(12px, 2vw, 24px);
+}
+
+.botao-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--cor-fundo);
+    width: 208px;
+    padding: 14px 72px;
+    border-radius: 12px;
+    border-width: .15rem;
+    border-color: var(--cor-titulo);
+    border-style: solid;
+}
+
+.botao-cadastro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--cor-branco);
+    background: var(--cor-verde-claro);
+    width: 208px;
+    padding: 14px 72px;
+    border-radius: 12px;
+    border-width: .15rem;
+    border-style: none;
+}
+
+/* Atributos de responsividade (smartphones) */
+@media (max-width: 768px) {
+    .container {
+        min-height: calc(100vh - 136px);
+    }
+
+    .container-introducao {
+        flex-direction: column;
+        justify-content: space-between;
+        width: min(100%, 520px);
+        padding: 16px 12px;
+    }
+    .introducao {text-align: center;}
+    .introducao h1 {font-size: 1.45rem;}
+    .introducao p {font-size: .85rem;}
+
+    .conexao {
+        max-width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .botoes-acesso{
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+@media (max-height: 700px) {
+    .cabecalho-home {
+        min-height: 48px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    .cabecalho-home .logo {
+        max-height: 28px;
+    }
+
+    .container {
+        gap: clamp(6px, 1.5vh, 12px);
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    .container-introducao {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .conexao div {
+        padding: 8px;
+    }
+
+    .botao-login,
+    .botao-cadastro {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) and (max-height: 700px) {
+    .titulo-principal {
+        font-size: 2rem;
+    }
+
+    .subtitulo-principal {
+        max-width: 280px;
+        font-size: 0.75rem;
+        line-height: 1.25;
+    }
+
+    .container-introducao {
+        padding: 10px 12px;
+    }
+
+    .introducao h1 {
+        margin-bottom: 4px;
+        font-size: 1.15rem;
+    }
+
+    .introducao p {
+        font-size: 0.72rem;
+        line-height: 1.25;
+    }
+
+    .conexao {
+        gap: 4px;
+    }
+
+    .conexao div {
+        max-height: 42px;
+        padding: 6px 8px;
+    }
+
+    .conexao-org h3 {
+        margin: 0;
+        font-size: 0.62rem;
+    }
+
+    .conexao-org p {
+        margin: 0;
+        font-size: 0.48rem;
+    }
+
+    .conexao img {
+        max-width: 20px;
+        max-height: 20px;
+    }
+
+    .botao-login,
+    .botao-cadastro {
+        min-height: 32px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+}

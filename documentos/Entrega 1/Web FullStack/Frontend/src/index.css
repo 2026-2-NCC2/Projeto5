@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+:root{
+   /* CORES */
+   --cor-fundo: #F8FAF9; /* Cor para o fundo do site */
+   --cor-verde-claro: #5E9188; /* Cor para o verde mais claro (Em alguns botões) */
+   --cor-verde-medio: #3E5954; /* Cor para o verde um pouco mais escuro (Em botões, cards e textos) */
+   --cor-verde-escuro:#253342; /* Cor para o verde totalmente escuro (Em alguns botões)*/
+   --cor-branco: #FFFFFF; /* Branco para usar em textos, fundo do conteiner e botões */
+   --cor-preto: #000000; 
+   --cor-cinza: #EEF5F4; /* Cor cinza para textos, botões, ou fundo de elementos */
+   --cor-texto: #1E293B; /* Cor principal dos textos do site */
+   --cor-texto-suave:#4B5563; /* Cor para os textos suaves no site */
+   --cor-titulo: #232226; /* Cor para o titulo das páginas */
+   --cor-borda: #CBD5E1; /* Cor padrão das bordas dos controles */
+   --raio-controle: 6px; /* Arredondamento padrão de inputs e botões */
+
+   /* FONTES */
+   --fonte-principal: 'Plus Jakarta Sans', sans-serif, Arial; /* Fonte base do site, usada em textos seja paragrafos ou titulos. */
+   --fonte-secundaria: 'Inter'; /* Fonte secundaria, usada em alguns textos, principalmente na página de cadastro */
+
+   /* BORDA */
+   
+}
+
+* {
+   box-sizing: border-box;
+}
+
+html,
+body {
+   max-width: 100%;
+   overflow-x: hidden;
+}
+
+#root {
+   min-height: 100vh;
+   min-width: 0;
+   display: flex;
+   flex-direction: column;
+}
+
+body {
+   margin: 0;
+   background: var(--cor-fundo);
+   font-family: var(--fonte-secundaria);
+   color: var(--cor-texto);
+   line-height: 1.5;
+}
+
+a {
+   color: inherit;
+   text-decoration: none;
+}
+
+button {
+   cursor: pointer;
+}

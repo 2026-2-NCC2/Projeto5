@@ -1,0 +1,95 @@
+[
+  {
+    "id": "usr-org-001",
+    "tipo": "organizador",
+    "nome": "Mariana Alves",
+    "email": "mariana.alves@eventa.com.br",
+    "telefone": "(11) 98888-1001",
+    "empresa": {
+      "razaoSocial": "Eventa Producoes e Eventos Ltda.",
+      "nomeFantasia": "Eventa Producoes",
+      "cnpj": "12.345.678/0001-90"
+    },
+    "cidade": "Sao Paulo",
+    "estado": "SP",
+    "ativo": true
+  },
+  {
+    "id": "usr-org-002",
+    "tipo": "organizador",
+    "nome": "Rafael Mendes",
+    "email": "rafael.mendes@conectaeventos.com.br",
+    "telefone": "(21) 97777-2002",
+    "empresa": {
+      "razaoSocial": "Conecta Eventos Corporativos Ltda.",
+      "nomeFantasia": "Conecta Eventos",
+      "cnpj": "23.456.789/0001-01"
+    },
+    "cidade": "Rio de Janeiro",
+    "estado": "RJ",
+    "ativo": true
+  },
+  {
+    "id": "usr-org-003",
+    "tipo": "organizador",
+    "nome": "Beatriz Costa",
+    "email": "beatriz.costa@festivalurbano.com.br",
+    "telefone": "(31) 96666-3003",
+    "empresa": {
+      "razaoSocial": "Festival Urbano Entretenimento Ltda.",
+      "nomeFantasia": "Festival Urbano",
+      "cnpj": "34.567.890/0001-12"
+    },
+    "cidade": "Belo Horizonte",
+    "estado": "MG",
+    "ativo": true
+  },
+  {
+    "id": "usr-for-001",
+    "tipo": "fornecedor",
+    "nome": "Carlos Oliveira",
+    "email": "carlos.oliveira@someluz.com.br",
+    "telefone": "(11) 95555-4004",
+    "empresa": {
+      "razaoSocial": "Som e Luz Estruturas para Eventos Ltda.",
+      "nomeFantasia": "Som e Luz",
+      "cnpj": "45.678.901/0001-23"
+    },
+    "servicos": ["sonorizacao", "iluminacao", "estrutura"],
+    "cidade": "Sao Paulo",
+    "estado": "SP",
+    "ativo": true
+  },
+  {
+    "id": "usr-for-002",
+    "tipo": "fornecedor",
+    "nome": "Juliana Martins",
+    "email": "juliana.martins@cenografica.com.br",
+    "telefone": "(21) 94444-5005",
+    "empresa": {
+      "razaoSocial": "Cenografica Criativa Servicos Ltda.",
+      "nomeFantasia": "Cenografica Criativa",
+      "cnpj": "56.789.012/0001-34"
+    },
+    "servicos": ["cenografia", "montagem de stands", "decoracao"],
+    "cidade": "Niteroi",
+    "estado": "RJ",
+    "ativo": true
+  },
+  {
+    "id": "usr-for-003",
+    "tipo": "fornecedor",
+    "nome": "Lucas Ferreira",
+    "email": "lucas.ferreira@buffetbomgosto.com.br",
+    "telefone": "(31) 93333-6006",
+    "empresa": {
+      "razaoSocial": "Bom Gosto Gastronomia para Eventos Ltda.",
+      "nomeFantasia": "Buffet Bom Gosto",
+      "cnpj": "67.890.123/0001-45"
+    },
+    "servicos": ["catering", "buffet", "coquetel"],
+    "cidade": "Belo Horizonte",
+    "estado": "MG",
+    "ativo": true
+  }
+]

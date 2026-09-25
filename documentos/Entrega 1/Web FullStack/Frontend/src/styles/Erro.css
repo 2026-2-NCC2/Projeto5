@@ -1,0 +1,32 @@
+.pagina-erro {
+    display: flex;
+    justify-content: center;
+    padding: 64px 24px;
+}
+
+.conteudo-erro {
+    width: min(100%, 560px);
+    padding: 40px 32px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+    background: var(--cor-branco);
+    text-align: center;
+    box-shadow: 0 12px 28px rgba(37, 51, 66, 0.08);
+}
+
+.conteudo-erro h1 {
+    margin: 0 0 8px;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-principal);
+}
+
+.conteudo-erro p {
+    margin: 0 0 24px;
+    color: var(--cor-texto-suave);
+}
+
+.conteudo-erro a {
+    color: var(--cor-verde-medio);
+    font-weight: 600;
+    text-decoration: underline;
+}
