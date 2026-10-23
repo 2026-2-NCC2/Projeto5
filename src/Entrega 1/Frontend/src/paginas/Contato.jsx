@@ -27,7 +27,7 @@ const destinatario = {
       <div className="cabeçalho-form">
         <div className="icone-mensagem">
             {/* Depois trocar pelo ícone exato do Figma 💬 */}
-            
+          
         </div>
         <div className="textos-cabeçalho">
             <h2>DESCREVA A SUA DÚVIDA</h2>
@@ -54,7 +54,7 @@ const destinatario = {
 
       <div className="label-topo"> 
         <label htmlFor="assunto"> ASSUNTO: </label>
-        <span> * Obrigatório</span>
+        <span className="obrigatorio"> * Obrigatório</span>
       </div>
 
       {/* Campo onde o utilizador escreve */}
