@@ -1,9 +1,12 @@
-import React from 'react';
-import '../styles/Contato.css'; {/* Importe o arquivo CSS para estilização */}
+import React, { useState } from 'react';
+import '../styles/Contato.css'; 
+import iconemensagem from '../assets/icone-mensagem.png';
+import iconeanexo from '../assets/icone-anexo.png'; 
+import iconeassunto from '../assets/icone-assunto.png';
+
 
 export default function Contato() {
-
-  {/* informações do destinatário (Enquanto não vem o banco de dados) */}
+ const [textoDescricao, setTextoDescricao] = useState(""); {/* Estado para armazenar o texto da descrição */}
 const destinatario = {
     iniciais: "MA",
     nome: "Nome da Pessoa", 
@@ -16,9 +19,9 @@ const destinatario = {
     
    <main className="container-contato">
 
-    {/* Botão de voltar */}
-    <div classname="area-voltar">
-        <button className="botao-voltar"> Voltar </button>
+   {/* Botão de voltar */}
+    <div className="area-voltar">
+        <button className="botao-voltar"> ← Voltar </button>
     </div>
 
     {/* Card branco principal */}
@@ -26,40 +29,45 @@ const destinatario = {
       {/* Cabeçalho do card */}
       <div className="cabeçalho-form">
         <div className="icone-mensagem">
-            {/* Depois trocar pelo ícone exato do Figma 💬 */}
-          
+            <img src={iconemensagem} alt="Ícone de Mensagem" style={{ width: '24px', height: '24px' }} />
         </div>
         <div className="textos-cabeçalho">
             <h2>DESCREVA A SUA DÚVIDA</h2>
-            <p>Preencha as informações abaixo para enviar uma mensagem direta ao utilizador ou registar um chamado formal de suporte e compliance corporativo.</p>
+            <p>Preencha as informações abaixo para enviar uma mensagem direta ao utilizador ou registrar um chamado formal de suporte e compliance corporativo.</p>
       </div>
       </div>
 
-    {/* Bloco do Destinatário */}
+   {/* Bloco do Destinatário */}
     <div className="info-destinatario"> 
       <div className="avatar">{destinatario.iniciais}</div>
 
       <div className="dados-destinatario">
-        <strong>{destinatario.nome}</strong>
-            <span className="tag-organizador">{destinatario.cargo}</span>
-            <span className="empresa">{destinatario.empresa}</span>
+        <div className="linha-nome">
+          <strong>{destinatario.nome}</strong>
+          <span className="tag-organizador">{destinatario.cargo}</span>
+        </div>
+        <span className="empresa">{destinatario.empresa}</span>
+      </div>
 
-            <div className="status-online"></div>
+      <div className="status-online">
+        <span className="bolinha-verde"></span> {destinatario.status}
       </div>
     </div>
 
     {/* O Formulário começa aqui */}
 
-    <form className="formulario"> 
+    <form> 
 
       <div className="label-topo"> 
         <label htmlFor="assunto"> ASSUNTO: </label>
-        <span className="obrigatorio"> * Obrigatório</span>
+        <span className="obrigatorio"> Obrigatório</span>
       </div>
 
       {/* Campo onde o utilizador escreve */}
       <div className="caixa-input">
-        <span className="icone-input"> 🏷️{/* Ícone do Figma */} </span>
+        <span className="icone-input">
+          <img src={iconeassunto} alt="Ícone de Assunto" style={{ width: '18px', height: '18px' }} />
+        </span>
       <input 
         type="text"
         id="assunto"
@@ -71,22 +79,32 @@ const destinatario = {
       <small className="texto-ajuda">Defina um título objetivo para acelerar a resolução e o arquivamento.
       </small>
 
-      {/* NOVO CAMPO: Descrição */}
+
+     {/* NOVO CAMPO: Descrição */}
       <div className="label-topo">
         <label htmlFor="descricao"> DESCRIÇÃO: </label>
-        <span className="contador">0/2000 caracteres</span>
-        <textarea 
+        {/* O contador agora mostra o tamanho exato do texto guardado na memória */}
+        <span className="contador">{textoDescricao.length}/2000 caracteres</span>
+      </div>
+
+      <textarea 
         id="descricao"
         placeholder="Descreva detalhadamente a sua dúvida ou solicitação..."
-        > </textarea>
-      </div>
+        value={textoDescricao}
+        onChange={(evento) => setTextoDescricao(evento.target.value)}
+        maxLength={2000}
+      ></textarea>
+    
 
     {/* Rodapé do Formulário */}
           <div className="rodape-form">
             
             {/* Lado esquerdo: Anexos */}
             <div className="anexo-info">
-              <button type="button" className="botao-anexo">📎 Anexar Arquivo (PDF, PNG, JPG)</button>
+              <button type="button" className="botao-anexo">
+                <img src={iconeanexo} alt="Ícone de Anexo" style={{ width: '14px', height: '14px' }} />
+                Anexar Arquivo (PDF, PNG, JPG)
+              </button>
               <span className="limite-tamanho">Máx. 15MB</span>
             </div>
             
