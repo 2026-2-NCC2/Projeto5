@@ -6,7 +6,10 @@ import iconeassunto from '../assets/icone-assunto.png';
 
 
 export default function Contato() {
+
+  {/* Preparado para o BackEnd */}
  const [textoDescricao, setTextoDescricao] = useState(""); {/* Estado para armazenar o texto da descrição */}
+  const [assunto, setAssunto] = useState(""); {/* NOVO: Estado para armazenar o texto do assunto */}
 const destinatario = {
     iniciais: "MA",
     nome: "Nome da Pessoa", 
@@ -72,7 +75,9 @@ const destinatario = {
         type="text"
         id="assunto"
         placeholder="Ex: Ajuste de lote de ingressos ou dúvida cadastral..."
-        />
+        value={assunto}
+        onChange={(evento) => setAssunto(evento.target.value)}
+      />
       </div>
 
       {/* Texto pequeno em baixo */}
