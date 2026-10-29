@@ -1,0 +1,318 @@
+.container-contato {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 64px; /* Empurra o rodapé para baixo, dando espaço para a página respirar */
+}
+
+/* Área do botão */
+.area-voltar {
+  margin-top: 40px;
+  margin-bottom: 24px;
+}
+
+/* Novo visual do botão de voltar igual ao Figma */
+.botao-voltar {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espaço entre a seta e o texto */
+}
+
+.botao-voltar:hover {
+  background-color: #f5f5f5;
+}
+/* Formulário */
+.card-formulario {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.20);
+}
+
+/* --- CABEÇALHO DO FORMULÁRIO (CAIXA VERDE) --- */
+
+.cabeçalho-form {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background-color: #f2f7f5; /* Fundo verde bem suave */
+  border: 1px solid #569188; /* Borda verde subtil */
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.icone-mensagem {
+  background-color: #578f82; /* Verde-azulado da marca */
+  color: #ffffff;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  flex-shrink: 0; /* Impede que o ícone esmague em ecrãs menores */
+}
+
+.textos-cabeçalho h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #1a2b27;
+  font-size: 22px;
+}
+
+.textos-cabeçalho p {
+  margin: 0;
+  color: #555555;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Organiza a linha acima do texto */
+.label-topo {
+  display:flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.label-topo label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.obrigatorio {
+  font-size: 12px;
+  color: #F43F5E
+}
+
+.contador {
+  font-size: 12px;
+  color: #888888;
+}
+
+/* Transforma a caixa externa no "falso" campo de preenchimento */
+.caixa-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #cccccc;
+  border-radius:4px;
+  padding: 0 12px;
+  background-color: #f9f9f9;
+}
+
+/* Dá um pequeno espaço entre o ícone e o texto */
+.icone-input {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+/* Limpa o visual padrão do input, e faz ele ocupar o resto do espaço */
+.caixa-input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 12px 0;
+  font-size: 16px;
+  color: #333333;
+}
+
+/* Texto pequeno de ajuda do Assunto */
+.texto-ajuda {
+  display: block;
+  font-size: 12px;
+  color: #666666;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+/* Caixa grande da Descrição */
+textarea {
+  width: 100%;
+  height: 120px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  font-family: inherit; /* garante que use o mesmo tipo de letra do resto do site */
+  color: #333333;
+  resize: vertical; /* permite que a caixa apenas estique para baixo, nunca para os lados */
+  box-sizing: border-box;
+  outline: none;
+  margin-bottom: 24px; /* espaçamento entre a caixa e o rodapé */
+}
+
+/* efeito visual quando o utilizador clica dentro da descrição */
+textarea:focus {
+  border-color: #999999;
+}
+
+/* --- RODAPÉ DO FORMULÁRIO --- */
+
+/* Coloca a área de anexos à esquerda e as ações à direita */
+.rodape-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+/* Organiza o botão de anexo e o texto de limite lado a lado */
+.anexo-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Organiza o aviso de segurança e os botões finais lado a lado */
+.acoes-finais {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Separa o botão de Cancelar do botão de Enviar */
+.botoes-acao {
+  display: flex;
+  gap: 16px;
+}
+
+/* Pequeno ajuste nos textos informativos do rodapé */
+.limite-tamanho, .criptografia {
+  font-size: 12px;
+  color: #666666;
+}
+
+/* --- ESTILOS DOS BOTÕES DO RODAPÉ --- */
+
+/* Botão de Anexar */
+.botao-anexo {
+  background-color: transparent;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #333333;
+}
+
+/* Botão de Cancelar - Fundo cinza claro */
+.botao-cancelar {
+  background-color: #f1f5f4; 
+  color: #1a2b27;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.botao-cancelar:hover {
+  background-color: #e2e8e6;
+}
+
+/* Botão de Enviar - Verde Teal da marca */
+.botao-enviar {
+  background-color: #578f82; 
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.botao-enviar:hover {
+  background-color: #457368;
+}
+
+/* --- INFORMAÇÕES DO DESTINATÁRIO --- */
+.info-destinatario {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 32px;
+}
+
+/* Cria o círculo perfeito para o Avatar */
+.avatar {
+  width: 48px;
+  height: 48px;
+  background-color: #e6f4f1;
+  color: #578f82;
+  border-radius: 50%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 16px;
+}
+
+/* Ocupa o espaço central e empurra o status para o canto direito */
+.dados-destinatario {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.linha-nome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.linha-nome strong {
+  font-size: 16px;
+  color: #1a1a1a;
+}
+
+/* Estilo da etiqueta verde clara */
+.tag-organizador {
+  background-color: #e6f4f1;
+  color: #578f82;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.empresa {
+  font-size: 14px;
+  color: #666666;
+}
+
+/* Caixa com fundo verde claro para o Status */
+.status-online {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #e6f4f1;
+  color: #117b5f;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Cria o ponto verde indicador de online */
+.bolinha-verde {
+  width: 8px;
+  height: 8px;
+  background-color: #117b5f;
+  border-radius: 50%;
+}

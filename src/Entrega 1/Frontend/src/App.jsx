@@ -3,6 +3,7 @@ import Rodape from './components/Rodape';
 import Home from './paginas/Home';
 import Login from './paginas/Login';
 import Cadastro from './paginas/Cadastro';
+import Contato from './paginas/Contato';
 import CadastroPendente from './paginas/CadastroPendente';
 import Dashboard from './paginas/Dashboard';
 import Eventos from './paginas/Eventos';
@@ -25,6 +26,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard/> } />
           <Route path='/eventos' element={<Eventos/> } />
           <Route path='*' element={<RotaNaoEncontrada/> } />
+          <Route path='/contato' element={<Contato/> } />
         </Routes>
         <Rodape/>
       </ErrorBoundary>

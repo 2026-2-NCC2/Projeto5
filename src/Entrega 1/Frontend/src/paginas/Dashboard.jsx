@@ -70,7 +70,7 @@ function Dashboard() {
             descricao: "Suporte & Ouvidoria",
             status: "Online",
             icone: contatoIcone,
-            acao: { texto: "Abrir", href: "#contato" }
+            acao: { texto: "Abrir", href: "/contato" }
         },
     ];
 
