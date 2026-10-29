@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Contato.css'; 
 import iconemensagem from '../assets/icone-mensagem.png';
 import iconeanexo from '../assets/icone-anexo.png'; 
@@ -6,6 +7,7 @@ import iconeassunto from '../assets/icone-assunto.png';
 
 
 export default function Contato() {
+  const navigate = useNavigate();
 
   {/* Preparado para o BackEnd */}
  const [textoDescricao, setTextoDescricao] = useState(""); {/* Estado para armazenar o texto da descrição */}
@@ -24,7 +26,7 @@ const destinatario = {
 
    {/* Botão de voltar */}
     <div className="area-voltar">
-        <button className="botao-voltar"> ← Voltar </button>
+       <button type="button" className="botao-voltar" onClick={() => navigate(-1)}> ← Voltar </button>
     </div>
 
     {/* Card branco principal */}
