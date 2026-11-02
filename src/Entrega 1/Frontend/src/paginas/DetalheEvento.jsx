@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../styles/DetalheEvento.css";
 
@@ -7,6 +8,7 @@ const dadosMock = [
         nome: "Festival Aurora Sound 2025",
         status: "Em cotação",
         criadoEm: "14/09/2025 às 09:30",
+        orcamentoEstimado: 480000,
         periodo: "15 a 17 de Novembro de 2025",
         cronograma: "10/11 a 19/11 de 2025",
         local: "Pavilhão Anhembi",
@@ -17,7 +19,6 @@ const dadosMock = [
         publicoEsperado: "25.000 pessoas",
         lotacaoMaxima: "30.000 pessoas",
         alvara: "Homologado Corpo Bombeiros",
-        orcamento: 480000,
         margemOperacional: 69600,
         taxaIntermediacao: 13440,
         custos: [
@@ -39,7 +40,50 @@ const formatarMoeda = (valor) => new Intl.NumberFormat("pt-BR", {
 function DetalheEvento() {
     const navigate = useNavigate();
     const { id } = useParams();
-    const evento = dadosMock.find((item) => item.id === id);
+    const [dados, setDados] = useState(dadosMock);
+    const [carregando, setCarregando] = useState(false);
+    const [erro, setErro] = useState(null);
+    const evento = dados.find((item) => item.id === id);
+
+    const handleExcluir = async () => {
+        setCarregando(true);
+        setErro(null);
+
+        try {
+            // TODO BACKEND: Substituir pela chamada await api.delete(`/api/eventos/${id}`)
+            setDados((eventosAtuais) => eventosAtuais.filter((item) => item.id !== id));
+            navigate("/eventos", { replace: true });
+        } catch {
+            setErro("Não foi possível excluir o evento. Tente novamente.");
+        } finally {
+            setCarregando(false);
+        }
+    };
+
+    if (carregando) {
+        return (
+            <main className="detalhe-evento-pagina">
+                <div className="detalhe-evento-container">
+                    <button className="detalhe-voltar" type="button" onClick={() => navigate(-1)}>← Voltar</button>
+                    <section className="detalhe-estado-api" role="status">Processando solicitação...</section>
+                </div>
+            </main>
+        );
+    }
+
+    if (erro) {
+        return (
+            <main className="detalhe-evento-pagina">
+                <div className="detalhe-evento-container">
+                    <button className="detalhe-voltar" type="button" onClick={() => navigate(-1)}>← Voltar</button>
+                    <section className="detalhe-estado-api detalhe-estado-erro" role="alert">
+                        <p>{erro}</p>
+                        <button type="button" onClick={handleExcluir}>Tentar novamente</button>
+                    </section>
+                </div>
+            </main>
+        );
+    }
 
     if (!evento) {
         return (
@@ -129,7 +173,7 @@ function DetalheEvento() {
                             <h2><span className="icone-painel">◉</span> Composição de Custos &amp; Parâmetros Financeiros</h2>
                             <div className="total-orcamento">
                                 <span>Orçamento Total Previsto</span>
-                                <strong>{formatarMoeda(evento.orcamento)}</strong>
+                                <strong>{formatarMoeda(evento.orcamentoEstimado)}</strong>
                             </div>
                         </div>
                         <div className="tabela-custos-wrap">
@@ -166,7 +210,14 @@ function DetalheEvento() {
                         <h2>CONTROLE DE OPERAÇÃO DO EVENTO</h2>
                         <p>Ações de decisão e governança corporativa sobre a cotação #{evento.id}.</p>
                     </div>
-                    <button type="button" className="botao-excluir-evento">▤ Excluir Evento</button>
+                    <button
+                        type="button"
+                        className="botao-excluir-evento"
+                        disabled={carregando}
+                        onClick={handleExcluir}
+                    >
+                        {carregando ? "Excluindo..." : "▤ Excluir Evento"}
+                    </button>
                 </section>
             </div>
         </main>

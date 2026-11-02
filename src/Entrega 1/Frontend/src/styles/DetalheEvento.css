@@ -447,6 +447,39 @@
     background: #ffebeb;
 }
 
+.botao-excluir-evento:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.detalhe-estado-api {
+    padding: 18px;
+    border: 1px solid #dfe7ea;
+    border-radius: 9px;
+    background: var(--cor-branco);
+    color: var(--cor-texto-suave);
+    font-size: 0.82rem;
+}
+
+.detalhe-estado-erro {
+    border-color: #f1c7c4;
+    color: #a72c23;
+}
+
+.detalhe-estado-erro p {
+    margin: 0 0 12px;
+}
+
+.detalhe-estado-erro button {
+    padding: 8px 12px;
+    border: 0;
+    border-radius: var(--raio-controle);
+    background: var(--cor-verde-medio);
+    color: var(--cor-branco);
+    font: inherit;
+    font-size: 0.75rem;
+}
+
 .detalhe-nao-encontrado {
     padding: 32px;
     border: 1px solid #e0e7eb;
