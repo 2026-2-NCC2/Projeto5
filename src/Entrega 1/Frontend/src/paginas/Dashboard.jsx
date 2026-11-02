@@ -49,7 +49,7 @@ function Dashboard() {
             legenda: "pendentes",
             status: "Pendente",
             icone: solicitacaoIcone,
-            acao: { texto: "Revisar", href: "#solicitacoes-usuarios" }
+            acao: { texto: "Revisar", href: "/solicitacoes-cadastro" }
         },
         {
             titulo: "Usuários",
