@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Eventos.css";
 
+// Eventos de exemplo usados para preencher a listagem enquanto não há integração com API.
 const eventosMock = [
     {
         id: "EVT-001",
@@ -50,12 +51,14 @@ const eventosMock = [
     },
 ];
 
+// Converte datas ISO em texto localizado para exibição nos cards.
 const formatarData = (data) => new Intl.DateTimeFormat("pt-BR", {
     day: "2-digit",
     month: "short",
     year: "numeric",
 }).format(new Date(data));
 
+// Apresenta valores monetários no padrão brasileiro.
 const formatarOrcamento = (valor) => new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
@@ -64,6 +67,8 @@ const formatarOrcamento = (valor) => new Intl.NumberFormat("pt-BR", {
 
 function Eventos() {
     const navigate = useNavigate();
+
+    // Estados da tela: dados da lista, critérios de busca, página atual e modal.
     const [eventos, setEventos] = useState(eventosMock);
     const [filtro, setFiltro] = useState("recentes");
     const [busca, setBusca] = useState("");
@@ -74,6 +79,7 @@ function Eventos() {
     const [modal, setModal] = useState(null);
     const itensPorPagina = 3;
 
+    // Combina a aba selecionada com a busca e os filtros avançados.
     const eventosFiltrados = eventos.filter((evento) => {
         const termoBusca = busca.trim().toLocaleLowerCase("pt-BR");
         const correspondeBusca = !termoBusca || [
@@ -91,6 +97,7 @@ function Eventos() {
         return correspondeBusca && correspondeAba && correspondeStatus && correspondeCidade;
     });
 
+    // Pagina somente os resultados já filtrados e prepara os totais das abas.
     const totalPaginas = Math.max(1, Math.ceil(eventosFiltrados.length / itensPorPagina));
     const paginaAtual = Math.min(pagina, totalPaginas);
     const eventosDaPagina = eventosFiltrados.slice(
@@ -103,11 +110,13 @@ function Eventos() {
         concluido: eventos.filter((evento) => evento.status === "concluido").length,
     };
 
+    // Após alterar filtros, volta à primeira página para evitar listas vazias.
     function atualizarFiltro(callback) {
         callback();
         setPagina(1);
     }
 
+    // Cria um evento de demonstração a partir dos campos do modal.
     function criarEvento(e) {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -126,6 +135,8 @@ function Eventos() {
             poster: "poster-evento-1",
             posterChamada: "NOVO EVENTO",
         };
+
+        // Atualiza a lista local e limpa os filtros para mostrar o novo cadastro.
         setEventos([novoEvento, ...eventos]);
         setModal(null);
         setFiltro("recentes");
@@ -138,6 +149,7 @@ function Eventos() {
     return (
         <main className="pagina-eventos">
             <section className="eventos-conteudo">
+                {/* Título, retorno à página anterior e abertura do formulário de novo evento. */}
                 <div className="topo-eventos">
                     <button className="voltar-eventos" type="button" onClick={() => navigate(-1)}>
                         ← Voltar
@@ -149,6 +161,7 @@ function Eventos() {
                     </button>
                 </div>
 
+                {/* Abas, busca e filtros que refinam a lista sem recarregar a página. */}
                 <div className="ferramentas-eventos">
                     <div className="abas-eventos">
                         <span className="rotulo-filtros">FILTROS:</span>
@@ -211,6 +224,7 @@ function Eventos() {
                     )}
                 </div>
 
+                {/* Resumo dos resultados e controles de paginação. */}
                 <div className="resumo-listagem-eventos">
                     <span>
                         Exibindo {eventosFiltrados.length ? (paginaAtual - 1) * itensPorPagina + 1 : 0}
@@ -233,6 +247,7 @@ function Eventos() {
                     </nav>
                 </div>
 
+                {/* Cada card resume um evento e oferece atalhos para contato e cotações. */}
                 <div className="lista-eventos">
                     {eventosDaPagina.map((evento) => (
                         <article className="card-evento" key={evento.id}>
@@ -278,12 +293,14 @@ function Eventos() {
                             </div>
                         </article>
                     ))}
+                    {/* Mensagem de estado vazio quando nenhum item corresponde aos filtros. */}
                     {eventosDaPagina.length === 0 && (
                         <p className="estado-eventos">Nenhum evento encontrado para estes filtros.</p>
                     )}
                 </div>
             </section>
 
+            {/* Modal controlado pelo estado `modal`; o formulário adiciona o evento à lista local. */}
             {modal === "novo" && (
                 <div className="sobreposicao-modal-evento">
                     <section className="modal-evento">
