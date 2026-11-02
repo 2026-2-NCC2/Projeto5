@@ -10,6 +10,8 @@ import Eventos from './paginas/Eventos';
 import DetalheEvento from './paginas/DetalheEvento';
 import SolicitacoesCadastro from './paginas/SolicitacoesCadastro';
 import Relatorios from './paginas/Relatorios';
+import Usuarios from './paginas/Usuarios';
+import PerfilUsuario from './paginas/PerfilUsuario';
 import RotaNaoEncontrada from './paginas/RotaNaoEncontrada';
 import ErrorBoundary from './components/ErrorBoundary';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -31,6 +33,8 @@ function App() {
           <Route path='/eventos/:id' element={<DetalheEvento/> } />
           <Route path='/solicitacoes-cadastro' element={<SolicitacoesCadastro/> } />
           <Route path='/relatorios' element={<Relatorios/> } />
+          <Route path='/usuarios' element={<Usuarios/> } />
+          <Route path='/usuarios/:id' element={<PerfilUsuario/> } />
           <Route path='/contato' element={<Contato/> } />
           <Route path='*' element={<RotaNaoEncontrada/> } />
 
