@@ -9,6 +9,7 @@ import Dashboard from './paginas/Dashboard';
 import Eventos from './paginas/Eventos';
 import DetalheEvento from './paginas/DetalheEvento';
 import SolicitacoesCadastro from './paginas/SolicitacoesCadastro';
+import Relatorios from './paginas/Relatorios';
 import RotaNaoEncontrada from './paginas/RotaNaoEncontrada';
 import ErrorBoundary from './components/ErrorBoundary';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -29,6 +30,7 @@ function App() {
           <Route path='/eventos' element={<Eventos/> } />
           <Route path='/eventos/:id' element={<DetalheEvento/> } />
           <Route path='/solicitacoes-cadastro' element={<SolicitacoesCadastro/> } />
+          <Route path='/relatorios' element={<Relatorios/> } />
           <Route path='/contato' element={<Contato/> } />
           <Route path='*' element={<RotaNaoEncontrada/> } />
 
