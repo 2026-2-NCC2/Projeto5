@@ -56,7 +56,7 @@ function Dashboard() {
             status: `${usuarios.length} Contas`,
             tags: [`${fornecedores} Fornecedores`, `${organizadores} Organizadores`],
             icone: usuarioIcone,
-            acao: { texto: "Gerenciar", href: "#usuarios" }
+            acao: { texto: "Gerenciar", href: "/usuarios" }
         },
         {
             titulo: "Relatórios",
