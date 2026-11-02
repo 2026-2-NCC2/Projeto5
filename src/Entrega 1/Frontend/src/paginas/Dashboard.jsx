@@ -63,7 +63,7 @@ function Dashboard() {
             descricao: "Métricas & Balanço",
             status: "Exportável",
             icone: relatorioIcone,
-            acao: { texto: "Visualizar", href: "#relatorios" }
+            acao: { texto: "Visualizar", href: "/relatorios" }
         },
         {
             titulo: "Contato",
