@@ -1,0 +1,373 @@
+/* Área externa e largura máxima do conteúdo. */
+.detalhe-proposta-for-pagina {
+    flex: 1;
+    padding: 14px 24px 40px;
+    background: var(--cor-fundo);
+}
+
+.detalhe-proposta-for-container {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+}
+
+/* Botão de retorno no padrão das demais páginas. */
+.detalhe-proposta-for-voltar {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 7px -6px;
+    padding: 6px 11px;
+    border: 1px solid #e1e8ed;
+    border-radius: 5px;
+    background: var(--cor-branco);
+    color: var(--cor-texto-suave);
+    font: inherit;
+    font-size: 0.72rem;
+}
+
+/* Cabeçalho compacto com nome e descrição do edital. */
+.detalhe-proposta-for-cabecalho {
+    margin-bottom: 12px;
+}
+
+.detalhe-proposta-for-cabecalho h1 {
+    margin: 0;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-principal);
+    font-size: clamp(1.25rem, 2.8vw, 1.65rem);
+    line-height: 1.25;
+}
+
+.detalhe-proposta-for-cabecalho p {
+    max-width: 760px;
+    margin: 3px 0 0;
+    color: var(--cor-texto-suave);
+    font-size: 0.63rem;
+    line-height: 1.45;
+}
+
+/* A capa e o resumo ocupam a primeira linha; informações abaixo. */
+.detalhe-proposta-for-grade {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(270px, 1fr);
+    align-items: start;
+    gap: 12px;
+}
+
+/* Capa ilustrativa, sem dependência de imagens externas. */
+.detalhe-proposta-for-capa {
+    position: relative;
+    display: flex;
+    min-height: 190px;
+    align-items: flex-start;
+    overflow: hidden;
+    padding: 12px;
+    border: 1px solid #dfe8e4;
+    border-radius: 9px;
+    background:
+        radial-gradient(ellipse at 68% 30%, rgba(216, 185, 125, 0.72), transparent 28%),
+        radial-gradient(ellipse at 43% 72%, rgba(80, 132, 112, 0.9), transparent 44%),
+        linear-gradient(135deg, #dce8e1 5%, #b4c9c0 48%, #647b72);
+}
+
+.detalhe-proposta-for-capa::before {
+    position: absolute;
+    right: 12%;
+    bottom: 24%;
+    left: 12%;
+    height: 36%;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.62);
+    background: repeating-linear-gradient(90deg, transparent 0 14px, rgba(255, 255, 255, 0.24) 15px 17px);
+    clip-path: polygon(0 42%, 8% 12%, 15% 50%, 23% 4%, 31% 42%, 39% 17%, 47% 54%, 55% 0, 63% 41%, 72% 14%, 80% 47%, 88% 8%, 100% 42%, 100% 100%, 0 100%);
+    content: "";
+}
+
+.detalhe-proposta-for-categoria,
+.detalhe-proposta-for-capa-legenda,
+.detalhe-proposta-for-capa-selo {
+    position: absolute;
+    z-index: 1;
+    padding: 4px 7px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.93);
+    color: var(--cor-verde-medio);
+    font-size: 0.51rem;
+    font-weight: 600;
+}
+
+.detalhe-proposta-for-categoria {
+    top: 11px;
+    left: 11px;
+}
+
+.detalhe-proposta-for-capa-legenda {
+    bottom: 9px;
+    left: 10px;
+    background: rgba(37, 51, 66, 0.72);
+    color: #fff;
+}
+
+.detalhe-proposta-for-capa-selo {
+    right: 10px;
+    bottom: 9px;
+    background: rgba(37, 51, 66, 0.72);
+    color: #fff;
+}
+
+/* Resumo lateral do evento e botões de demonstração. */
+.detalhe-proposta-for-resumo {
+    display: grid;
+    gap: 8px;
+    padding: 11px;
+    border: 1px solid #e2e8ec;
+    border-radius: 9px;
+    background: #fff;
+}
+
+.detalhe-proposta-for-orcamento {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    gap: 2px 6px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #edf0f2;
+}
+
+.detalhe-proposta-for-orcamento > span:first-child {
+    grid-column: 1 / -1;
+    color: #7d8988;
+    font-size: 0.48rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.detalhe-proposta-for-orcamento strong {
+    color: #334842;
+    font-family: var(--fonte-principal);
+    font-size: 1.08rem;
+    line-height: 1.2;
+}
+
+.detalhe-proposta-for-orcamento > small {
+    color: #929b9b;
+    font-size: 0.48rem;
+}
+
+.detalhe-proposta-for-prazo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 3px 6px;
+    border-radius: 4px;
+    background: #fff0e8;
+    color: #b2543c;
+    font-size: 0.48rem;
+}
+
+.detalhe-proposta-for-informacoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px 10px;
+}
+
+.detalhe-proposta-for-informacoes > div {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    min-width: 0;
+}
+
+.detalhe-proposta-for-informacoes > div > span {
+    color: #477a69;
+    font-size: 0.67rem;
+}
+
+.detalhe-proposta-for-informacoes small {
+    display: grid;
+    gap: 1px;
+    color: #8a949d;
+    font-size: 0.47rem;
+}
+
+.detalhe-proposta-for-informacoes strong {
+    color: #4c5961;
+    font-size: 0.53rem;
+    font-weight: 600;
+}
+
+.detalhe-proposta-for-organizador {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    padding-top: 6px;
+    border-top: 1px solid #edf0f2;
+    color: #77828b;
+    font-size: 0.51rem;
+}
+
+.detalhe-proposta-for-organizador strong {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #45524f;
+    font-size: 0.51rem;
+}
+
+.detalhe-proposta-for-organizador i {
+    display: grid;
+    width: 15px;
+    height: 15px;
+    place-items: center;
+    border-radius: 4px;
+    background: #e9edf8;
+    color: #52658a;
+    font-size: 0.48rem;
+    font-style: normal;
+}
+
+.detalhe-proposta-for-apresentar,
+.detalhe-proposta-for-edital {
+    min-height: 30px;
+    border: 0;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 0.54rem;
+    font-weight: 600;
+}
+
+.detalhe-proposta-for-apresentar {
+    background: var(--cor-verde-medio);
+    color: #fff;
+}
+
+.detalhe-proposta-for-apresentar:hover {
+    background: var(--cor-verde-escuro);
+}
+
+.detalhe-proposta-for-apresentar:disabled {
+    cursor: not-allowed;
+    background: #e8eeee;
+    color: #73817d;
+}
+
+.detalhe-proposta-for-edital {
+    background: #eef5f4;
+    color: var(--cor-verde-medio);
+}
+
+/* Painéis de descrição e exigências técnicas. */
+.detalhe-proposta-for-painel {
+    min-width: 0;
+    padding: 11px;
+    border: 1px solid #e2e8ec;
+    border-radius: 9px;
+    background: #fff;
+}
+
+.detalhe-proposta-for-painel h2 {
+    margin: 0;
+    color: #3e5954;
+    font-family: var(--fonte-principal);
+    font-size: 0.65rem;
+}
+
+.detalhe-proposta-for-sobre h2 span,
+.detalhe-proposta-for-requisitos h2 span {
+    margin-right: 4px;
+    color: #5e9188;
+}
+
+.detalhe-proposta-for-sobre p {
+    margin: 6px 0 0;
+    color: #68747b;
+    font-size: 0.56rem;
+    line-height: 1.48;
+}
+
+.detalhe-proposta-for-requisitos header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.detalhe-proposta-for-requisitos header > span {
+    color: #8b969c;
+    font-size: 0.48rem;
+}
+
+.detalhe-proposta-for-requisitos ul {
+    display: grid;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.detalhe-proposta-for-requisitos li {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 5px 7px;
+    border-radius: 6px;
+    background: #eef5f4;
+}
+
+.detalhe-proposta-for-requisitos li > span {
+    color: #5e9188;
+    font-size: 0.63rem;
+}
+
+.detalhe-proposta-for-requisitos li div {
+    display: grid;
+    gap: 1px;
+}
+
+.detalhe-proposta-for-requisitos li strong {
+    color: #4a5855;
+    font-size: 0.51rem;
+}
+
+.detalhe-proposta-for-requisitos li small {
+    color: #84908e;
+    font-size: 0.47rem;
+}
+
+.detalhe-proposta-for-feedback {
+    margin: 8px 0 0;
+    color: #28775f;
+    font-size: 0.58rem;
+    text-align: right;
+}
+
+/* Em telas estreitas, os painéis passam para uma coluna. */
+@media (max-width: 700px) {
+    .detalhe-proposta-for-pagina {
+        padding: 14px 14px 28px;
+    }
+
+    .detalhe-proposta-for-grade {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .detalhe-proposta-for-resumo {
+        grid-row: 1;
+    }
+
+    .detalhe-proposta-for-capa {
+        min-height: 170px;
+    }
+}
+
+@media (min-width: 701px) {
+    .detalhe-proposta-for-sobre {
+        grid-column: 1;
+    }
+
+    .detalhe-proposta-for-requisitos {
+        grid-column: 2;
+        grid-row: 2;
+    }
+}
