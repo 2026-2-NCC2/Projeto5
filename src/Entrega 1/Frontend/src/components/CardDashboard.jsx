@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import "../styles/CardDashboard.css";
 
+// Card genérico: os textos, ícone e destino são definidos nos dados do Dashboard.
 function CardDashboard({ titulo, valor, legenda, descricao, status, tags = [], acao, icone, variante = "padrao" }) {
     return (
         <article className={`card-dashboard card-dashboard-${variante}`}>
@@ -28,7 +30,8 @@ function CardDashboard({ titulo, valor, legenda, descricao, status, tags = [], a
                 </div>
             )}
 
-            {acao && <a className="acao-card-dashboard" href={acao.href}>{acao.texto}<span aria-hidden="true">&#8250;</span></a>}
+            {/* Link do router troca de tela sem recarregar e preserva o perfil em memória. */}
+            {acao && <Link className="acao-card-dashboard" to={acao.href}>{acao.texto}<span aria-hidden="true">&#8250;</span></Link>}
         </article>
     );
 }

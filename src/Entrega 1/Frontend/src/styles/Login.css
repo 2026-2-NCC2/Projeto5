@@ -49,7 +49,9 @@
 }
 
 .campo-login input[type="email"],
-.campo-login input[type="password"] {
+.campo-login input[type="password"],
+.campo-login select {
+    /* Mantém o seletor de perfil alinhado visualmente aos campos de login. */
     width: 100%;
     min-height: 42px;
     padding: 9px 12px;
@@ -60,7 +62,8 @@
     font: 0.78rem var(--fonte-secundaria);
 }
 
-.campo-login input:focus {
+.campo-login input:focus,
+.campo-login select:focus {
     outline: 2px solid var(--cor-verde-claro);
     outline-offset: 2px;
 }
