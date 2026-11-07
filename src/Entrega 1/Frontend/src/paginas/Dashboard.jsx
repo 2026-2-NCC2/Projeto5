@@ -8,7 +8,7 @@ import relatorioIcone from "../assets/icone-relatorios.png";
 import contatoIcone from "../assets/icone-contatos.png";
 import "../styles/Dashboard.css";
 
-function Dashboard() {
+function Dashboard({ perfil }) {
     const [usuarios, setUsuarios] = useState([]);
     const [eventos, setEventos] = useState([]);
 

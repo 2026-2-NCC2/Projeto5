@@ -18,6 +18,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 
 function App() {
+
+  // Define o estado do perfil do usuário (Temporario, para simular o login)
+  const [perfil, setPerfil] = useState('admin');
+  <Dashboard perfil="{perfil}"/>
+  
   return (
     <BrowserRouter>
       <ErrorBoundary>
