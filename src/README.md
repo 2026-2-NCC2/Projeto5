@@ -49,11 +49,8 @@
 | **Versão/modelo** | [Gemini 1.5 Pro] |
 | **Disciplina / Trabalho** | [Projeto Interdisciplinar: Desenvolvimento web] |
 | **Finalidade de uso** | [Ajuda na definição da arquitetura do frontend, roteamento de páginas e estruturação da renderização condicional baseada em perfis de utilizador com React.] |
-| ***Prompts* principais utilizados** | [Analise o protótipo desse projeto, me guie na realização dele.
-Em um ritmo lento e linear,  vá me explicando tudo o que formos fazendo.
-Não me dê respostas, me faça chegar ao resultado.
-O objetivo agora é construir esse projeto com base no protótipo.] |
-| **Trechos ou entregas afetadas** | [preencher] |
+| ***Prompts* principais utilizados** | [Analise o protótipo desse projeto, me guie na realização dele. Em um ritmo lento e linear,  vá me explicando tudo o que formos fazendo. Não me dê respostas, me faça chegar ao resultado. O objetivo agora é construir esse projeto com base no protótipo.] |
+| **Trechos ou entregas afetadas** | [Projeto Interdisciplinar] |
 
 
 ### Módulo do sistema 2
