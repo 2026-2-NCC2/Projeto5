@@ -1,0 +1,434 @@
+/* Área e largura do conteúdo principal. */
+.eventos-for-pagina {
+    flex: 1;
+    padding: 18px 24px 42px;
+    background: var(--cor-fundo);
+}
+
+.eventos-for-conteudo {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+}
+
+/* Botão de retorno no mesmo padrão visual das demais páginas. */
+.eventos-for-voltar {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 8px -6px;
+    padding: 6px 11px;
+    border: 1px solid #e1e8ed;
+    border-radius: 5px;
+    background: var(--cor-branco);
+    color: var(--cor-texto-suave);
+    font: inherit;
+    font-size: 0.72rem;
+}
+
+/* Título e abas para alternar entre todos os eventos, abertos e encerrados. */
+.eventos-for-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.eventos-for-cabecalho h1 {
+    margin: 0;
+    color: var(--cor-verde-medio);
+    font-family: var(--fonte-principal);
+    font-size: clamp(1.45rem, 3vw, 1.8rem);
+    line-height: 1.2;
+}
+
+.eventos-for-abas {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 4px;
+    border-radius: 8px;
+    background: #eef5f4;
+}
+
+.eventos-for-abas button {
+    min-height: 30px;
+    padding: 0 11px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: #64736f;
+    font: inherit;
+    font-size: 0.63rem;
+    white-space: nowrap;
+}
+
+.eventos-for-abas button.ativa {
+    background: #fff;
+    color: var(--cor-verde-medio);
+    font-weight: 700;
+    box-shadow: 0 1px 3px rgba(37, 51, 66, 0.08);
+}
+
+.eventos-for-minhas-propostas {
+    min-height: 30px;
+    padding: 0 10px;
+    border: 1px solid #dfe7ea;
+    border-radius: 6px;
+    background: var(--cor-branco);
+    color: var(--cor-verde-medio);
+    font: inherit;
+    font-size: 0.61rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Campo de busca ocupa a largura disponível acima dos cartões. */
+.eventos-for-busca {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 42px;
+    margin-bottom: 16px;
+    padding: 0 13px;
+    border: 1px solid #e6eaed;
+    border-radius: 8px;
+    background: var(--cor-branco);
+    color: #788493;
+}
+
+.eventos-for-busca > span {
+    font-size: 1.1rem;
+}
+
+.eventos-for-busca input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--cor-texto);
+    font: inherit;
+    font-size: 0.7rem;
+}
+
+.eventos-for-busca input::placeholder {
+    color: #8d96a0;
+}
+
+/* Lista de cartões com imagem, dados resumidos e ações. */
+.eventos-for-lista {
+    display: grid;
+    gap: 13px;
+}
+
+.eventos-for-card {
+    display: grid;
+    grid-template-columns: minmax(150px, 195px) minmax(0, 1fr) minmax(145px, 160px);
+    align-items: center;
+    gap: 17px;
+    min-height: 142px;
+    padding: 14px 16px;
+    border: 1px solid #e6eaed;
+    border-radius: 10px;
+    background: var(--cor-branco);
+    box-shadow: 0 2px 6px rgba(37, 51, 66, 0.025);
+}
+
+.eventos-for-card.encerrado {
+    opacity: 0.78;
+}
+
+/* Arte abstrata em CSS para ilustrar os eventos sem adicionar imagens externas. */
+.eventos-for-imagem {
+    position: relative;
+    display: flex;
+    min-height: 104px;
+    align-items: flex-start;
+    overflow: hidden;
+    padding: 9px;
+    border-radius: 9px;
+    background:
+        radial-gradient(ellipse at 68% 80%, rgba(245, 198, 111, 0.82), transparent 30%),
+        radial-gradient(ellipse at 35% 45%, rgba(74, 139, 120, 0.85), transparent 42%),
+        linear-gradient(135deg, #e6f0eb, #cadbd2);
+}
+
+.eventos-for-imagem.tecnologia {
+    background:
+        radial-gradient(ellipse at 74% 70%, rgba(94, 145, 136, 0.8), transparent 35%),
+        radial-gradient(ellipse at 30% 34%, rgba(87, 105, 142, 0.75), transparent 35%),
+        linear-gradient(135deg, #27384e, #566b72 55%, #c4d2cc);
+}
+
+.eventos-for-imagem.gastronomia {
+    background:
+        radial-gradient(ellipse at 65% 62%, rgba(211, 166, 104, 0.8), transparent 35%),
+        radial-gradient(ellipse at 25% 35%, rgba(100, 130, 102, 0.8), transparent 42%),
+        linear-gradient(135deg, #d9d4c2, #89917b 58%, #b8a47f);
+}
+
+.eventos-for-categoria {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 4px 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.93);
+    color: var(--cor-verde-medio);
+    font-size: 0.48rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eventos-for-categoria i {
+    font-style: normal;
+}
+
+.eventos-for-imagem-texto {
+    position: absolute;
+    right: 7px;
+    bottom: 7px;
+    left: 7px;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--fonte-principal);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-shadow: 0 1px 4px rgba(20, 35, 40, 0.45);
+}
+
+.eventos-for-detalhes {
+    min-width: 0;
+}
+
+.eventos-for-status-linha {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.eventos-for-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 7px;
+    border-radius: 999px;
+    background: #e2f5eb;
+    color: #267354;
+    font-size: 0.53rem;
+    font-weight: 700;
+}
+
+.eventos-for-status i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #18835f;
+}
+
+.eventos-for-status.fechado {
+    background: #eef1f2;
+    color: #66716f;
+}
+
+.eventos-for-status.fechado i {
+    background: #89938f;
+}
+
+.eventos-for-prazo {
+    color: #a74d3f;
+    font-size: 0.53rem;
+}
+
+.eventos-for-prazo.fechado {
+    color: #727d79;
+}
+
+.eventos-for-prazo i {
+    margin-right: 3px;
+    font-style: normal;
+}
+
+.eventos-for-detalhes h2 {
+    overflow: hidden;
+    margin: 5px 0 0;
+    color: var(--cor-verde-medio);
+    font-family: var(--fonte-principal);
+    font-size: clamp(0.88rem, 1.6vw, 1.05rem);
+    line-height: 1.3;
+    text-overflow: ellipsis;
+}
+
+.eventos-for-descricao {
+    overflow: hidden;
+    margin: 4px 0 6px;
+    color: #69747d;
+    font-size: 0.6rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eventos-for-metadados {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    padding: 6px 9px;
+    border-radius: 6px;
+    background: #f7faf9;
+}
+
+.eventos-for-metadados div {
+    display: grid;
+    gap: 1px;
+    min-width: 0;
+}
+
+.eventos-for-metadados span {
+    color: #84908e;
+    font-size: 0.47rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.eventos-for-metadados strong {
+    overflow: hidden;
+    color: #45524f;
+    font-size: 0.57rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eventos-for-metadados div:last-child strong {
+    color: #28775f;
+}
+
+.eventos-for-detalhe-expandido {
+    margin: 6px 0 0;
+    color: #69747d;
+    font-size: 0.58rem;
+    line-height: 1.45;
+}
+
+/* Ações primárias e secundárias do cartão. */
+.eventos-for-acoes {
+    display: grid;
+    justify-items: stretch;
+    gap: 7px;
+}
+
+.eventos-for-acoes button {
+    min-height: 33px;
+    border: 0;
+    border-radius: 7px;
+    font: inherit;
+    font-size: 0.59rem;
+    font-weight: 600;
+}
+
+.eventos-for-apresentar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 9px;
+    background: var(--cor-verde-medio);
+    color: #fff;
+}
+
+.eventos-for-apresentar:disabled {
+    cursor: not-allowed;
+    background: #e8eeee;
+    color: #73817d;
+}
+
+.eventos-for-ver-detalhes {
+    background: transparent;
+    color: var(--cor-verde-medio);
+}
+
+.eventos-for-vazio {
+    margin: 0;
+    padding: 25px 14px;
+    border: 1px solid #e6eaed;
+    border-radius: 9px;
+    background: #fff;
+    color: var(--cor-texto-suave);
+    font-size: 0.76rem;
+    text-align: center;
+}
+
+/* Layout em coluna para tablets e celulares. */
+@media (max-width: 800px) {
+    .eventos-for-card {
+        grid-template-columns: minmax(115px, 150px) minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .eventos-for-imagem {
+        grid-row: span 2;
+        min-height: 112px;
+    }
+
+    .eventos-for-acoes {
+        grid-column: 2;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .eventos-for-metadados {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .eventos-for-pagina {
+        padding: 14px 14px 28px;
+    }
+
+    .eventos-for-cabecalho {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .eventos-for-abas {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .eventos-for-minhas-propostas {
+        align-self: flex-end;
+    }
+
+    .eventos-for-abas button {
+        padding: 0 8px;
+        font-size: 0.57rem;
+    }
+
+    .eventos-for-card {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .eventos-for-imagem {
+        grid-row: auto;
+        min-height: 130px;
+    }
+
+    .eventos-for-acoes {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 380px) {
+    .eventos-for-metadados {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

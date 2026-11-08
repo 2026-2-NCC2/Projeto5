@@ -1,0 +1,350 @@
+/* Fundo suave e alinhamento central da área de conteúdo. */
+.minhas-propostas-for-pagina {
+    flex: 1;
+    padding: 22px 24px 40px;
+    background: var(--cor-fundo);
+}
+
+.minhas-propostas-for-conteudo {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+}
+
+/* Botão de navegação compatível com as demais páginas. */
+.minhas-propostas-for-voltar {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 10px -6px;
+    padding: 6px 11px;
+    border: 1px solid #e1e8ed;
+    border-radius: 5px;
+    background: var(--cor-branco);
+    color: var(--cor-texto-suave);
+    font: inherit;
+    font-size: 0.72rem;
+}
+
+/* Título e texto de orientação da tela. */
+.minhas-propostas-for-cabecalho {
+    margin-bottom: 20px;
+}
+
+.minhas-propostas-for-cabecalho h1 {
+    margin: 0;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-principal);
+    font-size: clamp(1.45rem, 3vw, 1.8rem);
+    line-height: 1.2;
+}
+
+.minhas-propostas-for-cabecalho p {
+    margin: 5px 0 0;
+    color: var(--cor-texto-suave);
+    font-size: 0.72rem;
+}
+
+.minhas-propostas-for-eventos {
+    margin-top: 10px;
+    padding: 6px 10px;
+    border: 1px solid #dfe7ea;
+    border-radius: 5px;
+    background: var(--cor-branco);
+    color: var(--cor-verde-medio);
+    font: inherit;
+    font-size: 0.63rem;
+    font-weight: 600;
+}
+
+/* Contador resumido de propostas ativas. */
+.minhas-propostas-for-contador {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 68px;
+    margin-bottom: 14px;
+    padding: 10px 14px;
+    border: 1px solid #e5e9ec;
+    border-radius: 9px;
+    background: var(--cor-branco);
+}
+
+.minhas-propostas-for-rotulo,
+.minhas-propostas-for-valor-rotulo {
+    display: block;
+    color: #788493;
+    font-size: 0.56rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.minhas-propostas-for-total {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 2px;
+}
+
+.minhas-propostas-for-total strong {
+    color: #203d3b;
+    font-family: var(--fonte-principal);
+    font-size: 1.15rem;
+    line-height: 1.1;
+}
+
+.minhas-propostas-for-total > span {
+    padding: 3px 7px;
+    border-radius: 999px;
+    background: #e5f3ed;
+    color: #27805f;
+    font-size: 0.54rem;
+    font-weight: 600;
+}
+
+.minhas-propostas-for-contador-icone {
+    display: grid;
+    width: 31px;
+    height: 31px;
+    place-items: center;
+    border-radius: 8px;
+    background: #eef2fa;
+    color: #3e5954;
+    font-size: 1rem;
+}
+
+/* Lista vertical com cartões responsivos de propostas. */
+.minhas-propostas-for-lista {
+    display: grid;
+    gap: 10px;
+}
+
+.minhas-propostas-for-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) minmax(150px, auto) auto;
+    align-items: center;
+    gap: 12px;
+    min-height: 76px;
+    padding: 11px 13px;
+    overflow: hidden;
+    border: 1px solid #e6eaed;
+    border-radius: 9px;
+    background: var(--cor-branco);
+}
+
+.minhas-propostas-for-card:first-child::before {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: #238263;
+    content: "";
+}
+
+.minhas-propostas-for-icone {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border-radius: 8px;
+    background: #eef5f4;
+    color: #3e5954;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.minhas-propostas-for-icone.painel,
+.minhas-propostas-for-icone.concluido {
+    background: #edf0fb;
+    color: #3e5954;
+}
+
+.minhas-propostas-for-icone.energia {
+    background: #eef3fb;
+    color: #3e5954;
+}
+
+.minhas-propostas-for-detalhes {
+    min-width: 0;
+}
+
+.minhas-propostas-for-titulo-linha {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px 7px;
+}
+
+.minhas-propostas-for-titulo-linha h2 {
+    margin: 0;
+    color: #203d3b;
+    font-family: var(--fonte-principal);
+    font-size: 0.77rem;
+    line-height: 1.35;
+}
+
+.minhas-propostas-for-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px 6px;
+    border-radius: 999px;
+    background: #e2f5eb;
+    color: #267354;
+    font-size: 0.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.minhas-propostas-for-status.em-analise,
+.minhas-propostas-for-status.concluido {
+    background: #edf0fb;
+    color: #58647c;
+}
+
+.minhas-propostas-for-status.energia {
+    background: #fde4e2;
+    color: #b7463e;
+}
+
+.minhas-propostas-for-status i {
+    font-style: normal;
+}
+
+.minhas-propostas-for-prazo {
+    color: #828b91;
+    font-size: 0.52rem;
+    white-space: nowrap;
+}
+
+.minhas-propostas-for-metadados {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px 7px;
+    margin: 4px 0 0;
+    color: #858d98;
+    font-size: 0.56rem;
+}
+
+.minhas-propostas-for-metadados strong {
+    color: #4a5562;
+    font-weight: 600;
+}
+
+.minhas-propostas-for-metadados i {
+    color: #89929b;
+    font-style: normal;
+}
+
+.minhas-propostas-for-id {
+    padding: 2px 5px;
+    border-radius: 4px;
+    background: #eef1fa;
+    color: #77819a;
+    font-size: 0.5rem;
+}
+
+/* Preço em destaque com nota de status abaixo do valor. */
+.minhas-propostas-for-valor-bloco {
+    display: grid;
+    justify-items: end;
+    gap: 1px;
+    min-width: 0;
+}
+
+.minhas-propostas-for-valor-rotulo {
+    font-size: 0.49rem;
+}
+
+.minhas-propostas-for-valor-bloco > strong {
+    color: #203d3b;
+    font-family: var(--fonte-principal);
+    font-size: clamp(0.95rem, 1.8vw, 1.16rem);
+    line-height: 1.25;
+    white-space: nowrap;
+}
+
+.minhas-propostas-for-observacao,
+.minhas-propostas-for-alerta {
+    color: #258064;
+    font-size: 0.52rem;
+    text-align: right;
+}
+
+.minhas-propostas-for-alerta {
+    color: #c64a47;
+}
+
+.minhas-propostas-for-detalhes {
+    min-width: 62px;
+    min-height: 30px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 6px;
+    background: #edf0fb;
+    color: #39475a;
+    font: inherit;
+    font-size: 0.56rem;
+    font-weight: 600;
+}
+
+.minhas-propostas-for-detalhes:hover {
+    background: #e0e7f5;
+}
+
+/* Empilha informações e ações em telas estreitas. */
+@media (max-width: 720px) {
+    .minhas-propostas-for-pagina {
+        padding: 14px 14px 28px;
+    }
+
+    .minhas-propostas-for-card {
+        grid-template-columns: 34px minmax(0, 1fr) auto;
+        gap: 9px;
+    }
+
+    .minhas-propostas-for-valor-bloco {
+        grid-column: 2;
+        justify-items: start;
+    }
+
+    .minhas-propostas-for-valor-rotulo {
+        display: none;
+    }
+
+    .minhas-propostas-for-valor-bloco > strong {
+        font-size: 0.95rem;
+    }
+
+    .minhas-propostas-for-alerta,
+    .minhas-propostas-for-observacao {
+        text-align: left;
+    }
+
+    .minhas-propostas-for-detalhes {
+        grid-column: 3;
+        grid-row: 2;
+    }
+}
+
+@media (max-width: 440px) {
+    .minhas-propostas-for-card {
+        grid-template-columns: 30px minmax(0, 1fr);
+        align-items: start;
+    }
+
+    .minhas-propostas-for-icone {
+        width: 30px;
+        height: 30px;
+    }
+
+    .minhas-propostas-for-valor-bloco,
+    .minhas-propostas-for-detalhes {
+        grid-column: 2;
+        grid-row: auto;
+    }
+
+    .minhas-propostas-for-detalhes {
+        justify-self: start;
+    }
+}

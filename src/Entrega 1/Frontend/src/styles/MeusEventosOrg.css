@@ -1,0 +1,472 @@
+/* Área externa e largura máxima da página. */
+.pagina-meus-eventos-org {
+    flex: 1;
+    padding: 18px 24px 48px;
+    background: var(--cor-fundo);
+}
+
+.meus-eventos-org-conteudo {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+}
+
+/* Botão de retorno segue o padrão utilizado nas demais páginas. */
+.meus-eventos-org-voltar {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 10px -6px;
+    padding: 6px 11px;
+    border: 1px solid #e1e8ed;
+    border-radius: 5px;
+    background: var(--cor-branco);
+    color: var(--cor-texto-suave);
+    font: inherit;
+    font-size: 0.72rem;
+}
+
+/* Título e botão para simular a publicação de evento. */
+.meus-eventos-org-titulo-linha {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.meus-eventos-org-topo {
+    margin-bottom: 18px;
+}
+
+.meus-eventos-org-topo h1 {
+    margin: 0;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-principal);
+    font-size: clamp(1.65rem, 3vw, 2rem);
+    line-height: 1.2;
+}
+
+.meus-eventos-org-topo p {
+    max-width: 700px;
+    margin: 5px 0 0;
+    color: var(--cor-texto-suave);
+    font-size: 0.79rem;
+    line-height: 1.55;
+}
+
+.meus-eventos-org-publicar {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 40px;
+    padding: 0 15px;
+    border: 0;
+    border-radius: 7px;
+    background: #00563f;
+    color: var(--cor-branco);
+    font: inherit;
+    font-size: 0.73rem;
+    font-weight: 600;
+}
+
+/* Busca, seletor de status e contador de eventos. */
+.meus-eventos-org-ferramentas {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) auto auto;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 18px;
+    padding: 12px 14px;
+    border: 1px solid #edf0f2;
+    border-radius: 9px;
+    background: var(--cor-branco);
+}
+
+.meus-eventos-org-busca,
+.meus-eventos-org-filtro,
+.meus-eventos-org-total {
+    min-height: 38px;
+    border-radius: 7px;
+    background: #f7eff8;
+}
+
+.meus-eventos-org-busca {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 0 12px;
+    color: #858394;
+}
+
+.meus-eventos-org-busca > span {
+    font-size: 1.15rem;
+    line-height: 1;
+}
+
+.meus-eventos-org-busca input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--cor-texto);
+    font: inherit;
+    font-size: 0.73rem;
+}
+
+.meus-eventos-org-busca input::placeholder {
+    color: #898697;
+}
+
+.meus-eventos-org-filtro select {
+    width: 100%;
+    height: 38px;
+    padding: 0 30px 0 12px;
+    border: 0;
+    border-radius: 7px;
+    outline-color: var(--cor-verde-claro);
+    background: #f7eff8;
+    color: #474352;
+    font: inherit;
+    font-size: 0.69rem;
+}
+
+.meus-eventos-org-total {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 12px;
+    color: #4a4652;
+    font-size: 0.65rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.meus-eventos-org-total i,
+.meus-eventos-org-status i {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: #07936c;
+}
+
+/* Cartões em grade: detalhes, progresso e orçamento/ação. */
+.meus-eventos-org-lista {
+    display: grid;
+    gap: 13px;
+}
+
+.meus-eventos-org-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(250px, 1fr) minmax(185px, 0.75fr);
+    align-items: center;
+    gap: 22px;
+    min-height: 122px;
+    padding: 17px 20px;
+    border: 1px solid #edf0f2;
+    border-radius: 10px;
+    background: var(--cor-branco);
+    box-shadow: 0 2px 6px rgba(37, 51, 66, 0.025);
+}
+
+.meus-eventos-org-detalhes {
+    min-width: 0;
+}
+
+.meus-eventos-org-identificadores {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 5px;
+}
+
+.meus-eventos-org-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: #def7ec;
+    color: #147253;
+    font-size: 0.61rem;
+    font-weight: 600;
+}
+
+.meus-eventos-org-status i {
+    width: 6px;
+    height: 6px;
+}
+
+.meus-eventos-org-status.fechado {
+    background: #eeebff;
+    color: #6554b7;
+}
+
+.meus-eventos-org-status.fechado i {
+    background: #7463d1;
+}
+
+.meus-eventos-org-id {
+    color: #8c8998;
+    font-size: 0.62rem;
+    font-weight: 600;
+}
+
+.meus-eventos-org-detalhes h2 {
+    overflow: hidden;
+    margin: 0;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-principal);
+    font-size: clamp(0.9rem, 1.5vw, 1.02rem);
+    line-height: 1.35;
+    text-overflow: ellipsis;
+}
+
+.meus-eventos-org-metadados {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 7px 0 0;
+    color: #777989;
+    font-size: 0.65rem;
+    line-height: 1.4;
+}
+
+.meus-eventos-org-metadados > span:first-child {
+    color: #28775f;
+}
+
+.meus-eventos-org-local-icone {
+    margin-left: 5px;
+    color: #858394;
+    font-size: 0.85rem;
+}
+
+/* Barra visual e resumo das cotações de cada evento. */
+.meus-eventos-org-progresso {
+    min-width: 0;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: #fbf5fc;
+}
+
+.meus-eventos-org-progresso-topo {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    color: #666273;
+    font-size: 0.61rem;
+}
+
+.meus-eventos-org-progresso-topo strong {
+    color: #17684f;
+    font-size: 0.6rem;
+    text-align: right;
+}
+
+.meus-eventos-org-trilho {
+    height: 7px;
+    overflow: hidden;
+    margin-top: 6px;
+    border-radius: 999px;
+    background: #eee3f0;
+}
+
+.meus-eventos-org-trilho span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: #006448;
+    transition: width 180ms ease;
+}
+
+.meus-eventos-org-resumo {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 8px;
+    color: #555363;
+    font-size: 0.59rem;
+}
+
+.meus-eventos-org-resumo > strong {
+    font-weight: 600;
+}
+
+.meus-eventos-org-resumo-icone.concluido {
+    display: grid;
+    width: 15px;
+    height: 15px;
+    place-items: center;
+    border-radius: 50%;
+    background: #008665;
+    color: #fff;
+    font-size: 0.62rem;
+}
+
+.meus-eventos-org-resumo-icone:not(.concluido) {
+    color: #df735f;
+    font-size: 0.8rem;
+}
+
+.meus-eventos-org-aguardando {
+    color: #888594;
+}
+
+.meus-eventos-org-resumo b {
+    margin-left: auto;
+    color: #d36652;
+    font-size: 0.58rem;
+    white-space: nowrap;
+}
+
+.meus-eventos-org-resumo b.concluido {
+    color: #777585;
+    font-weight: 500;
+}
+
+/* Orçamento e ações alinhados à direita nos cartões. */
+.meus-eventos-org-acoes {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+}
+
+.meus-eventos-org-orcamento-label {
+    color: #7e7b89;
+    font-size: 0.59rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.meus-eventos-org-orcamento {
+    color: #28242d;
+    font-family: var(--fonte-principal);
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    line-height: 1.25;
+    white-space: nowrap;
+}
+
+.meus-eventos-org-botao-analisar,
+.meus-eventos-org-botao-painel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 36px;
+    margin-top: 3px;
+    padding: 0 13px;
+    border: 0;
+    border-radius: 7px;
+    font: inherit;
+    font-size: 0.67rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.meus-eventos-org-botao-analisar {
+    background: #00563f;
+    color: var(--cor-branco);
+}
+
+.meus-eventos-org-botao-analisar:hover {
+    background: var(--cor-verde-escuro);
+}
+
+.meus-eventos-org-botao-painel {
+    background: #f2e4f4;
+    color: #393342;
+}
+
+.meus-eventos-org-vazio {
+    margin: 0;
+    padding: 28px 16px;
+    border: 1px solid #edf0f2;
+    border-radius: 9px;
+    background: var(--cor-branco);
+    color: var(--cor-texto-suave);
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.meus-eventos-org-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+}
+
+/* Empilha o progresso e as ações para caber em tablets e celulares. */
+@media (max-width: 850px) {
+    .meus-eventos-org-card {
+        grid-template-columns: minmax(0, 1fr) minmax(230px, 0.85fr);
+        gap: 14px;
+    }
+
+    .meus-eventos-org-progresso {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .meus-eventos-org-acoes {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+    }
+}
+
+@media (max-width: 620px) {
+    .pagina-meus-eventos-org {
+        padding: 14px 14px 32px;
+    }
+
+    .meus-eventos-org-titulo-linha {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .meus-eventos-org-publicar {
+        align-self: stretch;
+    }
+
+    .meus-eventos-org-ferramentas {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 10px;
+    }
+
+    .meus-eventos-org-total {
+        justify-content: center;
+    }
+
+    .meus-eventos-org-card {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        padding: 14px;
+    }
+
+    .meus-eventos-org-progresso,
+    .meus-eventos-org-acoes {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .meus-eventos-org-acoes {
+        align-items: stretch;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .meus-eventos-org-trilho span {
+        transition: none;
+    }
+}

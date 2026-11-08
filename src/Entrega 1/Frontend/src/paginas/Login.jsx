@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 
-function Login() {
+function Login({ perfil, setPerfil }) {
     const navigate = useNavigate();
     const [erro, setErro] = useState("");
 
@@ -16,6 +16,7 @@ function Login() {
         const dados = new FormData(event.currentTarget);
         const email = String(dados.get("email")).trim();
         const senha = String(dados.get("senha"));
+        const perfilSelecionado = String(dados.get("perfil"));
 
         // Exige o formato básico de um endereço de e-mail com usuário@domínio.
         const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
@@ -32,7 +33,14 @@ function Login() {
             return;
         }
 
-        // Com os campos válidos, limpa a mensagem e segue para o Dashboard.
+        // Valida o valor do seletor antes de atualizar o perfil usado pelo RBAC.
+        if (!["admin", "organizador", "fornecedor"].includes(perfilSelecionado)) {
+            setErro("Selecione um perfil válido.");
+            return;
+        }
+
+        // Em modo demonstrativo, o perfil escolhido controla os acessos e cards.
+        setPerfil(perfilSelecionado);
         setErro("");
         navigate("/dashboard");
     }
@@ -51,6 +59,16 @@ function Login() {
                     <div className="campo-login">
                         <label htmlFor="senha-login">Senha <em>*</em></label>
                         <input id="senha-login" name="senha" type="password" placeholder="••••••••" autoComplete="current-password" minLength="8" required aria-invalid={Boolean(erro)} />
+                    </div>
+
+                    <div className="campo-login">
+                        <label htmlFor="perfil-login">Perfil de demonstração</label>
+                        {/* O seletor representa a escolha de perfil, não autentica credenciais. */}
+                        <select id="perfil-login" name="perfil" defaultValue={perfil}>
+                            <option value="admin">Administrador</option>
+                            <option value="organizador">Organizador</option>
+                            <option value="fornecedor">Fornecedor</option>
+                        </select>
                     </div>
 
                     <div className="opcoes-login">

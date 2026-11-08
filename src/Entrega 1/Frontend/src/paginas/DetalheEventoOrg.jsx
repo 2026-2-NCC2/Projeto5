@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import "../styles/DetalheEvento.css";
+import "../styles/DetalheEventoOrg.css";
 
 // Informações de demonstração indexadas pelo mesmo ID recebido na rota /eventos/:id.
 const dadosMock = [
@@ -91,7 +91,7 @@ const formatarMoeda = (valor) => new Intl.NumberFormat("pt-BR", {
     minimumFractionDigits: 2,
 }).format(valor);
 
-function DetalheEvento() {
+function DetalheEventoOrg() {
     const navigate = useNavigate();
     // O ID da URL determina qual evento será carregado a partir dos dados locais.
     const { id } = useParams();
@@ -292,4 +292,4 @@ function DetalheEvento() {
     );
 }
 
-export default DetalheEvento;
+export default DetalheEventoOrg;

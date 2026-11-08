@@ -1,0 +1,478 @@
+.detalhe-proposta-pagina {
+    flex: 1;
+    padding: 18px 22px 44px;
+    background: var(--cor-fundo);
+}
+
+/* Centraliza o conteúdo e limita a largura, como no restante da aplicação. */
+.detalhe-proposta-container {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+}
+
+/* Botão de retorno alinhado ao padrão usado nas demais páginas. */
+.proposta-voltar {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 13px -6px;
+    padding: 6px 11px;
+    border: 1px solid #e1e8ed;
+    border-radius: 5px;
+    background: #fff;
+    color: var(--cor-texto-suave);
+    font: inherit;
+    font-size: 0.72rem;
+}
+
+/* Cabeçalho com título da proposta e data de recebimento. */
+.proposta-cabecalho {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.proposta-identificador {
+    margin: 0 0 4px;
+    color: #8a9aab;
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+}
+
+.proposta-cabecalho h1 {
+    margin: 0;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-principal);
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
+    line-height: 1.25;
+}
+
+.proposta-fornecedor {
+    margin: 4px 0 0;
+    color: var(--cor-texto-suave);
+    font-size: 0.7rem;
+}
+
+.proposta-data {
+    flex: 0 0 auto;
+    padding: 6px 10px;
+    border: 1px solid #e5eaef;
+    border-radius: 6px;
+    background: var(--cor-branco);
+    color: #8290a1;
+    font-size: 0.62rem;
+}
+
+.proposta-grade {
+    /* Coluna de conteúdo maior e resumo de ações ao lado. */
+    display: grid;
+    grid-template-columns: minmax(0, 2.1fr) minmax(260px, 0.98fr);
+    align-items: start;
+    gap: 18px;
+}
+
+.proposta-coluna-principal {
+    display: grid;
+    gap: 14px;
+    min-width: 0;
+}
+
+.proposta-painel,
+.proposta-resumo,
+.proposta-nao-encontrada {
+    min-width: 0;
+    padding: 15px;
+    border: 1px solid #e1e8ed;
+    border-radius: 9px;
+    background: var(--cor-branco);
+    box-shadow: 0 2px 6px rgba(37, 51, 66, 0.035);
+}
+
+.proposta-painel-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #edf0f2;
+}
+
+.proposta-painel-cabecalho h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    color: var(--cor-texto);
+    font-family: var(--fonte-principal);
+    font-size: 0.92rem;
+}
+
+.proposta-icone {
+    display: grid;
+    width: 20px;
+    height: 20px;
+    place-items: center;
+    border-radius: 5px;
+    background: #e9f8f2;
+    color: #07805f;
+    font-size: 0.83rem;
+}
+
+.proposta-lote {
+    padding: 3px 6px;
+    border-radius: 4px;
+    background: #f0f3f6;
+    color: #6d7b8b;
+    font-size: 0.54rem;
+    white-space: nowrap;
+}
+
+.proposta-descricao,
+.proposta-equipe {
+    color: #788696;
+    font-size: 0.65rem;
+    line-height: 1.55;
+}
+
+.proposta-descricao {
+    margin: 10px 0;
+}
+
+.proposta-especificacoes {
+    padding: 9px 10px;
+    border: 1px solid #e8edf2;
+    border-radius: 6px;
+    background: #f8fafc;
+}
+
+.proposta-especificacoes h3 {
+    margin: 0 0 5px;
+    color: #657386;
+    font-size: 0.59rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.proposta-especificacoes ul {
+    display: grid;
+    gap: 4px;
+    margin: 0;
+    padding-left: 15px;
+}
+
+.proposta-especificacoes li {
+    padding-left: 1px;
+    color: #485564;
+    font-size: 0.59rem;
+    line-height: 1.45;
+}
+
+.proposta-especificacoes li::marker {
+    color: #0c9b73;
+}
+
+.proposta-equipe {
+    margin: 9px 0 0;
+    font-size: 0.58rem;
+}
+
+.proposta-total-arquivos {
+    color: #8592a0;
+    font-size: 0.56rem;
+    white-space: nowrap;
+}
+
+.proposta-arquivos {
+    display: grid;
+    gap: 7px;
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.proposta-arquivo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+    padding: 7px 8px;
+    border: 1px solid #e8edf2;
+    border-radius: 6px;
+    background: #f9fbfd;
+}
+
+.proposta-pdf-icone {
+    display: grid;
+    width: 23px;
+    height: 25px;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 5px;
+    background: #fff0f2;
+    color: #ed3152;
+    font-size: 0.76rem;
+}
+
+.proposta-arquivo-info {
+    display: grid;
+    min-width: 0;
+    flex: 1;
+    gap: 1px;
+}
+
+.proposta-arquivo-info strong {
+    overflow: hidden;
+    color: #3b4653;
+    font-size: 0.61rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.proposta-arquivo-info small {
+    overflow: hidden;
+    color: #8b98a7;
+    font-size: 0.53rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.proposta-arquivo-info small span {
+    padding: 0 3px;
+}
+
+.proposta-baixar {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 7px;
+    border: 1px solid #dfe6ed;
+    border-radius: 5px;
+    background: var(--cor-branco);
+    color: #526174;
+    font: inherit;
+    font-size: 0.57rem;
+    white-space: nowrap;
+}
+
+.proposta-resumo {
+    padding: 15px;
+}
+
+.proposta-rotulo,
+.proposta-dado h3 {
+    color: #8a98a6;
+    font-size: 0.56rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.proposta-valor {
+    display: block;
+    margin-top: 2px;
+    color: #008665;
+    font-family: var(--fonte-principal);
+    font-size: clamp(1.55rem, 3vw, 1.9rem);
+    line-height: 1.15;
+    white-space: nowrap;
+}
+
+.proposta-subtexto {
+    margin: 3px 0 0;
+    color: #99a5b2;
+    font-size: 0.55rem;
+}
+
+.proposta-divisor {
+    height: 1px;
+    margin: 12px 0;
+    background: #edf0f2;
+}
+
+.proposta-dado {
+    margin-top: 10px;
+}
+
+.proposta-dado h3 {
+    margin: 0 0 4px;
+}
+
+.proposta-dado p {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    margin: 0;
+    padding: 6px 7px;
+    border: 1px solid #e7edf1;
+    border-radius: 5px;
+    background: #f8fafb;
+    color: #556373;
+    font-size: 0.58rem;
+    line-height: 1.4;
+}
+
+.proposta-dado p > span {
+    flex: 0 0 auto;
+    color: #05886a;
+}
+
+.proposta-dado .proposta-validade {
+    border-color: #f6e1e5;
+    background: #fff3f4;
+    color: #e3495c;
+}
+
+.proposta-dado .proposta-validade > span {
+    color: #e3495c;
+}
+
+.proposta-acoes {
+    display: grid;
+    gap: 7px;
+    margin-top: 13px;
+}
+
+.proposta-acoes button {
+    min-height: 37px;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 0.66rem;
+}
+
+.proposta-acao-aprovar {
+    border: 1px solid #008567;
+    background: #008567;
+    color: var(--cor-branco);
+    font-weight: 700 !important;
+}
+
+.proposta-acao-aprovar span {
+    margin-left: 4px;
+}
+
+.proposta-acao-ajuste {
+    border: 1px solid #dce4eb;
+    background: var(--cor-branco);
+    color: #566578;
+}
+
+.proposta-acao-comparar {
+    min-height: 34px;
+    margin: -12px 0 14px;
+    padding: 0 12px;
+    border: 1px solid #dce4eb;
+    border-radius: 6px;
+    background: var(--cor-branco);
+    color: var(--cor-verde-medio);
+    font: inherit;
+    font-size: 0.65rem;
+    font-weight: 600;
+}
+
+.proposta-acao-descartar {
+    min-height: 30px !important;
+    border: 0;
+    background: transparent;
+    color: #ed4e54;
+}
+
+.proposta-feedback {
+    margin: 8px 0 0;
+    color: #087c60;
+    font-size: 0.58rem;
+    text-align: center;
+}
+
+.proposta-seguranca {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 11px;
+    padding-top: 10px;
+    border-top: 1px solid #edf0f2;
+    color: #9aa5b1;
+    font-size: 0.5rem;
+}
+
+.proposta-seguranca > span:first-child {
+    color: #039b72;
+}
+
+.proposta-status {
+    display: block;
+    margin-top: 7px;
+    color: #82909c;
+    font-size: 0.53rem;
+    text-align: right;
+}
+
+.proposta-nao-encontrada h1 {
+    margin: 0;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-principal);
+    font-size: 1.25rem;
+}
+
+.proposta-nao-encontrada p {
+    margin: 6px 0 0;
+    color: var(--cor-texto-suave);
+    font-size: 0.8rem;
+}
+
+@media (max-width: 760px) {
+    .detalhe-proposta-pagina {
+        padding: 14px 14px 30px;
+    }
+
+    /* Em telas menores, o resumo ocupa a linha de cima. */
+    .proposta-grade {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .proposta-resumo {
+        grid-row: 1;
+    }
+}
+
+@media (max-width: 520px) {
+    .proposta-cabecalho {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 9px;
+        margin-bottom: 16px;
+    }
+
+    .proposta-data {
+        align-self: flex-start;
+    }
+
+    .proposta-painel,
+    .proposta-resumo {
+        padding: 12px;
+    }
+
+    .proposta-painel-cabecalho {
+        align-items: flex-start;
+    }
+
+    .proposta-total-arquivos {
+        max-width: 105px;
+        text-align: right;
+        white-space: normal;
+    }
+
+    .proposta-arquivo {
+        gap: 6px;
+        padding: 7px 6px;
+    }
+
+    .proposta-arquivo-info strong {
+        font-size: 0.56rem;
+    }
+
+    .proposta-baixar {
+        padding: 4px 5px;
+    }
+}
