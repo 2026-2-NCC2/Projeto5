@@ -1,0 +1,224 @@
+.pagina-cadastro {
+    display: flex;
+    justify-content: center;
+    padding: 32px 24px 48px;
+}
+
+.cadastro-conteudo {
+    width: min(100%, 840px);
+}
+
+.cadastro-conteudo h1 {
+    margin: 0;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-principal);
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    text-align: center;
+}
+
+.formulario-cadastro {
+    padding: 32px;
+    background: var(--cor-branco);
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(37, 51, 66, 0.08);
+    border-top: 2px solid var(--cor-verde-claro);
+}
+
+.etapa-cadastro {
+    min-width: 0;
+    margin: 0;
+    padding: 0 0 24px;
+    border: 0;
+    border-bottom: 1px solid var(--cor-cinza);
+}
+
+.etapa-cadastro + .etapa-cadastro {
+    padding-top: 24px;
+}
+
+.etapa-cadastro legend {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 0;
+    color: var(--cor-titulo);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.etapa-cadastro legend span {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--cor-verde-claro);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.campo-cadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo-cadastro label {
+    color: var(--cor-titulo);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.campo-cadastro label small,
+.campo-cadastro label em {
+    color: var(--cor-texto-suave);
+    font-size: 0.65rem;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: none;
+}
+
+.campo-cadastro label em {
+    color: var(--cor-verde-medio);
+    font-weight: 700;
+}
+
+.campo-cadastro input,
+.campo-cadastro select {
+    width: 100%;
+    min-height: 38px;
+    padding: 8px 10px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-controle);
+    background: var(--cor-branco);
+    color: var(--cor-texto);
+    font: 0.75rem var(--fonte-secundaria);
+}
+
+.campo-cadastro input:focus,
+.campo-cadastro select:focus {
+    outline: 2px solid var(--cor-verde-claro);
+    outline-offset: 2px;
+}
+
+.grade-campos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.campo-cnpj,
+.campo-email {
+    margin-bottom: 16px;
+}
+
+.opcoes-atuacao {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.opcao-atuacao {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    color: var(--cor-titulo);
+    cursor: pointer;
+}
+
+.opcao-atuacao:has(input:checked) {
+    border-color: var(--cor-verde-claro);
+}
+
+.opcao-atuacao input {
+    accent-color: var(--cor-verde-claro);
+    margin-top: 2px;
+}
+
+.opcao-atuacao span {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.opcao-atuacao strong {
+    font-size: 0.75rem;
+}
+
+.opcao-atuacao small {
+    color: var(--cor-texto-suave);
+    font-size: 0.62rem;
+    line-height: 1.35;
+}
+
+.declaracao-cadastro {
+    display: flex;
+    gap: 10px;
+    margin: 24px 0;
+    color: var(--cor-texto-suave);
+    font-size: 0.68rem;
+}
+
+.declaracao-cadastro input {
+    flex: 0 0 auto;
+    accent-color: var(--cor-verde-claro);
+    margin-top: 2px;
+}
+
+.declaracao-cadastro a,
+.acoes-cadastro a {
+    color: var(--cor-verde-medio);
+    text-decoration: underline;
+}
+
+.acoes-cadastro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--cor-cinza);
+    font-size: 0.7rem;
+}
+
+.botao-cadastrar {
+    min-width: 220px;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: var(--raio-controle);
+    background: var(--cor-verde-escuro);
+    color: var(--cor-branco);
+    font: 0.72rem var(--fonte-secundaria);
+    font-weight: 600;
+}
+
+.botao-cadastrar:hover {
+    background: var(--cor-verde-medio);
+}
+
+@media (max-width: 600px) {
+    .pagina-cadastro {
+        padding: 32px 16px 48px;
+    }
+
+    .formulario-cadastro,
+    .grade-campos,
+    .opcoes-atuacao {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario-cadastro {
+        padding: 24px 16px;
+    }
+
+    .acoes-cadastro {
+        align-items: stretch;
+        flex-direction: column-reverse;
+    }
+
+    .botao-cadastrar {
+        width: 100%;
+    }
+}
