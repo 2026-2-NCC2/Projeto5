@@ -106,8 +106,7 @@
     gap: 16px;
 }
 
-.campo-cnpj,
-.campo-email {
+.campo-cnpj {
     margin-bottom: 16px;
 }
 
@@ -153,21 +152,12 @@
     line-height: 1.35;
 }
 
-.declaracao-cadastro {
-    display: flex;
-    gap: 10px;
-    margin: 24px 0;
-    color: var(--cor-texto-suave);
-    font-size: 0.68rem;
+.erro-cadastro {
+    margin: 20px 0 0;
+    color: #b42318;
+    font-size: 0.8rem;
 }
 
-.declaracao-cadastro input {
-    flex: 0 0 auto;
-    accent-color: var(--cor-verde-claro);
-    margin-top: 2px;
-}
-
-.declaracao-cadastro a,
 .acoes-cadastro a {
     color: var(--cor-verde-medio);
     text-decoration: underline;

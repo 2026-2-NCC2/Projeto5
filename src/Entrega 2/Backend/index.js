@@ -1,6 +1,6 @@
-import { criarApi } from ".src/bancoDados.js";
+import { criarApp } from "./src/app.js";
 
-const app = criarApi();
+const app = criarApp();
 const PORTA = process.env.PORT || 5000;
 
 app.listen(PORTA, () => {

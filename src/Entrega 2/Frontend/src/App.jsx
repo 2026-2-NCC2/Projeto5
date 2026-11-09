@@ -1,4 +1,3 @@
-import { useState } from 'react'; 
 import Cabecalho from './components/Cabecalho';
 import Rodape from './components/Rodape';
 import Home from './paginas/Home';
@@ -25,6 +24,7 @@ import Perfil from './paginas/Perfil';
 import RotaNaoEncontrada from './paginas/RotaNaoEncontrada';
 import ErrorBoundary from './components/ErrorBoundary';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAuth } from './contextos/useAuth';
 import './App.css';
 
 // Centraliza a verificação de perfil para manter cada regra junto à respectiva rota.
@@ -34,14 +34,12 @@ function RotaProtegida({ perfil, perfisPermitidos, children }) {
     return children;
   }
 
-  // Usuários sem permissão voltam ao painel, onde só veem opções do seu perfil.
-  return <Navigate to="/dashboard" replace />;
+  return <Navigate to={perfil ? "/dashboard" : "/login"} replace />;
 }
 
 function App() {
 
-  // Estado local para simular o perfil autenticado; não substitui autenticação real.
-  const [perfil, setPerfil] = useState('admin');
+  const { perfil } = useAuth();
 
   return (
     <BrowserRouter>
@@ -51,14 +49,17 @@ function App() {
         <Routes>
           {/* Rotas públicas: podem ser acessadas sem considerar o perfil selecionado. */}
           <Route path='/' element={<Home/>} />
-          {/* Login recebe o perfil atual e pode atualizá-lo ao simular uma autenticação. */}
-          <Route path='/login' element={<Login perfil={perfil} setPerfil={setPerfil}/>} />
+          <Route path='/login' element={<Login/>} />
           <Route path='/cadastro' element={<Cadastro/> } />
           <Route path='/cadastro-pendente' element={<CadastroPendente/> } />
           <Route path='/contato' element={<Contato/>} />
           
           {/* O dashboard é compartilhado, mas os cards dependem do perfil selecionado. */}
-          <Route path='/dashboard' element={<Dashboard perfil={perfil}/>} />
+          <Route path='/dashboard' element={
+            perfil
+              ? <Dashboard perfil={perfil}/>
+              : <Navigate to="/login" replace/>
+          } />
 
           {/* Página de perfil compartilhada pelos três perfis simulados. */}
           <Route path='/perfil' element={
