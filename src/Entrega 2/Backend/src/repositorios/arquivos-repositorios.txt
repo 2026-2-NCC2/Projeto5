@@ -1,0 +1,2 @@
+Arquivos na pasta /repositorios concentra as requisições(queries) feitas para o banco de dados.
+Seus arquivos iniciam importando pool de "../bancoDados.js".

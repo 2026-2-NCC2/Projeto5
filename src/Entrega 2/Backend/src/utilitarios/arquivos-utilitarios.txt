@@ -1,0 +1,1 @@
+Arquivos da pasta /utilitarios concentram funções lógicas puras a serem utilizadas pela aplicação

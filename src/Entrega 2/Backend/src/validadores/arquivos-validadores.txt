@@ -1,0 +1,3 @@
+Arquivos na pasta /validadores concentram arquivos que verificam dados fornecidos a serem usados pela aplicação.
+Lançando ErroValidacao quando necessário.
+Retornando os dados (devidamente tratados, caso seja necessário) se não há problemas.
