@@ -6,30 +6,30 @@
 -- Cobertura de status_usuario_enum: 'ativo', 'inativo', 'pendente'
 INSERT INTO usuario (status, nome, email, telefone, senha_hash, cpf) VALUES
 -- Administradores (IDs 1 a 2) (hash para senha 'adm12345')
-('ativo', 'Admin Master', 'admin1@sistema.com', '(11) 98888-1111', '$2b$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '111.111.111-11'),
-('ativo', 'Admin Secundário', 'admin2@sistema.com', '(11) 98888-2222', '$2b$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '222.222.222-22'),
+('ativo', 'Admin Master', 'admin1@sistema.com', '(11) 98888-1111', '$2b$12$g5yPhWEl4W3qjaC8JDx8.ORYBoVxIB74S6IGrM5Q1PigVz8.mE10y', '111.111.111-11'),
+('ativo', 'Admin Secundário', 'admin2@sistema.com', '(11) 98888-2222', '$2b$12$g5yPhWEl4W3qjaC8JDx8.ORYBoVxIB74S6IGrM5Q1PigVz8.mE10y', '222.222.222-22'),
 
 -- Organizadores (IDs 3 a 9 - Total: 7) (hash para senha 'org67890')
-('ativo', 'Carlos Organizador', 'org1@sistema.com', '(11) 97777-1111', '$2b$10$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW', '333.333.333-33'),
-('ativo', 'Ana Eventos', 'org2@sistema.com', '(21) 97777-2222', '$2b$10$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW', '444.444.444-44'),
-('pendente', 'Marcos Produções', 'org3@sistema.com', '(31) 97777-3333', '$2b$10$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW', '555.555.555-55'),
-('ativo', 'Beatriz Festas', 'org4@sistema.com', '(41) 97777-4444', '$2b$10$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW', '666.666.666-66'),
-('inativo', 'Lucas Show', 'org5@sistema.com', '(51) 97777-5111', '$2b$10$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW', '777.777.777-77'),
-('ativo', 'Juliana Entretenimento', 'org6@sistema.com', '(61) 97777-6111', '$2b$10$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW', '888.888.888-88'),
-('ativo', 'Roberto Eventos Corporativos', 'org7@sistema.com', '(71) 97777-7111', '$2b$10$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW', '999.999.999-99'),
+('ativo', 'Carlos Organizador', 'org1@sistema.com', '(11) 97777-1111', '$2b$12$ap5cDyQkhD/qJLiwM9HcS.Wh1tvIcQnO8A4rAnC67q9sDZzaK11Jm', '333.333.333-33'),
+('ativo', 'Ana Eventos', 'org2@sistema.com', '(21) 97777-2222', '$2b$12$ap5cDyQkhD/qJLiwM9HcS.Wh1tvIcQnO8A4rAnC67q9sDZzaK11Jm', '444.444.444-44'),
+('pendente', 'Marcos Produções', 'org3@sistema.com', '(31) 97777-3333', '$2b$12$ap5cDyQkhD/qJLiwM9HcS.Wh1tvIcQnO8A4rAnC67q9sDZzaK11Jm', '555.555.555-55'),
+('ativo', 'Beatriz Festas', 'org4@sistema.com', '(41) 97777-4444', '$2b$12$ap5cDyQkhD/qJLiwM9HcS.Wh1tvIcQnO8A4rAnC67q9sDZzaK11Jm', '666.666.666-66'),
+('inativo', 'Lucas Show', 'org5@sistema.com', '(51) 97777-5111', '$2b$12$ap5cDyQkhD/qJLiwM9HcS.Wh1tvIcQnO8A4rAnC67q9sDZzaK11Jm', '777.777.777-77'),
+('ativo', 'Juliana Entretenimento', 'org6@sistema.com', '(61) 97777-6111', '$2b$12$ap5cDyQkhD/qJLiwM9HcS.Wh1tvIcQnO8A4rAnC67q9sDZzaK11Jm', '888.888.888-88'),
+('ativo', 'Roberto Eventos Corporativos', 'org7@sistema.com', '(71) 97777-7111', '$2b$12$ap5cDyQkhD/qJLiwM9HcS.Wh1tvIcQnO8A4rAnC67q9sDZzaK11Jm', '999.999.999-99'),
 
 -- Fornecedores (IDs 10 a 20 - Total: 11) (hash para senha 'for09876')
-('ativo', 'Som & Luz Pro', 'forn1@sistema.com', '(11) 96666-1111', '$2b$10$X7r9K3jLqZ5v2p8mN4bW1.V5xQf8hK3jLqZ5v2p8mN4bW1.V5xQf8h', '123.456.789-01'),
-('ativo', 'Buffet Saboroso', 'forn2@sistema.com', '(21) 96666-2222', '$2b$10$X7r9K3jLqZ5v2p8mN4bW1.V5xQf8hK3jLqZ5v2p8mN4bW1.V5xQf8h', '234.567.890-12'),
-('ativo', 'Decoração Encanto', 'forn3@sistema.com', '(31) 96666-3333', '$2b$10$X7r9K3jLqZ5v2p8mN4bW1.V5xQf8hK3jLqZ5v2p8mN4bW1.V5xQf8h', '345.678.901-23'),
-('inativo', 'Segurança Total', 'forn4@sistema.com', '(41) 96666-4444', '$2b$10$X7r9K3jLqZ5v2p8mN4bW1.V5xQf8hK3jLqZ5v2p8mN4bW1.V5xQf8h', '456.789.012-34'),
-('ativo', 'Locação de Palcos Mega', 'forn5@sistema.com', '(51) 96666-5555', '$2b$10$X7r9K3jLqZ5v2p8mN4bW1.V5xQf8hK3jLqZ5v2p8mN4bW1.V5xQf8h', '567.890.123-45'),
-('pendente', 'Banda Acústica Show', 'forn6@sistema.com', '(61) 96666-6666', '$2b$10$X7r9K3jLqZ5v2p8mN4bW1.V5xQf8hK3jLqZ5v2p8mN4bW1.V5xQf8h', '678.901.234-56'),
-('ativo', 'Buffet Gourmet Premium', 'forn7@sistema.com', '(71) 96666-7777', '$2b$10$X7r9K3jLqZ5v2p8mN4bW1.V5xQf8hK3jLqZ5v2p8mN4bW1.V5xQf8h', '789.012.345-67'),
-('ativo', 'Iluminação Cênica Art', 'forn8@sistema.com', '(11) 95555-1111', '$2b$10$X7r9K3jLqZ5v2p8mN4bW1.V5xQf8hK3jLqZ5v2p8mN4bW1.V5xQf8h', '890.123.456-78'),
-('ativo', 'Limpeza Express Eventos', 'forn9@sistema.com', '(21) 95555-2222', '$2b$10$X7r9K3jLqZ5v2p8mN4bW1.V5xQf8hK3jLqZ5v2p8mN4bW1.V5xQf8h', '901.234.567-89'),
-('inativo', 'Fotografia & Filme', 'forn10@sistema.com', '(31) 95555-3333', '$2b$10$X7r9K3jLqZ5v2p8mN4bW1.V5xQf8hK3jLqZ5v2p8mN4bW1.V5xQf8h', '012.345.678-90'),
-('ativo', 'Segurança VIP Guard', 'forn11@sistema.com', '(41) 95555-4444', '$2b$10$X7r9K3jLqZ5v2p8mN4bW1.V5xQf8hK3jLqZ5v2p8mN4bW1.V5xQf8h', '102.304.506-07');
+('ativo', 'Som & Luz Pro', 'forn1@sistema.com', '(11) 96666-1111', '$2b$12$TQph21iW/BsqhHNMTmvwo.F.wK/pW99U4CDJzLvVBAqTUHcK/wsLK', '123.456.789-01'),
+('ativo', 'Buffet Saboroso', 'forn2@sistema.com', '(21) 96666-2222', '$2b$12$TQph21iW/BsqhHNMTmvwo.F.wK/pW99U4CDJzLvVBAqTUHcK/wsLK', '234.567.890-12'),
+('ativo', 'Decoração Encanto', 'forn3@sistema.com', '(31) 96666-3333', '$2b$12$TQph21iW/BsqhHNMTmvwo.F.wK/pW99U4CDJzLvVBAqTUHcK/wsLK', '345.678.901-23'),
+('inativo', 'Segurança Total', 'forn4@sistema.com', '(41) 96666-4444', '$2b$12$TQph21iW/BsqhHNMTmvwo.F.wK/pW99U4CDJzLvVBAqTUHcK/wsLK', '456.789.012-34'),
+('ativo', 'Locação de Palcos Mega', 'forn5@sistema.com', '(51) 96666-5555', '$2b$12$TQph21iW/BsqhHNMTmvwo.F.wK/pW99U4CDJzLvVBAqTUHcK/wsLK', '567.890.123-45'),
+('pendente', 'Banda Acústica Show', 'forn6@sistema.com', '(61) 96666-6666', '$2b$12$TQph21iW/BsqhHNMTmvwo.F.wK/pW99U4CDJzLvVBAqTUHcK/wsLK', '678.901.234-56'),
+('ativo', 'Buffet Gourmet Premium', 'forn7@sistema.com', '(71) 96666-7777', '$2b$12$TQph21iW/BsqhHNMTmvwo.F.wK/pW99U4CDJzLvVBAqTUHcK/wsLK', '789.012.345-67'),
+('ativo', 'Iluminação Cênica Art', 'forn8@sistema.com', '(11) 95555-1111', '$2b$12$TQph21iW/BsqhHNMTmvwo.F.wK/pW99U4CDJzLvVBAqTUHcK/wsLK', '890.123.456-78'),
+('ativo', 'Limpeza Express Eventos', 'forn9@sistema.com', '(21) 95555-2222', '$2b$12$TQph21iW/BsqhHNMTmvwo.F.wK/pW99U4CDJzLvVBAqTUHcK/wsLK', '901.234.567-89'),
+('inativo', 'Fotografia & Filme', 'forn10@sistema.com', '(31) 95555-3333', '$2b$12$TQph21iW/BsqhHNMTmvwo.F.wK/pW99U4CDJzLvVBAqTUHcK/wsLK', '012.345.678-90'),
+('ativo', 'Segurança VIP Guard', 'forn11@sistema.com', '(41) 95555-4444', '$2b$12$TQph21iW/BsqhHNMTmvwo.F.wK/pW99U4CDJzLvVBAqTUHcK/wsLK', '102.304.506-07');
 
 
 -- 2. Inserção de Administradores (2 registros)
