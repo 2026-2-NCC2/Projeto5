@@ -30,16 +30,21 @@ import './App.css';
 // Centraliza a verificação de perfil para manter cada regra junto à respectiva rota.
 // Este bloqueio é apenas visual; autorização real precisa ser validada no servidor.
 function RotaProtegida({ perfil, perfisPermitidos, children }) {
-  if (perfisPermitidos.includes(perfil)) {
+  const perfisValidos = ['admin', 'organizador', 'fornecedor'];
+  if (perfisValidos.includes(perfil) && perfisPermitidos.includes(perfil)) {
     return children;
   }
 
-  return <Navigate to={perfil ? "/dashboard" : "/login"} replace />;
+  return <Navigate to={perfisValidos.includes(perfil) ? "/dashboard" : "/login"} replace />;
 }
 
 function App() {
 
-  const { perfil } = useAuth();
+  const { perfil, carregando } = useAuth();
+
+  if (carregando) {
+    return <main aria-live="polite">Verificando sessão...</main>;
+  }
 
   return (
     <BrowserRouter>
@@ -52,13 +57,16 @@ function App() {
           <Route path='/login' element={<Login/>} />
           <Route path='/cadastro' element={<Cadastro/> } />
           <Route path='/cadastro-pendente' element={<CadastroPendente/> } />
-          <Route path='/contato' element={<Contato/>} />
+          <Route path='/contato' element={
+            <RotaProtegida perfil={perfil} perfisPermitidos={['admin', 'organizador', 'fornecedor']}>
+              <Contato/>
+            </RotaProtegida>
+          } />
           
-          {/* O dashboard é compartilhado, mas os cards dependem do perfil selecionado. */}
           <Route path='/dashboard' element={
-            perfil
-              ? <Dashboard perfil={perfil}/>
-              : <Navigate to="/login" replace/>
+            <RotaProtegida perfil={perfil} perfisPermitidos={['admin', 'organizador', 'fornecedor']}>
+              <Dashboard perfil={perfil}/>
+            </RotaProtegida>
           } />
 
           {/* Página de perfil compartilhada pelos três perfis simulados. */}
@@ -149,8 +157,11 @@ function App() {
             </RotaProtegida>
           } />
 
-          {/* Mantém a página de rota inexistente acessível a qualquer perfil. */}
-          <Route path='*' element={<RotaNaoEncontrada/>} />
+          <Route path='*' element={
+            <RotaProtegida perfil={perfil} perfisPermitidos={['admin', 'organizador', 'fornecedor']}>
+              <RotaNaoEncontrada/>
+            </RotaProtegida>
+          } />
         </Routes>
         <Rodape/>
       </ErrorBoundary>

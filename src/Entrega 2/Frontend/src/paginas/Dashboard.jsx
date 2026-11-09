@@ -74,28 +74,21 @@ const cardsFornecedor = [
 ];
 
 const cardContato = {
-    titulo: "Suporte",
-    descricao: "Fale com nossa equipe.",
+    titulo: "Contatar",
+    descricao: "Tire suas dúvidas.",
     status: "Contato",
     icone: contatoIcone,
     acao: { texto: "Contatar", href: "/contato" },
 };
 
-function Dashboard({ perfil }) {
-    // O painel monta a lista usando o perfil que App envia pela rota.
-    let cards;
+const cardsPorPerfil = {
+    admin: [...cardsAdmin, cardContato],
+    organizador: [...cardsOrganizador, cardContato],
+    fornecedor: [...cardsFornecedor, cardContato],
+};
 
-    // Seleciona o conjunto de atalhos correspondente ao usuário simulado.
-    if (perfil === "admin") {
-        cards = [...cardsAdmin, cardContato];
-    } else if (perfil === "organizador") {
-        cards = [...cardsOrganizador, cardContato];
-    } else if (perfil === "fornecedor") {
-        cards = [...cardsFornecedor, cardContato];
-    } else {
-        // Perfil desconhecido não recebe atalhos privados.
-        cards = [cardContato];
-    }
+function Dashboard({ perfil }) {
+    const cards = cardsPorPerfil[perfil] ?? [];
 
     return (
         <main className="pagina-dashboard">
