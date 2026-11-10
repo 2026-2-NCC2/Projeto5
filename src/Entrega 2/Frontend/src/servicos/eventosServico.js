@@ -57,3 +57,33 @@ export async function buscarEventoPorId(idEvento, token) {
 
     return resultado.evento;
 }
+
+export async function cancelarEvento(idEvento, token) {
+    let resposta;
+
+    try {
+        resposta = await fetch(`${API_URL}/eventos/${encodeURIComponent(idEvento)}/cancelar`, {
+            method: "PATCH",
+            headers: { Authorization: `Bearer ${token}` },
+        });
+    } catch {
+        throw new Error("Não foi possível conectar ao servidor. Verifique sua conexão e tente novamente.");
+    }
+
+    let resultado;
+    try {
+        resultado = await resposta.json();
+    } catch {
+        throw new Error("O servidor retornou uma resposta inválida.");
+    }
+
+    if (!resposta.ok) {
+        throw new Error(resultado?.erro || "Não foi possível cancelar o evento.");
+    }
+
+    if (!resultado || !resultado.evento || typeof resultado.evento !== "object") {
+        throw new Error("O servidor retornou uma resposta de cancelamento inválida.");
+    }
+
+    return resultado.evento;
+}

@@ -5,7 +5,7 @@ import BotaoVoltar from "../components/BotaoVoltar";
 import IndicadorPublico from "../components/IndicadorPublico";
 import InformacaoEvento from "../components/InformacaoEvento";
 import { useAuth } from "../contextos/useAuth";
-import { buscarEventoPorId } from "../servicos/eventosServico";
+import { buscarEventoPorId, cancelarEvento } from "../servicos/eventosServico";
 import {
     formatarData,
     formatarDataHora,
@@ -24,6 +24,10 @@ function DetalheEvento() {
     const [erro, setErro] = useState("");
     const [tentativa, setTentativa] = useState(0);
     const exibirPropostas = perfil === "admin" || perfil === "organizador";
+    const podeCancelar = perfil === "admin" || perfil === "organizador";
+    const [cancelando, setCancelando] = useState(false);
+    const [erroCancelamento, setErroCancelamento] = useState("");
+    const [mensagemCancelamento, setMensagemCancelamento] = useState("");
     const endereco = [
         evento?.logradouro,
         evento?.numeroEndereco,
@@ -56,6 +60,22 @@ function DetalheEvento() {
             cancelado = true;
         };
     }, [id, token, tentativa]);
+
+    async function handleCancelarEvento() {
+        setCancelando(true);
+        setErroCancelamento("");
+        setMensagemCancelamento("");
+
+        try {
+            const eventoAtualizado = await cancelarEvento(id, token);
+            setEvento((eventoAnterior) => ({ ...eventoAnterior, ...eventoAtualizado }));
+            setMensagemCancelamento("Evento cancelado com sucesso.");
+        } catch (erroRequisicao) {
+            setErroCancelamento(erroRequisicao.message);
+        } finally {
+            setCancelando(false);
+        }
+    }
 
     if (carregando) {
         return (
@@ -171,6 +191,37 @@ function DetalheEvento() {
                         />
                     </section>
 
+                    {exibirPropostas && evento.estimativaTicket && (
+                        <aside className="painel-evento painel-estimativa-ticket" aria-labelledby="titulo-estimativa-ticket">
+                            <div className="painel-cabecalho">
+                                <h2 id="titulo-estimativa-ticket">
+                                    <span className="icone-painel">＄</span>
+                                    Estimativa de Ticket por Público
+                                </h2>
+                            </div>
+                            <p className="estimativa-ticket-custo">
+                                Custo considerado
+                                <strong>{formatarMoeda(evento.estimativaTicket.custoTotal)}</strong>
+                            </p>
+                            <div className="estimativa-ticket-cenarios">
+                                {evento.estimativaTicket.cenarios.map((cenario) => (
+                                    <article className="estimativa-ticket-cenario" key={cenario.rotulo}>
+                                        <div>
+                                            <strong>{cenario.rotulo}</strong>
+                                            <span>
+                                                Público: {formatarNumero(cenario.publico)}
+                                                {" · "}Margem: {formatarNumero(Number(cenario.margem) * 100)}%
+                                            </span>
+                                        </div>
+                                        <strong className="estimativa-ticket-valor">
+                                            {formatarMoeda(cenario.ticket)}
+                                        </strong>
+                                    </article>
+                                ))}
+                            </div>
+                        </aside>
+                    )}
+
                     <section className="painel-evento painel-custos">
                         <div className="painel-cabecalho detalhe-custos-cabecalho">
                             <h2><span className="icone-painel">◉</span> Itens de Custo do Evento</h2>
@@ -243,6 +294,31 @@ function DetalheEvento() {
                         )}
                     </section>
                 </div>
+
+                {podeCancelar && (
+                    <section className="controle-evento">
+                        <div>
+                            <h2>CONTROLE DO EVENTO</h2>
+                            <p>
+                                {evento.status === "cancelado"
+                                    ? "Este evento está cancelado."
+                                    : "Cancelar o evento altera seu status e impede novas operações."}
+                            </p>
+                            {erroCancelamento && <p className="mensagem-cancelamento-erro" role="alert">{erroCancelamento}</p>}
+                            {mensagemCancelamento && <p className="mensagem-cancelamento-sucesso" role="status">{mensagemCancelamento}</p>}
+                        </div>
+                        {evento.status !== "cancelado" && (
+                            <button
+                                type="button"
+                                className="botao-excluir-evento"
+                                disabled={cancelando}
+                                onClick={handleCancelarEvento}
+                            >
+                                {cancelando ? "Cancelando..." : "Excluir Evento"}
+                            </button>
+                        )}
+                    </section>
+                )}
             </div>
         </main>
     );

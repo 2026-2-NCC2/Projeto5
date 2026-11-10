@@ -1,5 +1,18 @@
 import pool from "../bancoDados.js";
 
+export async function cancelarEventoPorId(idEvento, perfil, idCliente) {
+  const resultado = await pool.query(
+    `UPDATE evento
+     SET status = 'cancelado'
+     WHERE cod_evento = $1
+       AND ($2 <> 'organizador' OR id_organizador = $3)
+     RETURNING cod_evento AS "codEvento", status`,
+    [idEvento, perfil, idCliente]
+  );
+
+  return resultado.rows[0] ?? null;
+}
+
 export async function buscarEventoPorId(idEvento, perfil, idCliente) {
   const resultado = await pool.query(
     `SELECT
@@ -81,7 +94,21 @@ export async function buscarEventoPorId(idEvento, perfil, idCliente) {
            0
          )
          ELSE NULL
-       END AS "totalPropostasAprovadas"
+         END AS "totalPropostasAprovadas",
+         CASE
+           WHEN $2 IN ('admin', 'organizador') THEN
+             COALESCE(e.outros_custos, 0) + COALESCE(
+               (
+                 SELECT SUM(p.valor)
+                 FROM item_custo ic
+                 JOIN proposta p ON p.cod_item = ic.cod_item
+                 WHERE ic.id_evento = e.cod_evento
+                   AND p.status = 'aprovada'
+               ),
+               0
+             )
+           ELSE NULL
+         END AS "custoTotal"
      FROM evento e
      JOIN cliente c ON c.id_cliente = e.id_organizador
      WHERE e.cod_evento = $1
