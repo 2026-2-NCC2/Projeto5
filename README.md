@@ -76,7 +76,7 @@ Encontre o index.html na pasta executáveis e execute-o como uma página WEB (at
 
 ## 💻 Configuração para Desenvolvimento
 
-# Começar a desenvolver
+## Começar a desenvolver
 
 Este guia descreve o fluxo básico para trabalhar na aplicação atual, localizada na pasta `src/Entrega 2`. A Entrega 1 é uma versão anterior do projeto.
 
