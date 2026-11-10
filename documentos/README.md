@@ -29,16 +29,14 @@
 
 
 ### Disciplina 3
-
-| **Aluno(s) Responsável(veis)** |[preencher] |
+| **Aluno(s) Responsável(veis)** | Sabrina Nascimento |
 | :--- | :--- |
-| **Ferramenta utilizada** | [preencher] |
-| **Versão/modelo** | [preencher] |
-| **Disciplina / Trabalho** | [preencher] |
-| **Finalidade de uso** | [preencher] |
-| ***Prompts* principais utilizados** | [preencher] |
-| **Trechos ou entregas afetadas** | [preencher] |
-
+| **Ferramenta utilizada** | GitHub Copilot Chat para VS Code |
+| **Versão/modelo** | GitHub Copilot Chat para VS Code v0.67.0 |
+| **Disciplina / Trabalho** | Web FullStack - Entrega 1 do Projeto Interdisciplinar |
+| **Finalidade de uso** | Após a estruturação principal dos componentes da plataforma, utilizando como referência o trabalho desenvolvido em sala de aula, foi utilizado o Copilot para o refinamento do código, incluindo:<br><br>• Auxílio nas definições de estilo para seguir o protótipo construído pela equipe no Figma;<br>• Melhor utilização de classes e outros atributos de tags HTML, especialmente na construção de formulários;<br>• Sugestão de dados mockados em JSON para alimentar inicialmente a plataforma. |
+| ***Prompts* principais utilizados** | • "Ajuste minimamente os espaços entre os elementos em Home, para que a página não precise de scroll."<br><br>• "Verifique os arquivos de estilos e identifique se há propriedades em comum que poderiam ser concentradas no arquivo index.css ou outras boas práticas para otimização e entendimento dos arquivos."<br><br>• "Dentro da pasta public adicione uma pasta 'dados' e nela componha dois arquivos .json com dados mockados de usuários, separados em organizadores e fornecedores, e eventos."<br><br>• "Valide o atual funcionamento de responsividade da aplicação." |
+| **Trechos ou entregas afetadas** | Os principais impactos ocorreram na estruturação dos arquivos de estilização, especialmente nas definições necessárias para garantir a responsividade do site; na composição do formulário de cadastro, com auxílio na utilização das propriedades das tags; e na criação dos arquivos de dados .json. |
 ## Entrega 2
 
 ### Disciplina 1
