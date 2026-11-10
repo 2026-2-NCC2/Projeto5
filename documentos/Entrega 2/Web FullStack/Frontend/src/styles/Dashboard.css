@@ -1,0 +1,55 @@
+.pagina-dashboard {
+    display: flex;
+    justify-content: center;
+    padding: 32px 24px 64px;
+}
+
+.dashboard-conteudo {
+    width: min(100%, 980px);
+}
+
+.dashboard-conteudo h1 {
+    margin: 0;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-principal);
+    font-size: clamp(2rem, 4vw, 2.6rem);
+}
+
+.descricao-dashboard {
+    margin: 4px 0 28px;
+    color: var(--cor-texto-suave);
+    font-size: 0.85rem;
+}
+
+.grade-dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    padding: 32px;
+    border: 1px solid #b9d8d2;
+    border-radius: 4px;
+    background: #edf7f5;
+}
+
+@media (max-width: 800px) {
+    .grade-dashboard {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding: 20px;
+    }
+}
+
+@media (max-width: 560px) {
+    .pagina-dashboard {
+        padding: 24px 16px 48px;
+    }
+
+    .descricao-dashboard {
+        margin-bottom: 20px;
+    }
+
+    .grade-dashboard {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 14px;
+    }
+}

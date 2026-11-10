@@ -1,0 +1,279 @@
+import pool from "../bancoDados.js";
+
+export async function cadastrarEventoComItens(idOrganizador, dadosEvento, itensCusto) {
+  const client = await pool.connect();
+  let transacaoIniciada = false;
+
+  try {
+    await client.query("BEGIN");
+    transacaoIniciada = true;
+
+    const resultadoEvento = await client.query(
+      `INSERT INTO evento (
+         id_organizador, nome, data_inicio, data_final, horario_inicio, horario_final,
+         data_montagem, data_desmontagem, local_evento, cep, logradouro, numero_end,
+         bairro, cidade, uf_estado, margem_lucro, pub_minimo, pub_esperado,
+         pub_maximo, outros_custos, descricao
+       )
+       VALUES (
+         $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15,
+         $16, $17, $18, $19, $20, $21
+       )
+       RETURNING cod_evento AS "codEvento", status`,
+      [
+        idOrganizador,
+        dadosEvento.nome,
+        dadosEvento.data_inicio,
+        dadosEvento.data_final,
+        dadosEvento.horario_inicio,
+        dadosEvento.horario_final,
+        dadosEvento.data_montagem,
+        dadosEvento.data_desmontagem,
+        dadosEvento.local_evento,
+        dadosEvento.cep,
+        dadosEvento.logradouro,
+        dadosEvento.numero_end,
+        dadosEvento.bairro,
+        dadosEvento.cidade,
+        dadosEvento.uf_estado,
+        dadosEvento.margem_lucro,
+        dadosEvento.pub_minimo,
+        dadosEvento.pub_esperado,
+        dadosEvento.pub_maximo,
+        dadosEvento.outros_custos,
+        dadosEvento.descricao,
+      ]
+    );
+    const evento = resultadoEvento.rows[0];
+    const itensInseridos = [];
+
+    for (const item of itensCusto) {
+      const resultadoItem = await client.query(
+        `INSERT INTO item_custo (id_evento, categoria, quantidade, informacao_geral)
+         VALUES ($1, $2, $3, $4)
+         RETURNING cod_item AS "codItem", id_evento AS "idEvento", categoria, quantidade,
+                   informacao_geral AS "informacaoGeral", status`,
+        [evento.codEvento, item.categoria, item.quantidade, item.informacao_geral]
+      );
+      itensInseridos.push(resultadoItem.rows[0]);
+    }
+
+    await client.query("COMMIT");
+    transacaoIniciada = false;
+
+    return { ...evento, itensCusto: itensInseridos };
+  } catch (erro) {
+    if (transacaoIniciada) {
+      try {
+        await client.query("ROLLBACK");
+      } catch (erroRollback) {
+        throw new AggregateError(
+          [erro, erroRollback],
+          "Falha ao cadastrar evento e itens de custo e ao reverter a transação."
+        );
+      }
+    }
+
+    throw erro;
+  } finally {
+    client.release();
+  }
+}
+
+export async function cancelarEventoPorId(idEvento, perfil, idCliente) {
+  const resultado = await pool.query(
+    `UPDATE evento
+     SET status = 'cancelado'
+     WHERE cod_evento = $1
+       AND ($2 <> 'organizador' OR id_organizador = $3)
+     RETURNING cod_evento AS "codEvento", status`,
+    [idEvento, perfil, idCliente]
+  );
+
+  return resultado.rows[0] ?? null;
+}
+
+export async function buscarEventoPorId(idEvento, perfil, idCliente) {
+  const resultado = await pool.query(
+    `SELECT
+       e.cod_evento AS "codEvento",
+       e.id_organizador AS "idOrganizador",
+       e.status,
+       e.nome,
+       e.data_inicio AS "dataInicio",
+       e.data_final AS "dataFinal",
+       e.horario_inicio AS "horarioInicio",
+       e.horario_final AS "horarioFinal",
+       e.data_montagem AS "dataMontagem",
+       e.data_desmontagem AS "dataDesmontagem",
+       e.local_evento AS "localEvento",
+       e.cep,
+       e.logradouro,
+       e.numero_end AS "numeroEndereco",
+       e.bairro,
+       e.cidade,
+       e.uf_estado AS "ufEstado",
+       e.margem_lucro AS "margemLucro",
+       e.pub_minimo AS "pubMinimo",
+       e.pub_esperado AS "pubEsperado",
+       e.pub_maximo AS "pubMaximo",
+       e.outros_custos AS "outrosCustos",
+       e.ticket_equilibrio AS "ticketEquilibrio",
+       e.ticket_medio AS "ticketMedio",
+       e.descricao,
+       e.criado_em AS "criadoEm",
+       c.nome_fantasia AS "nomeFantasia",
+       COALESCE(
+         (
+           SELECT json_agg(
+             json_build_object(
+               'codItem', ic.cod_item,
+               'categoria', ic.categoria,
+               'quantidade', ic.quantidade,
+               'informacaoGeral', ic.informacao_geral,
+               'status', ic.status,
+               'propostas',
+                 CASE
+                   WHEN $2 IN ('admin', 'organizador') THEN COALESCE(
+                     (
+                       SELECT json_agg(
+                         json_build_object(
+                           'nomeFantasia', fornecedor.nome_fantasia,
+                           'valor', p.valor,
+                           'validade', p.validade,
+                           'descricao', p.descricao,
+                           'status', p.status
+                         )
+                         ORDER BY p.criado_em
+                       )
+                       FROM proposta p
+                       JOIN cliente fornecedor ON fornecedor.id_cliente = p.id_fornecedor
+                       WHERE p.cod_item = ic.cod_item
+                     ),
+                     '[]'::json
+                   )
+                   ELSE '[]'::json
+                 END
+             )
+             ORDER BY ic.cod_item
+           )
+           FROM item_custo ic
+           WHERE ic.id_evento = e.cod_evento
+         ),
+         '[]'::json
+       ) AS "itensCusto",
+       CASE
+         WHEN $2 IN ('admin', 'organizador') THEN COALESCE(
+           (
+             SELECT SUM(p.valor)
+             FROM item_custo ic
+             JOIN proposta p ON p.cod_item = ic.cod_item
+             WHERE ic.id_evento = e.cod_evento
+               AND p.status = 'aprovada'
+           ),
+           0
+         )
+         ELSE NULL
+         END AS "totalPropostasAprovadas",
+         CASE
+           WHEN $2 IN ('admin', 'organizador') THEN
+             COALESCE(e.outros_custos, 0) + COALESCE(
+               (
+                 SELECT SUM(p.valor)
+                 FROM item_custo ic
+                 JOIN proposta p ON p.cod_item = ic.cod_item
+                 WHERE ic.id_evento = e.cod_evento
+                   AND p.status = 'aprovada'
+               ),
+               0
+             )
+           ELSE NULL
+         END AS "custoTotal"
+     FROM evento e
+     JOIN cliente c ON c.id_cliente = e.id_organizador
+     WHERE e.cod_evento = $1
+       AND ($2 <> 'organizador' OR e.id_organizador = $3)
+       AND ($2 <> 'fornecedor' OR e.status = 'planejamento')`,
+    [idEvento, perfil, idCliente]
+  );
+
+  return resultado.rows[0] ?? null;
+}
+
+export async function listarEventos() {
+  const resultado = await pool.query(
+    `SELECT
+       e.cod_evento AS "codEvento",
+       c.nome_fantasia AS "nomeFantasia",
+       e.nome,
+       e.status,
+       e.data_inicio AS "dataInicio",
+       e.data_final AS "dataFinal",
+       e.cidade,
+       e.uf_estado AS "ufEstado",
+       e.local_evento AS "localEvento",
+       COUNT(ic.cod_item)::INT AS "totalItensCusto"
+     FROM evento e
+     JOIN cliente c ON c.id_cliente = e.id_organizador
+     LEFT JOIN item_custo ic ON ic.id_evento = e.cod_evento
+     GROUP BY
+       e.cod_evento,
+       c.nome_fantasia,
+       e.nome,
+       e.status,
+       e.data_inicio,
+       e.data_final,
+       e.cidade,
+       e.uf_estado,
+       e.local_evento`
+  );
+
+  return resultado.rows;
+}
+
+export async function buscarEventosPorIdOrg(id_organizador) {
+  const resultado = await pool.query(
+    `SELECT
+       e.cod_evento AS "codEvento",
+       e.nome,
+       e.status,
+       e.data_inicio AS "dataInicio",
+       e.data_final AS "dataFinal",
+       e.cidade,
+       e.uf_estado AS "ufEstado",
+       e.local_evento AS "localEvento",
+       COUNT(ic.cod_item)::INT AS "totalItensCusto"
+     FROM evento e
+     LEFT JOIN item_custo ic ON ic.id_evento = e.cod_evento
+     WHERE e.id_organizador = $1
+     GROUP BY
+       e.cod_evento,
+       e.nome,
+       e.status,
+       e.data_inicio,
+       e.data_final,
+       e.cidade,
+       e.uf_estado,
+       e.local_evento`,
+    [id_organizador]
+  );
+
+  return resultado.rows;
+}
+
+export async function buscarEventosPlan() {
+  const resultado = await pool.query(
+    `SELECT
+       cod_evento AS "codEvento",
+       nome,
+       data_inicio AS "dataInicio",
+       data_final AS "dataFinal",
+       cidade,
+       uf_estado AS "ufEstado",
+       pub_esperado AS "pubEsperado"
+     FROM evento
+     WHERE status = 'planejamento'`
+  );
+
+  return resultado.rows;
+}

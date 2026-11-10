@@ -1,0 +1,614 @@
+/* Fundo e largura geral para manter a composição centralizada. */
+.criar-evento-org-pagina {
+    flex: 1;
+    padding: 14px 20px 36px;
+    background: var(--cor-fundo);
+}
+
+.criar-evento-org-container {
+    width: min(100%, 900px);
+    margin: 0 auto;
+}
+
+/* Botão de navegação no mesmo padrão das outras páginas. */
+.criar-evento-org-voltar {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 7px -6px;
+    padding: 6px 11px;
+    border: 1px solid #e1e8ed;
+    border-radius: 5px;
+    background: #fff;
+    color: var(--cor-texto-suave);
+    font: inherit;
+    font-size: 0.72rem;
+}
+
+/* Título e selo de ambiente da área de publicação. */
+.criar-evento-org-cabecalho {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 15px;
+}
+
+.criar-evento-org-cabecalho h1 {
+    margin: 0;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-principal);
+    font-size: clamp(1.35rem, 3vw, 1.65rem);
+    line-height: 1.2;
+}
+
+.criar-evento-org-cabecalho p {
+    max-width: 590px;
+    margin: 4px 0 0;
+    color: var(--cor-texto-suave);
+    font-size: 0.66rem;
+    line-height: 1.5;
+}
+
+.criar-evento-org-selo {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 5px;
+    margin-top: 3px;
+    padding: 5px 8px;
+    border: 1px solid #dfeee7;
+    border-radius: 5px;
+    background: #fff;
+    color: #638274;
+    font-size: 0.55rem;
+}
+
+.criar-evento-org-selo i {
+    color: #07936c;
+    font-style: normal;
+}
+
+/* Os blocos seguem a estrutura numerada do formulário de referência. */
+.criar-evento-org-formulario {
+    display: grid;
+    gap: 14px;
+}
+
+.criar-evento-org-secao {
+    overflow: hidden;
+    border: 1px solid #e1e8ed;
+    border-radius: 9px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(37, 51, 66, 0.035);
+}
+
+.criar-evento-org-secao-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 48px;
+    padding: 8px 14px;
+    border-bottom: 1px solid #e8edf1;
+    background: #fbfcfd;
+}
+
+.criar-evento-org-numero {
+    display: grid;
+    width: 23px;
+    height: 23px;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 6px;
+    background: #24364b;
+    color: #fff;
+    font-size: 0.64rem;
+    font-weight: 700;
+}
+
+.criar-evento-org-secao-cabecalho h2 {
+    margin: 0;
+    color: #2f3c4b;
+    font-family: var(--fonte-principal);
+    font-size: 0.72rem;
+    line-height: 1.3;
+}
+
+.criar-evento-org-secao-cabecalho p {
+    margin: 1px 0 0;
+    color: #929eaa;
+    font-size: 0.52rem;
+    line-height: 1.35;
+}
+
+.criar-evento-org-etiqueta {
+    margin-left: auto;
+    padding: 3px 6px;
+    border: 1px solid #d7eee3;
+    border-radius: 4px;
+    background: #f3fbf7;
+    color: #358469;
+    font-size: 0.5rem;
+    white-space: nowrap;
+}
+
+.criar-evento-org-etiqueta.operacional {
+    border-color: #dce5f4;
+    background: #f5f8fe;
+    color: #526e9b;
+}
+
+.criar-evento-org-secao-conteudo {
+    display: grid;
+    gap: 11px;
+    padding: 13px 14px 15px;
+}
+
+/* Estilos comuns a inputs, selects e áreas de texto. */
+.criar-evento-org-campo {
+    position: relative;
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+    color: #526071;
+    font-size: 0.56rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.criar-evento-org-campo em,
+.criar-evento-org-categorias em {
+    color: #de545c;
+    font-style: normal;
+}
+
+.criar-evento-org-campo input,
+.criar-evento-org-campo textarea {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid #dce4eb;
+    border-radius: 5px;
+    background: #fff;
+    color: var(--cor-texto);
+    font: inherit;
+    font-size: 0.59rem;
+    font-weight: 400;
+    text-transform: none;
+}
+
+.criar-evento-org-campo input {
+    height: 34px;
+    padding: 0 9px;
+}
+
+.criar-evento-org-campo textarea {
+    min-height: 64px;
+    padding: 8px 9px;
+    resize: vertical;
+    line-height: 1.45;
+}
+
+.criar-evento-org-campo input::placeholder,
+.criar-evento-org-campo textarea::placeholder {
+    color: #a4afbd;
+}
+
+.criar-evento-org-grade-campos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.criar-evento-org-input-sufixo {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    height: 34px;
+    border: 1px solid #dce4eb;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.criar-evento-org-input-sufixo input {
+    height: 100%;
+    border: 0;
+    background: transparent;
+}
+
+.criar-evento-org-input-sufixo small {
+    flex: 0 0 auto;
+    padding: 0 8px;
+    color: #a0a9b5;
+    font-size: 0.51rem;
+    font-weight: 400;
+    text-transform: none;
+}
+
+.criar-evento-org-moeda {
+    padding-left: 9px;
+    color: #778393;
+    font-size: 0.57rem;
+    font-weight: 500;
+}
+
+.criar-evento-org-input-icone {
+    position: relative;
+}
+
+.criar-evento-org-input-icone > span {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 9px;
+    transform: translateY(-50%);
+    color: #78889a;
+    font-size: 0.8rem;
+}
+
+.criar-evento-org-input-icone input {
+    padding-left: 25px;
+}
+
+.criar-evento-org-ajuda {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #a1aab5;
+    font-size: 0.49rem;
+    font-weight: 400;
+    text-transform: none;
+}
+
+.criar-evento-org-nota {
+    color: #93a0ae;
+    font-size: 0.5rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-transform: none;
+}
+
+.criar-evento-org-orcamento-campo {
+    max-width: 390px;
+}
+
+/* Grade de categorias com checkbox acessível e cartão clicável. */
+.criar-evento-org-categorias,
+.criar-evento-org-upload {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.criar-evento-org-categorias legend,
+.criar-evento-org-upload legend {
+    padding: 0;
+    color: #526071;
+    font-size: 0.56rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.criar-evento-org-categorias > p {
+    margin: 4px 0 8px;
+    color: #97a2af;
+    font-size: 0.51rem;
+}
+
+.criar-evento-org-grade-categorias {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+}
+
+.criar-evento-org-categoria {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    min-height: 43px;
+    padding: 7px 8px;
+    border: 1px solid #e0e6ec;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.criar-evento-org-categoria input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.criar-evento-org-checkbox {
+    display: grid;
+    width: 13px;
+    height: 13px;
+    flex: 0 0 auto;
+    margin-top: 1px;
+    place-items: center;
+    border: 1px solid #cbd4dd;
+    border-radius: 3px;
+    background: #fff;
+}
+
+.criar-evento-org-categoria input:checked + .criar-evento-org-checkbox {
+    border-color: #168361;
+    background: #168361;
+}
+
+.criar-evento-org-categoria input:checked + .criar-evento-org-checkbox::after {
+    color: #fff;
+    content: "✓";
+    font-size: 0.62rem;
+    line-height: 1;
+}
+
+.criar-evento-org-categoria input:focus-visible + .criar-evento-org-checkbox {
+    outline: 2px solid var(--cor-verde-claro);
+    outline-offset: 2px;
+}
+
+.criar-evento-org-categoria > span:last-child {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+}
+
+.criar-evento-org-categoria strong {
+    color: #455365;
+    font-size: 0.54rem;
+    line-height: 1.25;
+}
+
+.criar-evento-org-categoria small {
+    color: #9aa5b1;
+    font-size: 0.46rem;
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+/* Área de seleção de arquivos e lista de anexos escolhidos. */
+.criar-evento-org-upload legend {
+    margin-bottom: 6px;
+}
+
+.criar-evento-org-dropzone {
+    display: grid;
+    min-height: 105px;
+    align-content: center;
+    justify-items: center;
+    gap: 5px;
+    padding: 12px;
+    border: 1px dashed #bfcbd8;
+    border-radius: 7px;
+    background: #fbfcfd;
+    color: #778393;
+    text-align: center;
+    cursor: pointer;
+}
+
+.criar-evento-org-dropzone input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.criar-evento-org-dropzone:focus-within {
+    outline: 2px solid var(--cor-verde-claro);
+    outline-offset: 2px;
+}
+
+.criar-evento-org-upload-icone {
+    display: grid;
+    width: 23px;
+    height: 23px;
+    place-items: center;
+    border: 1px solid #e0e7ed;
+    border-radius: 50%;
+    background: #fff;
+    font-size: 0.8rem;
+}
+
+.criar-evento-org-dropzone strong {
+    color: #45806c;
+    font-size: 0.53rem;
+}
+
+.criar-evento-org-dropzone small {
+    color: #9aa5b1;
+    font-size: 0.48rem;
+}
+
+.criar-evento-org-arquivos {
+    display: grid;
+    gap: 5px;
+    margin: 7px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.criar-evento-org-arquivos li {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+    padding: 6px 8px;
+    border: 1px solid #e5eaf0;
+    border-radius: 5px;
+    color: #566273;
+    font-size: 0.52rem;
+}
+
+.criar-evento-org-arquivos li > span {
+    padding: 3px 4px;
+    border-radius: 3px;
+    background: #fff0f1;
+    color: #df4853;
+    font-size: 0.45rem;
+    font-weight: 700;
+}
+
+.criar-evento-org-arquivos li strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.criar-evento-org-arquivos li small {
+    margin-left: auto;
+    color: #9aa5b1;
+    white-space: nowrap;
+}
+
+/* Barra inferior com aviso e opções de salvar ou publicar. */
+.criar-evento-org-rodape-formulario {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 12px;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.criar-evento-org-rodape-formulario > p {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    max-width: 310px;
+    margin: 0;
+    color: #8592a0;
+    font-size: 0.49rem;
+    line-height: 1.4;
+}
+
+.criar-evento-org-feedback {
+    color: #147253;
+    font-size: 0.52rem;
+}
+
+.criar-evento-org-rodape-formulario > div {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 7px;
+}
+
+.criar-evento-org-publicar-demanda {
+    min-height: 34px;
+    padding: 0 11px;
+    border: 1px solid #dce4eb;
+    border-radius: 5px;
+    background: #fff;
+    color: #526071;
+    font: inherit;
+    font-size: 0.54rem;
+    font-weight: 600;
+}
+
+.criar-evento-org-publicar-demanda {
+    border-color: #17684f;
+    background: #17684f;
+    color: #fff;
+    cursor: pointer;
+}
+
+.criar-evento-org-publicar-demanda:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+.criar-evento-org-item-custo {
+    display: grid;
+    gap: 10px;
+    min-width: 0;
+    margin: 0;
+    padding: 12px;
+    border: 1px solid #e1e8ed;
+    border-radius: 7px;
+    background: #fbfcfd;
+}
+
+.criar-evento-org-item-custo legend {
+    padding: 0 5px;
+    color: #455365;
+    font-size: 0.58rem;
+    font-weight: 700;
+}
+
+.criar-evento-org-adicionar-item,
+.criar-evento-org-remover-item {
+    width: fit-content;
+    min-height: 32px;
+    padding: 0 10px;
+    border: 1px solid #dce4eb;
+    border-radius: 5px;
+    background: #fff;
+    color: #17684f;
+    font: inherit;
+    font-size: 0.56rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.criar-evento-org-remover-item {
+    justify-self: end;
+    color: #a53d43;
+}
+
+.criar-evento-org-erro {
+    color: #b4232d;
+    font-size: 0.58rem;
+    line-height: 1.4;
+}
+
+/* Empilha os campos e ações em telas estreitas. */
+@media (max-width: 680px) {
+    .criar-evento-org-pagina {
+        padding: 12px 12px 26px;
+    }
+
+    .criar-evento-org-cabecalho {
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .criar-evento-org-grade-campos {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .criar-evento-org-grade-categorias {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .criar-evento-org-rodape-formulario {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .criar-evento-org-rodape-formulario > p {
+        max-width: none;
+    }
+
+    .criar-evento-org-rodape-formulario > div {
+        flex-direction: column-reverse;
+    }
+
+    .criar-evento-org-publicar-demanda {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .criar-evento-org-grade-categorias {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .criar-evento-org-ajuda {
+        position: static;
+        order: 1;
+    }
+}

@@ -1,0 +1,483 @@
+/* Área externa e largura máxima do formulário de proposta. */
+.envio-proposta-for-pagina {
+    flex: 1;
+    padding: 18px 24px 40px;
+    background: var(--cor-fundo);
+}
+
+.envio-proposta-for-container {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+}
+
+/* Botão de retorno no mesmo padrão das outras páginas. */
+.envio-proposta-for-voltar-topo {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 8px -6px;
+    padding: 6px 11px;
+    border: 1px solid #e1e8ed;
+    border-radius: 5px;
+    background: #fff;
+    color: var(--cor-texto-suave);
+    font: inherit;
+    font-size: 0.72rem;
+}
+
+/* Cabeçalho com título e explicação da proposta. */
+.envio-proposta-for-cabecalho {
+    margin-bottom: 15px;
+}
+
+.envio-proposta-for-cabecalho h1 {
+    margin: 0;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-principal);
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    line-height: 1.2;
+}
+
+.envio-proposta-for-cabecalho p {
+    max-width: 760px;
+    margin: 5px 0 0;
+    color: var(--cor-texto-suave);
+    font-size: 0.68rem;
+    line-height: 1.5;
+}
+
+/* Resumo compacto do evento e do orçamento máximo disponível. */
+.envio-proposta-for-evento {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 17px;
+    padding: 11px 15px;
+    border: 1px solid #e3e9ec;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.envio-proposta-for-evento h2 {
+    display: inline;
+    margin: 0;
+    color: #334842;
+    font-family: var(--fonte-principal);
+    font-size: 0.79rem;
+}
+
+.envio-proposta-for-evento > div:first-child > span {
+    color: #79857f;
+    font-size: 0.56rem;
+}
+
+.envio-proposta-for-evento p {
+    margin: 3px 0 0;
+    color: #788493;
+    font-size: 0.55rem;
+}
+
+.envio-proposta-for-evento p span {
+    color: #36816a;
+}
+
+.envio-proposta-for-evento p i {
+    margin: 0 5px;
+    font-style: normal;
+}
+
+.envio-proposta-for-teto {
+    display: grid;
+    flex: 0 0 auto;
+    gap: 1px;
+    text-align: right;
+}
+
+.envio-proposta-for-teto span {
+    color: #788493;
+    font-size: 0.48rem;
+    text-transform: uppercase;
+}
+
+.envio-proposta-for-teto strong {
+    color: #334842;
+    font-family: var(--fonte-principal);
+    font-size: 0.95rem;
+}
+
+/* Conteúdo principal e painel de simulação financeira. */
+.envio-proposta-for-formulario {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(225px, 0.46fr);
+    align-items: start;
+    gap: 18px;
+}
+
+.envio-proposta-for-coluna-principal {
+    display: grid;
+    gap: 15px;
+    min-width: 0;
+}
+
+.envio-proposta-for-secao,
+.envio-proposta-for-resumo {
+    min-width: 0;
+    border: 1px solid #e2e8ec;
+    border-radius: 9px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(37, 51, 66, 0.03);
+}
+
+.envio-proposta-for-secao-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 8px 13px;
+    border-bottom: 1px solid #e8edf0;
+}
+
+.envio-proposta-for-secao-cabecalho > span {
+    display: grid;
+    width: 19px;
+    height: 19px;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 5px;
+    background: var(--cor-verde-medio);
+    color: #fff;
+    font-size: 0.59rem;
+    font-weight: 700;
+}
+
+.envio-proposta-for-secao-cabecalho h2 {
+    margin: 0;
+    color: #344842;
+    font-family: var(--fonte-principal);
+    font-size: 0.69rem;
+}
+
+.envio-proposta-for-secao-cabecalho > small {
+    margin-left: auto;
+    color: #87918f;
+    font-size: 0.5rem;
+}
+
+.envio-proposta-for-secao-conteudo {
+    display: grid;
+    gap: 12px;
+    padding: 13px;
+}
+
+/* Campos comerciais e áreas de texto com foco nos padrões do projeto. */
+.envio-proposta-for-grade-campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.envio-proposta-for-campo {
+    position: relative;
+    display: grid;
+    gap: 5px;
+    min-width: 0;
+    color: #526071;
+    font-size: 0.56rem;
+    font-weight: 700;
+}
+
+.envio-proposta-for-campo em {
+    color: #d65055;
+    font-style: normal;
+}
+
+.envio-proposta-for-campo input,
+.envio-proposta-for-campo textarea {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid #e2e8ec;
+    border-radius: 6px;
+    background: #f0f2fc;
+    color: #354451;
+    font: inherit;
+    font-size: 0.65rem;
+    font-weight: 400;
+}
+
+.envio-proposta-for-campo input {
+    height: 36px;
+    padding: 0 10px;
+}
+
+.envio-proposta-for-campo textarea {
+    min-height: 130px;
+    padding: 10px;
+    resize: vertical;
+    line-height: 1.55;
+}
+
+.envio-proposta-for-desconto {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px 5px;
+    border-radius: 4px;
+    background: #e2f5eb;
+    color: #267354;
+    font-size: 0.47rem;
+    font-weight: 600;
+}
+
+.envio-proposta-for-ajuda {
+    position: absolute;
+    right: 9px;
+    bottom: 10px;
+    color: #75828e;
+    font-size: 0.54rem;
+    font-weight: 400;
+}
+
+.envio-proposta-for-campo-pagamento input {
+    background: #f0f2fc;
+}
+
+/* Área de anexos e arquivos selecionados. */
+.envio-proposta-for-upload {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    min-height: 84px;
+    padding: 11px;
+    border: 1px dashed #cbd6df;
+    border-radius: 7px;
+    background: #fafbfc;
+    color: #677681;
+    text-align: center;
+    cursor: pointer;
+}
+
+.envio-proposta-for-upload input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.envio-proposta-for-upload:focus-within {
+    outline: 2px solid var(--cor-verde-claro);
+    outline-offset: 2px;
+}
+
+.envio-proposta-for-upload-icone {
+    display: grid;
+    width: 22px;
+    height: 22px;
+    place-items: center;
+    border: 1px solid #e1e7eb;
+    border-radius: 50%;
+    background: #fff;
+    font-size: 0.8rem;
+}
+
+.envio-proposta-for-upload strong {
+    color: #477864;
+    font-size: 0.54rem;
+}
+
+.envio-proposta-for-upload small {
+    color: #929da7;
+    font-size: 0.49rem;
+}
+
+.envio-proposta-for-arquivos {
+    display: grid;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.envio-proposta-for-arquivos li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    padding: 7px 9px;
+    border: 1px solid #e5e9ef;
+    border-radius: 6px;
+    background: #f0f2fc;
+}
+
+.envio-proposta-for-arquivo-icone {
+    display: grid;
+    width: 24px;
+    height: 26px;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 5px;
+    background: #fff0ef;
+    color: #d4544e;
+    font-size: 0.43rem;
+    font-weight: 700;
+}
+
+.envio-proposta-for-arquivo-info {
+    display: grid;
+    flex: 1;
+    gap: 1px;
+    min-width: 0;
+}
+
+.envio-proposta-for-arquivo-info strong {
+    overflow: hidden;
+    color: #465361;
+    font-size: 0.54rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.envio-proposta-for-arquivo-info small {
+    color: #89949e;
+    font-size: 0.47rem;
+}
+
+.envio-proposta-for-arquivos li button {
+    width: 23px;
+    height: 23px;
+    flex: 0 0 auto;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: #7f8b92;
+    font-size: 0.9rem;
+}
+
+/* Painel lateral com taxas, valor líquido e ações. */
+.envio-proposta-for-resumo {
+    display: grid;
+    gap: 12px;
+    padding: 15px;
+}
+
+.envio-proposta-for-resumo h2 {
+    margin: 0;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #edf0f2;
+    color: #344842;
+    font-family: var(--fonte-principal);
+    font-size: 0.72rem;
+}
+
+.envio-proposta-for-linha-financeira {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: #77828b;
+    font-size: 0.58rem;
+}
+
+.envio-proposta-for-linha-financeira strong {
+    color: #344842;
+    font-size: 0.6rem;
+    white-space: nowrap;
+}
+
+.envio-proposta-for-linha-financeira strong.envio-proposta-for-taxa {
+    color: #c54b43;
+}
+
+.envio-proposta-for-liquido {
+    display: grid;
+    gap: 3px;
+    padding: 10px;
+    border-radius: 7px;
+    background: #eef2fb;
+}
+
+.envio-proposta-for-liquido span {
+    color: #6f7a86;
+    font-size: 0.48rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.envio-proposta-for-liquido strong {
+    color: #087c60;
+    font-family: var(--fonte-principal);
+    font-size: 1.12rem;
+}
+
+.envio-proposta-for-submeter {
+    min-height: 37px;
+    margin-top: 3px;
+    border: 1px solid var(--cor-verde-medio);
+    border-radius: 7px;
+    background: var(--cor-verde-medio);
+    color: #fff;
+    font: inherit;
+    font-size: 0.63rem;
+    font-weight: 700;
+}
+
+.envio-proposta-for-acoes-secundarias {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+}
+
+.envio-proposta-for-acoes-secundarias button {
+    min-height: 31px;
+    border: 0;
+    border-radius: 6px;
+    background: #eef2fb;
+    color: #526071;
+    font: inherit;
+    font-size: 0.55rem;
+    font-weight: 600;
+}
+
+.envio-proposta-for-feedback {
+    margin: -4px 0 0;
+    color: #267354;
+    font-size: 0.53rem;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* Em telas estreitas, o resumo financeiro passa para baixo do formulário. */
+@media (max-width: 760px) {
+    .envio-proposta-for-pagina {
+        padding: 14px 14px 28px;
+    }
+
+    .envio-proposta-for-formulario {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .envio-proposta-for-resumo {
+        grid-row: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .envio-proposta-for-evento {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .envio-proposta-for-teto {
+        text-align: left;
+    }
+
+    .envio-proposta-for-grade-campos {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .envio-proposta-for-secao-cabecalho {
+        align-items: flex-start;
+    }
+}

@@ -1,0 +1,2 @@
+Arquivos na pasta /rotas concentra os controllers das rotas a serem implementadas.
+Seus arquivos iniciam importando Router de "express".

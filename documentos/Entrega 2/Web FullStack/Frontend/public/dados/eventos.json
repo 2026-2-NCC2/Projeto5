@@ -1,0 +1,74 @@
+[
+  {
+    "id": "evt-001",
+    "nome": "Festival de Inovacao e Negocios 2026",
+    "descricao": "Encontro sobre tecnologia, empreendedorismo e novas oportunidades de negocio.",
+    "organizadorId": "usr-org-001",
+    "fornecedorIds": ["usr-for-001", "usr-for-002", "usr-for-003"],
+    "dataInicio": "2026-10-17T09:00:00-03:00",
+    "dataFim": "2026-10-18T20:00:00-03:00",
+    "local": {
+      "nome": "Centro de Convencoes Anhembi",
+      "cidade": "Sao Paulo",
+      "estado": "SP"
+    },
+    "quantidadeParticipantes": 850,
+    "orcamentoEstimado": 185000,
+    "status": "em planejamento",
+    "servicosNecessarios": ["sonorizacao", "iluminacao", "cenografia", "catering"]
+  },
+  {
+    "id": "evt-002",
+    "nome": "Congresso Conecta Gestao",
+    "descricao": "Congresso corporativo para liderancas e profissionais de gestao.",
+    "organizadorId": "usr-org-002",
+    "fornecedorIds": ["usr-for-001", "usr-for-003"],
+    "dataInicio": "2026-11-05T08:00:00-03:00",
+    "dataFim": "2026-11-06T18:00:00-03:00",
+    "local": {
+      "nome": "Riocentro",
+      "cidade": "Rio de Janeiro",
+      "estado": "RJ"
+    },
+    "quantidadeParticipantes": 420,
+    "orcamentoEstimado": 98000,
+    "status": "recebendo propostas",
+    "servicosNecessarios": ["sonorizacao", "iluminacao", "catering"]
+  },
+  {
+    "id": "evt-003",
+    "nome": "Mostra Cultural Horizonte",
+    "descricao": "Programacao cultural com musica, arte e experiencias para o publico.",
+    "organizadorId": "usr-org-003",
+    "fornecedorIds": ["usr-for-001", "usr-for-002"],
+    "dataInicio": "2026-12-12T14:00:00-03:00",
+    "dataFim": "2026-12-13T22:00:00-03:00",
+    "local": {
+      "nome": "Expominas",
+      "cidade": "Belo Horizonte",
+      "estado": "MG"
+    },
+    "quantidadeParticipantes": 1200,
+    "orcamentoEstimado": 240000,
+    "status": "em planejamento",
+    "servicosNecessarios": ["sonorizacao", "iluminacao", "cenografia", "estrutura"]
+  },
+  {
+    "id": "evt-004",
+    "nome": "Encontro de Parceiros Eventa",
+    "descricao": "Evento de relacionamento para clientes e parceiros comerciais.",
+    "organizadorId": "usr-org-001",
+    "fornecedorIds": ["usr-for-003"],
+    "dataInicio": "2027-01-22T18:00:00-03:00",
+    "dataFim": "2027-01-22T23:00:00-03:00",
+    "local": {
+      "nome": "Casa das Caldeiras",
+      "cidade": "Sao Paulo",
+      "estado": "SP"
+    },
+    "quantidadeParticipantes": 180,
+    "orcamentoEstimado": 42000,
+    "status": "rascunho",
+    "servicosNecessarios": ["catering", "buffet", "coquetel"]
+  }
+]

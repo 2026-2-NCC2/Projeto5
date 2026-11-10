@@ -1,0 +1,221 @@
+.pagina-lista-eventos {
+    flex: 1;
+    padding: 18px 24px 42px;
+    background: var(--cor-fundo);
+}
+
+.lista-eventos-conteudo {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+}
+
+.lista-eventos-voltar {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 8px -6px;
+    padding: 6px 11px;
+    border: 1px solid #e1e8ed;
+    border-radius: 5px;
+    background: var(--cor-branco);
+    color: var(--cor-texto-suave);
+    font: inherit;
+    font-size: 0.72rem;
+}
+
+.lista-eventos-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.lista-eventos-cabecalho h1 {
+    margin: 0;
+    color: var(--cor-verde-medio);
+    font-family: var(--fonte-principal);
+    font-size: clamp(1.45rem, 3vw, 1.8rem);
+    line-height: 1.2;
+}
+
+.lista-eventos-controles {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.lista-eventos-botao {
+    display: inline-flex;
+    min-height: 36px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 13px;
+    border: 1px solid #dfe7ea;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.lista-eventos-novo {
+    border-color: var(--cor-verde-medio);
+    background: var(--cor-verde-medio);
+    color: var(--cor-branco);
+}
+
+.lista-eventos-novo:hover {
+    background: var(--cor-verde-escuro);
+}
+
+.lista-eventos-propostas {
+    background: var(--cor-branco);
+    color: var(--cor-verde-medio);
+}
+
+.lista-eventos-ferramentas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.lista-eventos-abas {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 4px;
+    border-radius: 8px;
+    background: #eef5f4;
+}
+
+.lista-eventos-abas button {
+    min-height: 30px;
+    padding: 0 11px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: #64736f;
+    font: inherit;
+    font-size: 0.63rem;
+    white-space: nowrap;
+}
+
+.lista-eventos-abas button.ativa {
+    background: var(--cor-branco);
+    color: var(--cor-verde-medio);
+    font-weight: 700;
+    box-shadow: 0 1px 3px rgba(37, 51, 66, 0.08);
+}
+
+.lista-eventos-busca {
+    display: flex;
+    width: min(100%, 340px);
+    min-height: 38px;
+    align-items: center;
+    gap: 9px;
+    padding: 0 12px;
+    border: 1px solid #e6eaed;
+    border-radius: 8px;
+    background: var(--cor-branco);
+    color: #788493;
+}
+
+.lista-eventos-busca > span {
+    font-size: 1.05rem;
+}
+
+.lista-eventos-busca input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--cor-texto);
+    font: inherit;
+    font-size: 0.7rem;
+}
+
+.lista-eventos-cards {
+    display: grid;
+    gap: 13px;
+}
+
+.lista-eventos-mensagem {
+    margin: 0;
+    padding: 25px 14px;
+    border: 1px solid #e6eaed;
+    border-radius: 9px;
+    background: var(--cor-branco);
+    color: var(--cor-texto-suave);
+    font-size: 0.76rem;
+    text-align: center;
+}
+
+.lista-eventos-erro {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+}
+
+.lista-eventos-erro p {
+    margin: 0;
+}
+
+.lista-eventos-erro button {
+    min-height: 34px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--cor-verde-medio);
+    color: var(--cor-branco);
+    font: inherit;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.lista-eventos-botao:focus-visible,
+.lista-eventos-abas button:focus-visible,
+.lista-eventos-erro button:focus-visible {
+    outline: 2px solid var(--cor-verde-claro);
+    outline-offset: 2px;
+}
+
+@media (max-width: 650px) {
+    .pagina-lista-eventos {
+        padding: 14px 14px 28px;
+    }
+
+    .lista-eventos-cabecalho {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .lista-eventos-controles {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .lista-eventos-ferramentas {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .lista-eventos-abas {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .lista-eventos-abas button {
+        padding: 0 8px;
+        font-size: 0.57rem;
+    }
+
+    .lista-eventos-busca {
+        width: 100%;
+    }
+}

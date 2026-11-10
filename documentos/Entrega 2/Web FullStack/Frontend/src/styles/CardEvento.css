@@ -1,0 +1,122 @@
+.card-evento-dados {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 20px;
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid #b9d8d2;
+    border-radius: 9px;
+    background: var(--cor-branco);
+    box-shadow: 0 3px 12px rgba(37, 51, 66, 0.045);
+}
+
+.card-evento-dados-conteudo {
+    min-width: 0;
+}
+
+.card-evento-dados-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.card-evento-dados-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: #edf2f6;
+    color: #526579;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.card-evento-dados-organizador {
+    color: var(--cor-texto-suave);
+    font-size: 0.75rem;
+}
+
+.card-evento-dados h2 {
+    margin: 0 0 10px;
+    overflow-wrap: anywhere;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-principal);
+    font-size: 1rem;
+}
+
+.card-evento-dados-informacoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+}
+
+.card-evento-dados-informacoes p,
+.card-evento-dados-resumo {
+    margin: 0;
+    color: #687687;
+    font-size: 0.76rem;
+}
+
+.card-evento-dados-informacoes p {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-evento-dados-resumo {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #e4ecea;
+}
+
+.card-evento-dados-resumo strong {
+    color: var(--cor-titulo);
+}
+
+.card-evento-dados-botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 8px 14px;
+    border: 1px solid var(--cor-verde-medio);
+    border-radius: 6px;
+    background: var(--cor-verde-medio);
+    color: var(--cor-branco);
+    font-size: 0.76rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.card-evento-dados-botao:hover {
+    transform: translateY(-1px);
+    background: var(--cor-verde-escuro, #315c54);
+}
+
+.card-evento-dados-botao:focus-visible {
+    outline: 3px solid var(--cor-verde-claro, #8bb9ad);
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    .card-evento-dados {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 14px;
+    }
+
+    .card-evento-dados-cabecalho {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .card-evento-dados-botao {
+        justify-self: stretch;
+    }
+}

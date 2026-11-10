@@ -1,0 +1,5 @@
+Incluir arquivos de autenticação de usuário acessando a plataforma.
+Exigir um token JWT válido do header Authorization.
+Verificar se perfil de usuário é autorizado a acessar a rota requerida.
+Guardar os dados do usuário válido em 'req.usuario' e chama 'next()' para seguir para a rota.
+A falha lança ErroNaoAutorizado.
