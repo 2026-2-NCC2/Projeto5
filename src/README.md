@@ -54,14 +54,15 @@
 
 ### Módulo do sistema 2
 
-| **Aluno(s) Responsável(veis)** |[preencher] |
+| **Aluno(s) Responsável(veis)** | Ana Clara Oliveira |
 | :--- | :--- |
-| **Ferramenta utilizada** | [preencher] |
-| **Versão/modelo** | [preencher] |
-| **Disciplina / Trabalho** | [preencher] |
-| **Finalidade de uso** | [preencher] |
-| ***Prompts* principais utilizados** | [preencher] |
-| **Trechos ou entregas afetadas** | [preencher] |
+| **Ferramenta utilizada** | ChatGPT (OpenAI) |
+| **Versão/modelo** | GPT-6 |
+| **Disciplina / Trabalho** | Cálculo II - Entrega 2 Projeto Interdiciplinar |
+| **Finalidade de uso** | Auxílio na elaboração dos gráficos e na organização do documento, buscando deixar as informações mais claras e facilitar o entendimento do conteúdo. |
+| ***Prompts* principais utilizados** | Solicitações de auxílio para montar os gráficos, organizar as informações e melhorar a clareza e a apresentação do documento. |
+| **Trechos ou entregas afetadas** | Elaboração dos gráficos e organização visual e textual do documento entregue. |
+
 
 ### Módulo do sistema 3
 
