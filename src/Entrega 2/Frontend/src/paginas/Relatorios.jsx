@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 import "../styles/Relatorios.css";
 
 // Dados estáticos para ilustrar o relatório enquanto a aplicação não possui API.
@@ -35,7 +35,6 @@ const periodoPadrao = "30";
 const modulosPadrao = dadosMock.modulos.map((modulo) => modulo.id);
 
 function Relatorios() {
-    const navigate = useNavigate();
     const [modulosSelecionados, setModulosSelecionados] = useState(modulosPadrao);
     const [periodo, setPeriodo] = useState(periodoPadrao);
     const [formato, setFormato] = useState("pdf");
@@ -83,9 +82,7 @@ function Relatorios() {
     return (
         <main className="pagina-relatorios">
             <div className="relatorios-container">
-                <button className="voltar-relatorios" type="button" onClick={() => navigate(-1)}>
-                    ← Voltar
-                </button>
+                <BotaoVoltar className="voltar-relatorios" />
 
                 <section className="relatorios-painel" aria-labelledby="titulo-relatorios">
                     {/* Título da página e parâmetros de período/formato do relatório. */}

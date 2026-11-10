@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 import "../styles/DetalhePropostaOrg.css";
 
 // Dados locais que alimentam a tela neste protótipo, sem chamadas a um backend.
@@ -65,9 +66,7 @@ function DetalhePropostaOrg() {
             <main className="detalhe-proposta-pagina">
                 <div className="detalhe-proposta-container">
                     {/* Retorna à página anterior, como nas demais telas do sistema. */}
-                    <button className="proposta-voltar" type="button" onClick={() => navigate(-1)}>
-                        ← Voltar
-                    </button>
+                    <BotaoVoltar className="proposta-voltar" />
                     <section className="proposta-nao-encontrada">
                         <h1>Proposta não encontrada</h1>
                         <p>Não há dados simulados para esta proposta.</p>
@@ -81,9 +80,7 @@ function DetalhePropostaOrg() {
         <main className="detalhe-proposta-pagina">
             <div className="detalhe-proposta-container">
                 {/* Mantém o mesmo padrão de navegação das outras páginas. */}
-                <button className="proposta-voltar" type="button" onClick={() => navigate(-1)}>
-                    ← Voltar
-                </button>
+                <BotaoVoltar className="proposta-voltar" />
 
                 {/* Identificação da proposta e informações de envio. */}
                 <header className="proposta-cabecalho">

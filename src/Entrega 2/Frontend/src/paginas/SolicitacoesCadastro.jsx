@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 import "../styles/SolicitacoesCadastro.css";
 
 // Dados locais para demonstrar a fila e o histórico sem depender do backend.
@@ -125,7 +125,6 @@ function normalizarTexto(texto) {
 }
 
 function SolicitacoesCadastro() {
-    const navigate = useNavigate();
     const [solicitacoes, setSolicitacoes] = useState(dadosMock);
     const [aba, setAba] = useState("fila");
     const [categoria, setCategoria] = useState("Todos");
@@ -195,9 +194,7 @@ function SolicitacoesCadastro() {
     return (
         <main className="pagina-solicitacoes">
             <section className="solicitacoes-painel" aria-labelledby="titulo-solicitacoes">
-                <button className="voltar-solicitacoes" type="button" onClick={() => navigate(-1)}>
-                    ← Voltar
-                </button>
+                <BotaoVoltar className="voltar-solicitacoes" />
 
                 <header className="topo-solicitacoes">
                     <div>

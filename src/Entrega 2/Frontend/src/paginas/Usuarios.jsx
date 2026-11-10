@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 import "../styles/Usuarios.css";
 
 // Registros demonstrativos da tabela de gestão de usuários.
@@ -140,9 +141,7 @@ function Usuarios() {
     return (
         <main className="pagina-usuarios">
             <section className="usuarios-container" aria-labelledby="titulo-usuarios">
-                <button className="voltar-usuarios" type="button" onClick={() => navigate(-1)}>
-                    ← Voltar
-                </button>
+                <BotaoVoltar className="voltar-usuarios" />
 
                 <header className="cabecalho-usuarios">
                     <div>

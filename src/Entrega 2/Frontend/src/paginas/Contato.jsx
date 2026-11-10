@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../styles/Contato.css'; 
+import BotaoVoltar from '../components/BotaoVoltar';
 import iconemensagem from '../assets/icone-mensagem.png';
 import iconeanexo from '../assets/icone-anexo.png'; 
 import iconeassunto from '../assets/icone-assunto.png';
 
 export default function Contato() {
-  // Permite retornar à página visitada antes de abrir o formulário.
-  const navigate = useNavigate();
-
   // Mantém os campos controlados pelo React e atualiza o contador da descrição.
   const [textoDescricao, setTextoDescricao] = useState("");
   const [assunto, setAssunto] = useState("");
@@ -26,9 +23,7 @@ export default function Contato() {
     <main className="container-contato">
       {/* Retorna à página anterior sem fixar um destino específico. */}
       <div className="area-voltar">
-        <button type="button" className="botao-voltar" onClick={() => navigate(-1)}>
-          ← Voltar
-        </button>
+        <BotaoVoltar className="botao-voltar" />
       </div>
 
       {/* Cartão que reúne o destinatário e os campos da mensagem. */}

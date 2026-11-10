@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 import "../styles/MeusEventosOrg.css";
 
 // Eventos estáticos usados para montar a interface enquanto não há integração com API.
@@ -78,13 +79,7 @@ function MeusEventosOrg() {
             <section className="meus-eventos-org-conteudo">
                 {/* Botão de retorno e cabeçalho com a ação principal da página. */}
                 <header className="meus-eventos-org-topo">
-                    <button
-                        className="meus-eventos-org-voltar"
-                        type="button"
-                        onClick={() => navigate(-1)}
-                    >
-                        ← Voltar
-                    </button>
+                    <BotaoVoltar className="meus-eventos-org-voltar" />
                     <div className="meus-eventos-org-titulo-linha">
                         <div>
                             <h1>Meus Eventos</h1>

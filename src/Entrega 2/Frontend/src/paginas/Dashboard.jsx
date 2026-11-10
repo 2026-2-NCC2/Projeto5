@@ -62,7 +62,7 @@ const cardsFornecedor = [
         descricao: "Encontre eventos disponíveis.",
         status: "Eventos",
         icone: eventoIcone,
-        acao: { texto: "Ver eventos", href: "/fornecedor/eventos" },
+        acao: { texto: "Ver eventos", href: "/eventos" },
     },
     {
         titulo: "Propostas Enviadas",

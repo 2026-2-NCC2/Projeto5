@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import authRouter from './rotas/auth.js';
+import eventosRouter from './rotas/eventos.js';
 import { ErroApi } from './erros/ErroApi.js';
 import { ErroConflito } from './erros/ErroConflito.js';
 
@@ -15,6 +16,7 @@ export function criarApp() {
   });
 
   app.use("/auth", authRouter);
+  app.use("/eventos", eventosRouter);
 
   app.use((req, res) => {
     res.status(404).json({ erro: "Rota não encontrada." });

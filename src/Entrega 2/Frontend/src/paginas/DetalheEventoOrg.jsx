@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 import "../styles/DetalheEventoOrg.css";
 
 // Informações de demonstração indexadas pelo mesmo ID recebido na rota /eventos/:id.
@@ -124,7 +125,7 @@ function DetalheEventoOrg() {
         return (
             <main className="detalhe-evento-pagina">
                 <div className="detalhe-evento-container">
-                    <button className="detalhe-voltar" type="button" onClick={() => navigate(-1)}>← Voltar</button>
+                    <BotaoVoltar className="detalhe-voltar" />
                     <section className="detalhe-estado-api" role="status">Processando solicitação...</section>
                 </div>
             </main>
@@ -136,7 +137,7 @@ function DetalheEventoOrg() {
         return (
             <main className="detalhe-evento-pagina">
                 <div className="detalhe-evento-container">
-                    <button className="detalhe-voltar" type="button" onClick={() => navigate(-1)}>← Voltar</button>
+                    <BotaoVoltar className="detalhe-voltar" />
                     <section className="detalhe-estado-api detalhe-estado-erro" role="alert">
                         <p>{erro}</p>
                         <button type="button" onClick={handleExcluir}>Tentar novamente</button>
@@ -151,7 +152,7 @@ function DetalheEventoOrg() {
         return (
             <main className="detalhe-evento-pagina">
                 <div className="detalhe-evento-container">
-                    <button className="detalhe-voltar" type="button" onClick={() => navigate(-1)}>← Voltar</button>
+                    <BotaoVoltar className="detalhe-voltar" />
                     <section className="detalhe-nao-encontrado">
                         <h1>Evento não encontrado</h1>
                         <p>Não foi possível localizar os detalhes deste evento.</p>
@@ -164,7 +165,7 @@ function DetalheEventoOrg() {
     return (
         <main className="detalhe-evento-pagina">
             <div className="detalhe-evento-container">
-                <button className="detalhe-voltar" type="button" onClick={() => navigate(-1)}>← Voltar</button>
+                <BotaoVoltar className="detalhe-voltar" />
 
                 {/* Banner de identificação: status, ID, data de criação e informações principais. */}
                 <section className="banner-evento">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 import "../styles/Perfil.css";
 
 // Dados locais de demonstração: cada perfil mostra informações próprias,
@@ -134,7 +134,6 @@ function BlocoPerfil({ numero, icone, titulo, descricao, children, rodape }) {
 }
 
 function Perfil({ perfil = "admin" }) {
-    const navigate = useNavigate();
     const dadosIniciais = dadosMock.find((item) => item.perfil === perfil) || dadosMock[0];
     const [dados, setDados] = useState(dadosIniciais);
     const [modoEdicao, setModoEdicao] = useState(false);
@@ -147,9 +146,7 @@ function Perfil({ perfil = "admin" }) {
     return (
         <main className="pagina-perfil">
             <div className="perfil-conteudo">
-                <button className="voltar-perfil" type="button" onClick={() => navigate(-1)}>
-                    ← Voltar
-                </button>
+                <BotaoVoltar className="voltar-perfil" />
 
                 <header className="perfil-topo">
                     <div>

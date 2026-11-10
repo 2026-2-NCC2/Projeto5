@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 import "../styles/EventosFor.css";
 
 // Eventos de exemplo que representam oportunidades disponíveis para fornecedores.
@@ -84,9 +85,7 @@ function EventosFor() {
         <main className="eventos-for-pagina">
             <section className="eventos-for-conteudo">
                 {/* Volta à página anterior seguindo o padrão de navegação do projeto. */}
-                <button className="eventos-for-voltar" type="button" onClick={() => navigate(-1)}>
-                    ← Voltar
-                </button>
+                <BotaoVoltar className="eventos-for-voltar" />
 
                 {/* Título e filtros para navegar pelas oportunidades disponíveis. */}
                 <header className="eventos-for-cabecalho">

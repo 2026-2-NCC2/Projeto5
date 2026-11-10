@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 import "../styles/CriarEventoOrg.css";
 
 // Opções de categorias mostradas no formulário de contratação do evento.
@@ -12,8 +12,6 @@ const dadosMock = [
 ];
 
 function CriarEventoOrg() {
-    const navigate = useNavigate();
-
     // Guarda as categorias e anexos selecionados na interface local.
     const [categoriasSelecionadas, setCategoriasSelecionadas] = useState(["palco", "seguranca"]);
     const [arquivos, setArquivos] = useState([]);
@@ -43,9 +41,7 @@ function CriarEventoOrg() {
         <main className="criar-evento-org-pagina">
             <div className="criar-evento-org-container">
                 {/* Cabeçalho da página com retorno e indicação do ambiente demonstrativo. */}
-                <button className="criar-evento-org-voltar" type="button" onClick={() => navigate(-1)}>
-                    ← Voltar
-                </button>
+                <BotaoVoltar className="criar-evento-org-voltar" />
                 <header className="criar-evento-org-cabecalho">
                     <div>
                         <h1>Publicar Novo Evento</h1>

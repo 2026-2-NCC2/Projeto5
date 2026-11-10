@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 import "../styles/DetalhePropostaFor.css";
 
 // Eventos e exigências simulados correspondentes à listagem de EventosFor.
@@ -88,9 +89,7 @@ function DetalhePropostaFor() {
         return (
             <main className="detalhe-proposta-for-pagina">
                 <div className="detalhe-proposta-for-container">
-                    <button className="detalhe-proposta-for-voltar" type="button" onClick={() => navigate(-1)}>
-                        ← Voltar
-                    </button>
+                    <BotaoVoltar className="detalhe-proposta-for-voltar" />
                     <section className="detalhe-proposta-for-painel">
                         <h1>Evento não encontrado</h1>
                         <p>Não há dados simulados para este evento.</p>
@@ -104,13 +103,7 @@ function DetalhePropostaFor() {
         <main className="detalhe-proposta-for-pagina">
             <div className="detalhe-proposta-for-container">
                 {/* Navegação de retorno no padrão utilizado pelo projeto. */}
-                <button
-                    className="detalhe-proposta-for-voltar"
-                    type="button"
-                    onClick={() => navigate(-1)}
-                >
-                    ← Voltar
-                </button>
+                <BotaoVoltar className="detalhe-proposta-for-voltar" />
 
                 {/* Nome e resumo da convocatória. */}
                 <header className="detalhe-proposta-for-cabecalho">

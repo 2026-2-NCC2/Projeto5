@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 import "../styles/MinhasPropostasFor.css";
 
 // Propostas locais de exemplo para preencher a tela sem integração com backend.
@@ -78,13 +79,7 @@ function MinhasPropostasFor() {
         <main className="minhas-propostas-for-pagina">
             <section className="minhas-propostas-for-conteudo">
                 {/* Botão para retornar à tela anterior, seguindo o padrão da aplicação. */}
-                <button
-                    className="minhas-propostas-for-voltar"
-                    type="button"
-                    onClick={() => navigate(-1)}
-                >
-                    ← Voltar
-                </button>
+                <BotaoVoltar className="minhas-propostas-for-voltar" />
 
                 {/* Título e resumo da quantidade de propostas em andamento. */}
                 <header className="minhas-propostas-for-cabecalho">

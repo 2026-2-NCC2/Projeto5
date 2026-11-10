@@ -7,12 +7,11 @@ import Contato from './paginas/Contato';
 import CadastroPendente from './paginas/CadastroPendente';
 import Dashboard from './paginas/Dashboard';
 import Eventos from './paginas/Eventos';
-import MeusEventosOrg from './paginas/MeusEventosOrg';
 import DetalheEventoOrg from './paginas/DetalheEventoOrg';
+import DetalheEvento from './paginas/DetalheEvento';
 import CriarEventoOrg from './paginas/CriarEventoOrg';
 import DetalhePropostaOrg from './paginas/DetalhePropostaOrg';
 import ComparacaoPropostaOrg from './paginas/ComparacaoPropostaOrg';
-import EventosFor from './paginas/EventosFor';
 import DetalhePropostaFor from './paginas/DetalhePropostaFor';
 import EnvioPropostaFor from './paginas/EnvioPropostaFor';
 import MinhasPropostasFor from './paginas/MinhasPropostasFor';
@@ -76,10 +75,10 @@ function App() {
             </RotaProtegida>
           } />
           
-          {/* Eventos gerais são compartilhados entre administração e organização. */}
+          {/* A listagem unificada escolhe eventos conforme o perfil autenticado. */}
           <Route path='/eventos' element={
-            <RotaProtegida perfil={perfil} perfisPermitidos={['admin', 'organizador']}>
-              <Eventos/>
+            <RotaProtegida perfil={perfil} perfisPermitidos={['admin', 'organizador', 'fornecedor']}>
+              <Eventos perfil={perfil}/>
             </RotaProtegida>
           } />
           <Route path='/eventos/:id' element={
@@ -87,9 +86,14 @@ function App() {
               <DetalheEventoOrg/>
             </RotaProtegida>
           } />
+          <Route path='/eventos/:id/detalhes' element={
+            <RotaProtegida perfil={perfil} perfisPermitidos={['admin', 'organizador', 'fornecedor']}>
+              <DetalheEvento/>
+            </RotaProtegida>
+          } />
           <Route path='/meus-eventos-org' element={
             <RotaProtegida perfil={perfil} perfisPermitidos={['organizador']}>
-              <MeusEventosOrg/>
+              <Eventos perfil={perfil}/>
             </RotaProtegida>
           } />
           <Route path='/criar-evento-org' element={
@@ -103,7 +107,7 @@ function App() {
             </RotaProtegida>
           } />
           <Route path='/comparacao-proposta-org' element={
-            <RotaProtegida perfil={perfil} perfisPermitidos={['organizador']}>
+            <RotaProtegida perfil={perfil} perfisPermitidos={['admin', 'organizador']}>
               <ComparacaoPropostaOrg/>
             </RotaProtegida>
           } />
@@ -111,12 +115,12 @@ function App() {
           {/* Área do fornecedor: eventos, detalhes, envio e acompanhamento de propostas. */}
           <Route path='/fornecedor' element={
             <RotaProtegida perfil={perfil} perfisPermitidos={['fornecedor']}>
-              <EventosFor/>
+              <Eventos perfil={perfil}/>
             </RotaProtegida>
           } />
           <Route path='/fornecedor/eventos' element={
             <RotaProtegida perfil={perfil} perfisPermitidos={['fornecedor']}>
-              <EventosFor/>
+              <Eventos perfil={perfil}/>
             </RotaProtegida>
           } />
           <Route path='/fornecedor/eventos/:id' element={

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 import "../styles/EnvioPropostaFor.css";
 
 // Eventos disponíveis para proposta; os IDs correspondem às rotas do fluxo For.
@@ -72,9 +73,7 @@ function EnvioPropostaFor() {
         return (
             <main className="envio-proposta-for-pagina">
                 <div className="envio-proposta-for-container">
-                    <button className="envio-proposta-for-voltar-topo" type="button" onClick={() => navigate(-1)}>
-                        ← Voltar
-                    </button>
+                    <BotaoVoltar className="envio-proposta-for-voltar-topo" />
                     <section className="envio-proposta-for-resumo">
                         <h2>{evento ? "Inscrições encerradas" : "Evento não encontrado"}</h2>
                         <p>{evento ? "Este evento não está mais recebendo propostas." : "Não há dados simulados para este evento."}</p>
@@ -149,9 +148,7 @@ function FormularioPropostaFor({ evento }) {
         <main className="envio-proposta-for-pagina">
             <div className="envio-proposta-for-container">
                 {/* Volta à tela anterior seguindo o padrão de navegação do projeto. */}
-                <button className="envio-proposta-for-voltar-topo" type="button" onClick={() => navigate(-1)}>
-                    ← Voltar
-                </button>
+                <BotaoVoltar className="envio-proposta-for-voltar-topo" />
 
                 {/* Cabeçalho explica a finalidade do formulário. */}
                 <header className="envio-proposta-for-cabecalho">
@@ -306,7 +303,7 @@ function FormularioPropostaFor({ evento }) {
                             >
                                 ▤ Salvar
                             </button>
-                            <button type="button" onClick={() => navigate(-1)}>← Voltar</button>
+                            <BotaoVoltar />
                         </div>
                         {mensagem && <p className="envio-proposta-for-feedback" role="status">{mensagem}</p>}
                     </aside>

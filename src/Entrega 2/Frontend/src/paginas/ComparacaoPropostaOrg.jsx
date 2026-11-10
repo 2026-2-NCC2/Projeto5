@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 import "../styles/ComparacaoPropostaOrg.css";
 
 // Propostas simuladas para comparar preço, solução técnica e prazo de montagem.
@@ -70,13 +71,7 @@ function ComparacaoPropostaOrg() {
         <main className="comparacao-proposta-org-pagina">
             <div className="comparacao-proposta-org-container">
                 {/* Retorna à página anterior seguindo o padrão das demais telas. */}
-                <button
-                    className="comparacao-proposta-org-voltar"
-                    type="button"
-                    onClick={() => navigate(-1)}
-                >
-                    ← Voltar
-                </button>
+                <BotaoVoltar className="comparacao-proposta-org-voltar" />
 
                 {/* Título e orientação para comparar as cotações recebidas. */}
                 <header className="comparacao-proposta-org-cabecalho">

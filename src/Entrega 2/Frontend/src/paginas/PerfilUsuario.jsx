@@ -1,4 +1,5 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 import "../styles/PerfilUsuario.css";
 
 // Conteúdo de demonstração para a tela de perfil de uma conta cadastrada.
@@ -35,7 +36,6 @@ const dadosMock = [
 ];
 
 function PerfilUsuario() {
-    const navigate = useNavigate();
     const { id } = useParams();
     const usuario = dadosMock.find((item) => item.id === id);
 
@@ -43,7 +43,7 @@ function PerfilUsuario() {
         return (
             <main className="pagina-perfil-usuario">
                 <div className="perfil-usuario-container">
-                    <button className="voltar-perfil-usuario" type="button" onClick={() => navigate(-1)}>← Voltar</button>
+                    <BotaoVoltar className="voltar-perfil-usuario" />
                     <section className="perfil-nao-encontrado">
                         <h1>Usuário não encontrado</h1>
                         <p>Não foi possível localizar esse perfil nos dados disponíveis.</p>
@@ -56,7 +56,7 @@ function PerfilUsuario() {
     return (
         <main className="pagina-perfil-usuario">
             <div className="perfil-usuario-container">
-                <button className="voltar-perfil-usuario" type="button" onClick={() => navigate(-1)}>← Voltar</button>
+                <BotaoVoltar className="voltar-perfil-usuario" />
 
                 <div className="grade-perfil-usuario">
                     {/* Apresentação institucional e especialidades do usuário. */}
