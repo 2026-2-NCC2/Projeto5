@@ -17,7 +17,7 @@
 
 ### Disciplina 2
 
-| **Aluno(s) Responsável(veis)** | Sabrina Nascimento |
+| **Aluno(s) Responsável(veis)** | Ian Sales |
 | :--- | :--- |
 | **Ferramenta utilizada** | Stitch Beta e Figma |
 | **Versão/modelo** | Stitch Beta - Gemini 3.8 Flash e Figma |
@@ -64,14 +64,25 @@
 
 ### Disciplina 3
 
-| **Aluno(s) Responsável(veis)** |[preencher] |
+| **Aluno(s) Responsável(veis)** |Sabrina Nascimento |
 | :--- | :--- |
-| **Ferramenta utilizada** | [preencher] |
-| **Versão/modelo** | [preencher] |
-| **Disciplina / Trabalho** | [preencher] |
-| **Finalidade de uso** | [preencher] |
-| ***Prompts* principais utilizados** | [preencher] |
-| **Trechos ou entregas afetadas** | [preencher] |
+| **Ferramenta utilizada** | GitHub Copilot |
+| **Versão/modelo** | GPT-6 Luna |
+| **Disciplina / Trabalho** | Web FullStack |
+| **Finalidade de uso** | Apoio para estruturação do código<br>Explicar erros de conexão com o banco<br>Revisão de código<br>Apontar boas práticas a serem implementadas<br>Ajudar com atualizações verbosas |
+| ***Prompts* principais utilizados** |Ao tentar utilizar de uma parte do projeto conectado com a API conversando com o banco,<br>o terminal do backend retorna esse erro (anexada a mensagem de erro)<br>E o logs do Supabase diz (anexada a mensagem de erro)<br>O que está acontecendo? Já conferi a senha na URL do banco e está igual, ela não tem nenhum caractere especial<br>Verifique a conformidade dos dados nos arquivos modificados<br>Compare os arquivos das rotas já implementas com essas novas rotas e normalize-as de acordo<br> Gere um arquivo que explique os passos básicos para começar a desenvolver a partir desse repositório |
+| **Trechos ou entregas afetadas** | Entrega 2 (Frontend e Backend) |
+
+### Disciplina 4
+
+| **Aluno(s) Responsável(veis)** | Sabrina Nascimento |
+| :--- | :--- |
+| **Ferramenta utilizada** | Google Gemini |
+| **Versão/modelo** | Gemini 3 - Racícionio |
+| **Disciplina / Trabalho** | Projeto Banco de Dados |
+| **Finalidade de uso** | Gerar dados mockados para alimentar o banco, entender erros de execução de script e exemplificar diferenças entre construir um banco MySQL e PostgreSQL |
+| ***Prompts* principais utilizados** | Considere a criação de um banco de dados PostgreSQL no Supabase, seguindo o arquivo schema anexado, para alimentar uma API que será conectada a um projeto web<br>Crie dados mockados para inserção nas tabelas presentes no arquivo anexado. <br>Utilize dados variados, que cubram os diferentes tipos especificados nos ENUM, para que mais tarde seja possível testar diferentes requisições ao banco.<br> Porém mantenha os atributos "email", "senha_hash" e "categoria" simples e padronizados. |
+| **Trechos ou entregas afetadas** | Dados inseridos no arquivo seeds.sql |
 
 ***Declaro que o uso acima descrito está em conformidade com o GUIA PARA O USO RESPONSÁVEL DE
 INTELIGÊNCIA ARTIFICIAL NA FECAP e que o conteúdo final é de minha plena responsabilidade
