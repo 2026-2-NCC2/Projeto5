@@ -32,11 +32,11 @@ Já os prestadores de serviço encontram oportunidades claras para enviar orçam
 Tudo isso sob a supervisão do administrador, que garante a validação dos cadastros, o acompanhamento das métricas e a gestão transparente de todo o ecossistema.
 
 ## Links rápidos para acesso as entregas das disciplinas
-<a href="documentos/Entrega 1/Cálculo II">Entrega Cálculo II</a><br>
-<a href="documentos/Entrega 1/Gestão Empresarial">Entrega Gestão Empresarial</a><br>
-<a href="documentos/Entrega 1/PI Programação Web">Entrega PI Programação Web</a><br>
-<a href="documentos/Entrega 1/Projeto Banco de Dados">Entrega Projeto Banco de Dados</a><br>
-<a href="documentos/Entrega 1/Web FullStack">Entrega Web FullStack</a><br>
+<a href="documentos/Entrega 2/Cálculo II">Entrega Cálculo II</a><br>
+<a href="documentos/Entrega 2/Gestão Empresarial">Entrega Gestão Empresarial</a><br>
+<a href="documentos/Documento - Projeto de Extensão - COM Empresa - 2026_1.pdf">Entrega PI Programação Web</a><br>
+<a href="documentos/Entrega 2/Projeto Banco de Dados">Entrega Projeto Banco de Dados</a><br>
+<a href="documentos/Entrega 2/Web FullStack">Entrega Web FullStack</a><br>
 
 ## 🛠 Estrutura de pastas
 
@@ -69,42 +69,91 @@ Tudo isso sob a supervisão do administrador, que garante a validação dos cada
 
 ## 🛠 Instalação
 
-<b>Android:</b>
-
-Faça o Download do JOGO.apk no seu celular.
-Execute o APK e siga as instruções de seu telefone.
-
-```sh
-Coloque código do prompt de comnando se for necessário
-```
-
-<b>Windows:</b>
-
-Não há instalação! Apenas executável!
-Encontre o JOGO.exe na pasta executáveis e execute-o como qualquer outro programa.
-
-```sh
-Coloque código do prompt de comnando se for necessário
-```
-
-<b>HTML:</b>
+<b>HTML: (ainda não implementado)</b>
 
 Não há instalação!
 Encontre o index.html na pasta executáveis e execute-o como uma página WEB (através de algum browser).
 
 ## 💻 Configuração para Desenvolvimento
 
-Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
+## Começar a desenvolver
 
-Para abrir este projeto você necessita das seguintes ferramentas:
+Este guia descreve o fluxo básico para trabalhar na aplicação atual, localizada na pasta `src/Entrega 2`. A Entrega 1 é uma versão anterior do projeto.
 
--<a href="https://godotengine.org/download">GODOT</a>
+## Pré-requisitos
 
-```sh
-make install
-npm test
-Coloque código do prompt de comnando se for necessário
+- Git.
+- Node.js em versão compatível com Vite 8 e npm.
+- Acesso a uma instância PostgreSQL, local ou Supabase.
+
+## 1. Obter o repositório
+
+Clone o repositório e entre na pasta criada:
+
+```powershell
+git clone <url-do-repositorio>
+Set-Location Projeto5
 ```
+
+Se o repositório já estiver clonado, basta abrir a pasta raiz no VS Code.
+
+## 2. Preparar o banco e o backend
+
+O backend usa PostgreSQL. Configure uma instância e aplique, nessa ordem, os scripts SQL da pasta `src/Entrega 2/Backend/sql`:
+
+1. `schema.sql` cria tabelas, tipos e regras do banco.
+2. `seeds.sql` insere dados de exemplo.
+
+Na pasta do backend, crie seu arquivo local `.env` a partir do modelo:
+
+```powershell
+Set-Location "src\Entrega 2\Backend"
+Copy-Item .env.example .env
+```
+
+Instale dependências e inicie a API:
+
+```powershell
+npm install
+npm run dev
+```
+
+A API ficará disponível em `http://localhost:5000`. Para iniciar sem Nodemon, use `npm start`.
+
+## 3. Preparar o frontend
+
+Abra um segundo terminal e instale as dependências:
+
+```powershell
+Set-Location "src\Entrega 2\Frontend"
+npm install
+```
+
+Inicie o servidor de desenvolvimento:
+
+```powershell
+npm run dev
+```
+
+Abra no navegador o endereço informado pelo Vite, normalmente `http://localhost:5173`. O frontend usa `http://localhost:5000` como URL padrão da API. Para apontar para outra instância, defina `VITE_API_URL` no ambiente local do frontend.
+
+## 4. Fluxo de trabalho
+
+- Faça alterações nas pastas da Entrega 2: `Frontend` para React/interface e `Backend` para API e acesso ao banco.
+- Antes de alterar uma rota ou funcionalidade, confira a implementação relacionada e as regras do banco em `Backend/sql/schema.sql`.
+- No frontend, páginas ficam em `Frontend/src/paginas`, componentes compartilhados em `Frontend/src/components`, serviços de API em `Frontend/src/servicos` e estilos em `Frontend/src/styles`.
+- No backend, consulte `Backend/src/rotas`, `repositorios`, `validadores`, `middlewares` e `utilitarios`. As rotas disponíveis estão resumidas em `src/Entrega 2/Backend/README.md`.
+- Preserve alterações existentes no diretório de trabalho e mantenha segredos apenas em arquivos locais ignorados pelo Git.
+- Ao concluir uma mudança de frontend, execute o lint e o build. O projeto não possui script de testes automatizados configurado.
+
+```powershell
+Set-Location "src\Entrega 2\Frontend"
+npm run lint
+npm run build
+```
+
+Para alterações no backend, verifique a sintaxe dos arquivos JavaScript com `node --check <caminho-do-arquivo>` e valide o comportamento com o banco configurado quando aplicável.
+
 
 ## 📋 Licença/License
 <a href="https://github.com/2026-2-NCC2/Projeto5">TrocaTicket</a> © 2026 by <a href="https://github.com/fecaphub">Ana Clara Silva; Ian Sales; Mirelli Pedro; Sabrina Santos; FECAP</a> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
@@ -113,9 +162,9 @@ Coloque código do prompt de comnando se for necessário
 
 Aqui estão as referências usadas no projeto.
 
-1. <https://github.com/iuricode/readme-template>
-2. <https://github.com/gabrieldejesus/readme-model>
-3. <https://chooser-beta.creativecommons.org/>
-4. <https://freesound.org/>
+1. <https://trocaticket.com.br/>
+2. <https://www.gov.br/governodigital/pt-br/acessibilidade-e-usuario/vlibras/vlibras>
+3. <https://colorsontheweb.com/color-accessibility/contrast-checker/>
+4. <https://vispero.com/lp/color-contrast-checker/>
 5. <https://www.toptal.com/developers/gitignore>
-6. Músicas por: <a href="https://freesound.org/people/DaveJf/sounds/616544/"> DaveJf </a> e <a href="https://freesound.org/people/DRFX/sounds/338986/"> DRFX </a> ambas com Licença CC 0.
+
