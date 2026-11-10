@@ -1,5 +1,85 @@
 import pool from "../bancoDados.js";
 
+export async function cadastrarEventoComItens(idOrganizador, dadosEvento, itensCusto) {
+  const client = await pool.connect();
+  let transacaoIniciada = false;
+
+  try {
+    await client.query("BEGIN");
+    transacaoIniciada = true;
+
+    const resultadoEvento = await client.query(
+      `INSERT INTO evento (
+         id_organizador, nome, data_inicio, data_final, horario_inicio, horario_final,
+         data_montagem, data_desmontagem, local_evento, cep, logradouro, numero_end,
+         bairro, cidade, uf_estado, margem_lucro, pub_minimo, pub_esperado,
+         pub_maximo, outros_custos, descricao
+       )
+       VALUES (
+         $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15,
+         $16, $17, $18, $19, $20, $21
+       )
+       RETURNING cod_evento AS "codEvento", status`,
+      [
+        idOrganizador,
+        dadosEvento.nome,
+        dadosEvento.data_inicio,
+        dadosEvento.data_final,
+        dadosEvento.horario_inicio,
+        dadosEvento.horario_final,
+        dadosEvento.data_montagem,
+        dadosEvento.data_desmontagem,
+        dadosEvento.local_evento,
+        dadosEvento.cep,
+        dadosEvento.logradouro,
+        dadosEvento.numero_end,
+        dadosEvento.bairro,
+        dadosEvento.cidade,
+        dadosEvento.uf_estado,
+        dadosEvento.margem_lucro,
+        dadosEvento.pub_minimo,
+        dadosEvento.pub_esperado,
+        dadosEvento.pub_maximo,
+        dadosEvento.outros_custos,
+        dadosEvento.descricao,
+      ]
+    );
+    const evento = resultadoEvento.rows[0];
+    const itensInseridos = [];
+
+    for (const item of itensCusto) {
+      const resultadoItem = await client.query(
+        `INSERT INTO item_custo (id_evento, categoria, quantidade, informacao_geral)
+         VALUES ($1, $2, $3, $4)
+         RETURNING cod_item AS "codItem", id_evento AS "idEvento", categoria, quantidade,
+                   informacao_geral AS "informacaoGeral", status`,
+        [evento.codEvento, item.categoria, item.quantidade, item.informacao_geral]
+      );
+      itensInseridos.push(resultadoItem.rows[0]);
+    }
+
+    await client.query("COMMIT");
+    transacaoIniciada = false;
+
+    return { ...evento, itensCusto: itensInseridos };
+  } catch (erro) {
+    if (transacaoIniciada) {
+      try {
+        await client.query("ROLLBACK");
+      } catch (erroRollback) {
+        throw new AggregateError(
+          [erro, erroRollback],
+          "Falha ao cadastrar evento e itens de custo e ao reverter a transação."
+        );
+      }
+    }
+
+    throw erro;
+  } finally {
+    client.release();
+  }
+}
+
 export async function cancelarEventoPorId(idEvento, perfil, idCliente) {
   const resultado = await pool.query(
     `UPDATE evento

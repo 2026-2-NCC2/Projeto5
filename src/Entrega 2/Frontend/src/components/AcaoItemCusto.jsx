@@ -5,8 +5,7 @@ function AcaoItemCusto({ eventoId, item, perfil }) {
         return (
             <Link
                 className="acao-item-custo"
-                to="/comparacao-proposta-org"
-                state={{ eventoId, itemCusto: item.codItem }}
+                to={`/comparacao-proposta-org?itemCusto=${encodeURIComponent(item.codItem)}`}
             >
                 Ver Propostas
             </Link>

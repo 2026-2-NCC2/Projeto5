@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import BotaoVoltar from "../components/BotaoVoltar";
 import "../styles/EnvioPropostaFor.css";
 
@@ -65,8 +65,31 @@ function formatarMoeda(valor) {
 
 function EnvioPropostaFor() {
     const navigate = useNavigate();
+    const location = useLocation();
     const { id } = useParams();
-    const evento = dadosMock.find((item) => item.id === id);
+    const eventoMock = dadosMock.find((item) => item.id === id);
+    const dadosEvento = location.state?.evento;
+    const itemCusto = location.state?.itemCusto;
+    const evento = eventoMock || (
+        dadosEvento && itemCusto
+            ? {
+                id,
+                codEvento: dadosEvento.codEvento,
+                codItem: itemCusto.codItem,
+                evento: dadosEvento.nome,
+                organizador: "Evento cadastrado na TrocaTicket",
+                data: `${dadosEvento.dataInicio} a ${dadosEvento.dataFinal}`,
+                local: [dadosEvento.cidade, dadosEvento.ufEstado].filter(Boolean).join(" / "),
+                tetoOrcamentario: null,
+                valorProposta: 0,
+                taxaPlataforma: 0,
+                validadeDias: 15,
+                pagamento: "",
+                descricao: itemCusto.informacaoGeral || "",
+                categoria: itemCusto.categoria,
+            }
+            : null
+    );
 
     // Protege a página contra IDs inválidos ou eventos encerrados.
     if (!evento || evento.encerrado) {
@@ -76,7 +99,7 @@ function EnvioPropostaFor() {
                     <BotaoVoltar className="envio-proposta-for-voltar-topo" />
                     <section className="envio-proposta-for-resumo">
                         <h2>{evento ? "Inscrições encerradas" : "Evento não encontrado"}</h2>
-                        <p>{evento ? "Este evento não está mais recebendo propostas." : "Não há dados simulados para este evento."}</p>
+                        <p>{evento ? "Este evento não está mais recebendo propostas." : "Não foram informados os dados do evento e do item de custo."}</p>
                         <button type="button" onClick={() => navigate("/fornecedor/eventos")}>Ver eventos disponíveis</button>
                     </section>
                 </div>
@@ -165,10 +188,12 @@ function FormularioPropostaFor({ evento }) {
                         <span>• {evento.organizador}</span>
                         <p><span aria-hidden="true">▣</span> {evento.data} <i>•</i> <span aria-hidden="true">⌖</span> {evento.local}</p>
                     </div>
-                    <div className="envio-proposta-for-teto">
-                        <span>Teto orçamentário</span>
-                        <strong>{formatarMoeda(evento.tetoOrcamentario)}</strong>
-                    </div>
+                    {evento.tetoOrcamentario != null && (
+                        <div className="envio-proposta-for-teto">
+                            <span>Teto orçamentário</span>
+                            <strong>{formatarMoeda(evento.tetoOrcamentario)}</strong>
+                        </div>
+                    )}
                 </section>
 
                 <form className="envio-proposta-for-formulario" onSubmit={enviarProposta}>
@@ -184,7 +209,9 @@ function FormularioPropostaFor({ evento }) {
                                     <label className="envio-proposta-for-campo">
                                         <span>Valor da proposta (R$) <em>*</em></span>
                                         <small className="envio-proposta-for-desconto">
-                                            {valorProposta <= evento.tetoOrcamentario
+                                            {!evento.tetoOrcamentario
+                                                ? "Informe o valor para este item"
+                                                : valorProposta <= evento.tetoOrcamentario
                                                 ? `${Math.round((1 - valorProposta / evento.tetoOrcamentario) * 100)}% abaixo do teto`
                                                 : "Acima do teto"}
                                         </small>

@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { authPerfil } from "../middlewares/auth_perfil.js";
 import {
+  cadastrarEventoComItens,
   cancelarEventoPorId,
   buscarEventoPorId,
   buscarEventosPlan,
@@ -10,8 +11,24 @@ import {
 import { ErroApi } from "../erros/ErroApi.js";
 import { ErroNaoEncontrado } from "../erros/ErroNaoEncontrado.js";
 import { calcularTicket } from "../utilitarios/calcularTicket.js";
+import { validarDadosEvento } from "../validadores/eventoValidador.js";
 
 const router = Router();
+
+router.post(
+  "/",
+  authPerfil(["organizador"]),
+  async (req, res) => {
+    const { evento: dadosEvento, itensCusto } = validarDadosEvento(req.body);
+    const evento = await cadastrarEventoComItens(
+      req.usuario.id_cliente,
+      dadosEvento,
+      itensCusto
+    );
+
+    return res.status(201).json({ evento });
+  }
+);
 
 function criarEstimativaTicket(evento) {
   const custoTotal = Number(evento.custoTotal);

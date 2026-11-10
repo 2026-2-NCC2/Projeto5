@@ -497,7 +497,6 @@
     gap: 7px;
 }
 
-.criar-evento-org-salvar,
 .criar-evento-org-publicar-demanda {
     min-height: 34px;
     padding: 0 11px;
@@ -514,6 +513,56 @@
     border-color: #17684f;
     background: #17684f;
     color: #fff;
+    cursor: pointer;
+}
+
+.criar-evento-org-publicar-demanda:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+.criar-evento-org-item-custo {
+    display: grid;
+    gap: 10px;
+    min-width: 0;
+    margin: 0;
+    padding: 12px;
+    border: 1px solid #e1e8ed;
+    border-radius: 7px;
+    background: #fbfcfd;
+}
+
+.criar-evento-org-item-custo legend {
+    padding: 0 5px;
+    color: #455365;
+    font-size: 0.58rem;
+    font-weight: 700;
+}
+
+.criar-evento-org-adicionar-item,
+.criar-evento-org-remover-item {
+    width: fit-content;
+    min-height: 32px;
+    padding: 0 10px;
+    border: 1px solid #dce4eb;
+    border-radius: 5px;
+    background: #fff;
+    color: #17684f;
+    font: inherit;
+    font-size: 0.56rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.criar-evento-org-remover-item {
+    justify-self: end;
+    color: #a53d43;
+}
+
+.criar-evento-org-erro {
+    color: #b4232d;
+    font-size: 0.58rem;
+    line-height: 1.4;
 }
 
 /* Empilha os campos e ações em telas estreitas. */
@@ -546,6 +595,10 @@
 
     .criar-evento-org-rodape-formulario > div {
         flex-direction: column-reverse;
+    }
+
+    .criar-evento-org-publicar-demanda {
+        width: 100%;
     }
 }
 

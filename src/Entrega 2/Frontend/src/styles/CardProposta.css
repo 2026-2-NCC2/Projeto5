@@ -1,0 +1,148 @@
+.card-proposta {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) minmax(130px, auto);
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 13px 15px;
+    border: 1px solid #e6eaed;
+    border-radius: 9px;
+    background: var(--cor-branco, #fff);
+}
+
+.card-proposta-marca {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid #e1e7eb;
+    border-radius: 9px;
+    background: #eef5f4;
+    color: #3e5954;
+    font-family: var(--fonte-principal);
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.card-proposta-conteudo {
+    min-width: 0;
+}
+
+.card-proposta-cabecalho {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 9px;
+}
+
+.card-proposta-cabecalho h2 {
+    overflow-wrap: anywhere;
+    margin: 0;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-principal);
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+.card-proposta-status {
+    padding: 3px 7px;
+    border-radius: 999px;
+    background: #eef2f5;
+    color: #526071;
+    font-size: 0.55rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.card-proposta-status.status-aprovada {
+    background: #e2f5eb;
+    color: #267354;
+}
+
+.card-proposta-status.status-recusada,
+.card-proposta-status.status-expirada {
+    background: #fff0f0;
+    color: #a53d43;
+}
+
+.card-proposta-status.status-pendente {
+    background: #fff7e6;
+    color: #8c671c;
+}
+
+.card-proposta-metadados {
+    margin: 5px 0 0;
+    color: #788493;
+    font-size: 0.62rem;
+    line-height: 1.45;
+}
+
+.card-proposta-metadados strong {
+    color: #455365;
+    font-weight: 600;
+}
+
+.card-proposta-valor {
+    display: grid;
+    justify-items: end;
+    gap: 3px;
+}
+
+.card-proposta-valor span {
+    color: #788493;
+    font-size: 0.54rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.card-proposta-valor strong {
+    color: #087c60;
+    font-family: var(--fonte-principal);
+    font-size: clamp(0.9rem, 2vw, 1.15rem);
+    white-space: nowrap;
+}
+
+.card-proposta-detalhes {
+    display: inline-flex;
+    min-height: 29px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3px;
+    padding: 0 9px;
+    border-radius: 5px;
+    background: #eef5f4;
+    color: #3e5954;
+    font-size: 0.56rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.card-proposta-detalhes:hover {
+    background: #e2eee8;
+}
+
+@media (max-width: 560px) {
+    .card-proposta {
+        grid-template-columns: 36px minmax(0, 1fr);
+        gap: 9px;
+        padding: 11px;
+    }
+
+    .card-proposta-marca {
+        width: 36px;
+        height: 36px;
+    }
+
+    .card-proposta-valor {
+        grid-column: 2;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        justify-items: start;
+        gap: 3px 8px;
+    }
+
+    .card-proposta-valor span {
+        grid-column: 1 / -1;
+    }
+}

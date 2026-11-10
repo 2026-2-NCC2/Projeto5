@@ -57,6 +57,36 @@
     background: #fff;
 }
 
+.comparacao-proposta-org-estado {
+    margin: 0;
+    padding: 18px 12px;
+    color: var(--cor-texto-suave);
+    font-size: 0.68rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.comparacao-proposta-org-erro {
+    color: #a53d43;
+}
+
+.comparacao-proposta-org-erro p {
+    margin: 0 0 8px;
+}
+
+.comparacao-proposta-org-erro button {
+    min-height: 30px;
+    padding: 0 10px;
+    border: 1px solid #dce4eb;
+    border-radius: 5px;
+    background: #fff;
+    color: #3e5954;
+    font: inherit;
+    font-size: 0.62rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
 .comparacao-proposta-org-card,
 .comparacao-proposta-org-resumo {
     display: grid;

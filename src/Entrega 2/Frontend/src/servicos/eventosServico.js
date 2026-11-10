@@ -1,5 +1,39 @@
 const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:5000").replace(/\/+$/, "");
 
+export async function criarEvento(dados, token) {
+    let resposta;
+
+    try {
+        resposta = await fetch(`${API_URL}/eventos`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(dados),
+        });
+    } catch {
+        throw new Error("Não foi possível conectar ao servidor. Verifique sua conexão e tente novamente.");
+    }
+
+    let resultado;
+    try {
+        resultado = await resposta.json();
+    } catch {
+        throw new Error("O servidor retornou uma resposta inválida.");
+    }
+
+    if (!resposta.ok) {
+        throw new Error(resultado?.erro || "Não foi possível cadastrar o evento.");
+    }
+
+    if (!resultado?.evento || !Number.isSafeInteger(Number(resultado.evento.codEvento))) {
+        throw new Error("O servidor retornou uma resposta de cadastro inválida.");
+    }
+
+    return resultado.evento;
+}
+
 export async function listarEventos(token) {
     let resposta;
 

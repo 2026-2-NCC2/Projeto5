@@ -1,65 +1,84 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import BotaoVoltar from "../components/BotaoVoltar";
+import { useAuth } from "../contextos/useAuth";
+import { criarEvento } from "../servicos/eventosServico";
 import "../styles/CriarEventoOrg.css";
 
-// Opções de categorias mostradas no formulário de contratação do evento.
-const dadosMock = [
-    { id: "palco", nome: "Palco, Som & Iluminação", descricao: "PA line-array, rider, grids e consoles" },
-    { id: "seguranca", nome: "Segurança Privada", descricao: "Vigilância e credenciamento PJB privado" },
-    { id: "limpeza", nome: "Limpeza & Gestão de Resíduos", descricao: "Coleta seletiva, caçambas e sanitários" },
-    { id: "acesso", nome: "Controle de Acesso & Catracas", descricao: "Leitores ópticos, validação e pulseiras" },
-    { id: "abs", nome: "A&B (Alimentos e Bebidas)", descricao: "Operação de bar, catering e food trucks" },
-];
+const ITEM_CUSTO_VAZIO = {
+    categoria: "",
+    quantidade: "",
+    informacao_geral: "",
+};
 
 function CriarEventoOrg() {
-    // Guarda as categorias e anexos selecionados na interface local.
-    const [categoriasSelecionadas, setCategoriasSelecionadas] = useState(["palco", "seguranca"]);
-    const [arquivos, setArquivos] = useState([]);
-    const [mensagem, setMensagem] = useState("");
+    const { token } = useAuth();
+    const navigate = useNavigate();
+    const [itensCusto, setItensCusto] = useState([{ ...ITEM_CUSTO_VAZIO }]);
+    const [enviando, setEnviando] = useState(false);
+    const [erro, setErro] = useState("");
 
-    // Alterna uma categoria sem enviar os dados para um serviço externo.
-    function alternarCategoria(idCategoria) {
-        setCategoriasSelecionadas((selecionadas) =>
-            selecionadas.includes(idCategoria)
-                ? selecionadas.filter((id) => id !== idCategoria)
-                : [...selecionadas, idCategoria],
+    function atualizarItem(indice, campo, valor) {
+        setItensCusto((itensAtuais) =>
+            itensAtuais.map((item, posicao) =>
+                posicao === indice ? { ...item, [campo]: valor } : item,
+            ),
         );
     }
 
-    // Atualiza a lista de nomes dos documentos escolhidos pelo usuário.
-    function selecionarArquivos(event) {
-        setArquivos(Array.from(event.target.files ?? []));
+    function adicionarItem() {
+        setItensCusto((itensAtuais) => [...itensAtuais, { ...ITEM_CUSTO_VAZIO }]);
     }
 
-    // Simula o envio do formulário e apresenta uma confirmação local.
-    function publicarEvento(event) {
+    function removerItem(indice) {
+        setItensCusto((itensAtuais) => itensAtuais.filter((_, posicao) => posicao !== indice));
+    }
+
+    async function publicarEvento(event) {
         event.preventDefault();
-        setMensagem("Demanda publicada neste protótipo. Nenhum dado foi enviado.");
+        setErro("");
+        setEnviando(true);
+
+        const formulario = new FormData(event.currentTarget);
+        const dadosEvento = Object.fromEntries(formulario.entries());
+
+        try {
+            const eventoCriado = await criarEvento(
+                { evento: dadosEvento, itensCusto },
+                token,
+            );
+            navigate(`/eventos/${eventoCriado.codEvento}/detalhes`);
+        } catch (erroEnvio) {
+            setErro(erroEnvio.message || "Não foi possível cadastrar o evento.");
+        } finally {
+            setEnviando(false);
+        }
     }
 
     return (
         <main className="criar-evento-org-pagina">
             <div className="criar-evento-org-container">
-                {/* Cabeçalho da página com retorno e indicação do ambiente demonstrativo. */}
                 <BotaoVoltar className="criar-evento-org-voltar" />
                 <header className="criar-evento-org-cabecalho">
                     <div>
-                        <h1>Publicar Novo Evento</h1>
+                        <h1>Criar Novo Evento</h1>
                         <p>
-                            Cadastre as informações, escopo e requisitos técnicos para receber propostas comerciais de fornecedores homologados.
+                            Informe os dados do evento e seus itens de custo. O evento será criado
+                            em planejamento para receber propostas de fornecedores.
                         </p>
                     </div>
-                    <span className="criar-evento-org-selo"><i aria-hidden="true">✓</i> Ambiente Homologado &amp; Auditável</span>
+                    <span className="criar-evento-org-selo">
+                        <i aria-hidden="true">✓</i> Cadastro integrado ao banco de dados
+                    </span>
                 </header>
 
                 <form className="criar-evento-org-formulario" onSubmit={publicarEvento}>
-                    {/* Seção 1: informações básicas, datas e descrição do evento. */}
                     <section className="criar-evento-org-secao">
                         <header className="criar-evento-org-secao-cabecalho">
                             <span className="criar-evento-org-numero">1</span>
                             <div>
-                                <h2>Informações Gerais do Evento</h2>
-                                <p>Dados que identificam o evento e a localização da produção</p>
+                                <h2>Dados do Evento</h2>
+                                <p>Identificação, datas, localização e público</p>
                             </div>
                             <span className="criar-evento-org-etiqueta">Obrigatório</span>
                         </header>
@@ -67,163 +86,251 @@ function CriarEventoOrg() {
                         <div className="criar-evento-org-secao-conteudo">
                             <label className="criar-evento-org-campo">
                                 Nome do evento <em>*</em>
-                                <input name="nome" required placeholder="Ex.: Arena GastroFest Experience 2026 / Summit TechBR" />
+                                <input
+                                    name="nome"
+                                    maxLength="150"
+                                    required
+                                    placeholder="Ex.: Festival de Música"
+                                />
                             </label>
 
                             <div className="criar-evento-org-grade-campos">
                                 <label className="criar-evento-org-campo">
                                     Data de início <em>*</em>
-                                    <input name="dataInicio" type="date" required />
+                                    <input name="data_inicio" type="date" required />
                                 </label>
                                 <label className="criar-evento-org-campo">
-                                    Data de término <em>*</em>
-                                    <input name="dataTermino" type="date" required />
+                                    Data final <em>*</em>
+                                    <input name="data_final" type="date" required />
                                 </label>
                                 <label className="criar-evento-org-campo">
-                                    Público estimado (por dia) <em>*</em>
-                                    <span className="criar-evento-org-input-sufixo">
-                                        <input name="publico" type="number" min="1" required placeholder="Ex.: 8500" />
-                                        <small>pessoas</small>
-                                    </span>
+                                    Horário de início <em>*</em>
+                                    <input name="horario_inicio" type="time" required />
+                                </label>
+                                <label className="criar-evento-org-campo">
+                                    Horário final <em>*</em>
+                                    <input name="horario_final" type="time" required />
+                                </label>
+                                <label className="criar-evento-org-campo">
+                                    Montagem (data e horário) <em>*</em>
+                                    <input name="data_montagem" type="datetime-local" required />
+                                </label>
+                                <label className="criar-evento-org-campo">
+                                    Desmontagem (data e horário) <em>*</em>
+                                    <input name="data_desmontagem" type="datetime-local" required />
                                 </label>
                             </div>
 
                             <label className="criar-evento-org-campo">
-                                Local / venue <em>*</em>
-                                <span className="criar-evento-org-input-icone">
-                                    <span aria-hidden="true">⌖</span>
-                                    <input name="local" required placeholder="Ex.: Pavilhão de Exposições Anhembi - São Paulo, SP" />
-                                </span>
+                                Local do evento <em>*</em>
+                                <input
+                                    name="local_evento"
+                                    maxLength="150"
+                                    required
+                                    placeholder="Nome do espaço ou local"
+                                />
                             </label>
 
+                            <div className="criar-evento-org-grade-campos">
+                                <label className="criar-evento-org-campo">
+                                    CEP <em>*</em>
+                                    <input
+                                        name="cep"
+                                        maxLength="10"
+                                        required
+                                        placeholder="00000-000"
+                                    />
+                                </label>
+                                <label className="criar-evento-org-campo">
+                                    Logradouro <em>*</em>
+                                    <input name="logradouro" maxLength="150" required />
+                                </label>
+                                <label className="criar-evento-org-campo">
+                                    Número <em>*</em>
+                                    <input name="numero_end" maxLength="20" required />
+                                </label>
+                                <label className="criar-evento-org-campo">
+                                    Bairro <em>*</em>
+                                    <input name="bairro" maxLength="100" required />
+                                </label>
+                                <label className="criar-evento-org-campo">
+                                    Cidade <em>*</em>
+                                    <input name="cidade" maxLength="100" required />
+                                </label>
+                                <label className="criar-evento-org-campo">
+                                    UF <em>*</em>
+                                    <input
+                                        name="uf_estado"
+                                        maxLength="2"
+                                        required
+                                        pattern="[A-Za-z]{2}"
+                                        title="Informe a sigla de duas letras da UF."
+                                        placeholder="SP"
+                                    />
+                                </label>
+                            </div>
+
+                            <div className="criar-evento-org-grade-campos">
+                                <label className="criar-evento-org-campo">
+                                    Público mínimo <em>*</em>
+                                    <input name="pub_minimo" type="number" min="0" max="2147483647" step="1" required />
+                                </label>
+                                <label className="criar-evento-org-campo">
+                                    Público esperado <em>*</em>
+                                    <input name="pub_esperado" type="number" min="0" max="2147483647" step="1" required />
+                                </label>
+                                <label className="criar-evento-org-campo">
+                                    Público máximo <em>*</em>
+                                    <input name="pub_maximo" type="number" min="0" max="2147483647" step="1" required />
+                                </label>
+                            </div>
+
                             <label className="criar-evento-org-campo">
-                                Detalhes do evento <em>*</em>
-                                <span className="criar-evento-org-ajuda">Visível gratuitamente para os fornecedores</span>
+                                Descrição do evento <em>*</em>
                                 <textarea
-                                    name="detalhes"
+                                    name="descricao"
+                                    maxLength="255"
                                     rows="3"
                                     required
-                                    placeholder="Descreva a temática do evento, perfil do público, volume de áreas, horários de funcionamento e aspectos que valorizem a parceria técnica e comercial..."
+                                    placeholder="Apresente as informações principais do evento."
                                 />
                             </label>
                         </div>
                     </section>
 
-                    {/* Seção 2: orçamento previsto e condições comerciais. */}
                     <section className="criar-evento-org-secao">
                         <header className="criar-evento-org-secao-cabecalho">
                             <span className="criar-evento-org-numero">2</span>
                             <div>
-                                <h2>Escopo e Orçamento Comercial</h2>
-                                <p>Parâmetros financeiros, modelo contratual e limites de custo</p>
+                                <h2>Custos e Margem</h2>
+                                <p>Valores usados nos cenários de estimativa do ingresso</p>
                             </div>
-                            <span className="criar-evento-org-etiqueta">Comercial</span>
+                            <span className="criar-evento-org-etiqueta">Financeiro</span>
                         </header>
-
-                        <div className="criar-evento-org-secao-conteudo">
-                            <label className="criar-evento-org-campo criar-evento-org-orcamento-campo">
-                                Orçamento teto estimado (R$) <em>*</em>
-                                <span className="criar-evento-org-input-sufixo">
-                                    <span className="criar-evento-org-moeda">R$</span>
-                                    <input name="orcamento" type="number" min="0" step="0.01" required placeholder="480.000,00" />
-                                    <small>Valor máximo</small>
-                                </span>
-                                <small className="criar-evento-org-nota">Valor de referência para triagem das propostas comerciais. Não impede negociação por lotes fracionados.</small>
-                            </label>
-
+                        <div className="criar-evento-org-secao-conteudo criar-evento-org-grade-campos">
                             <label className="criar-evento-org-campo">
-                                Escopo comercial <em>*</em>
-                                <span className="criar-evento-org-ajuda">Condições e contrapartidas</span>
-                                <textarea
-                                    name="escopo"
-                                    rows="3"
+                                Outros custos (R$) <em>*</em>
+                                <input
+                                    name="outros_custos"
+                                    type="number"
+                                    min="0"
+                                    step="0.01"
                                     required
-                                    placeholder="Detalhamento do modelo de negócio, condições de pagamento (ex: 30% sinal, 70% D+5 pós-evento), faturamento direto, cessão de credenciais VIP ou contrapartidas de marca para fornecedores..."
+                                    placeholder="0,00"
                                 />
                             </label>
+                            <label className="criar-evento-org-campo">
+                                Margem de lucro (%) <em>*</em>
+                                <input
+                                    name="margem_lucro"
+                                    type="number"
+                                    min="0"
+                                    max="40"
+                                    step="0.01"
+                                    required
+                                    defaultValue="0"
+                                />
+                            </label>
+                            <p className="criar-evento-org-nota">
+                                A margem aceita valores de 0 a 40%. Ingressos de equilíbrio e médio
+                                não são solicitados nesta etapa; o sistema calcula as estimativas
+                                ao consultar os detalhes do evento.
+                            </p>
                         </div>
                     </section>
 
-                    {/* Seção 3: categorias, requisitos técnicos e documentos de apoio. */}
                     <section className="criar-evento-org-secao">
                         <header className="criar-evento-org-secao-cabecalho">
                             <span className="criar-evento-org-numero">3</span>
                             <div>
-                                <h2>Requisitos Técnicos e Demandas</h2>
-                                <p>Categorias de contratação e especificações de engenharia e anexos</p>
+                                <h2>Itens de Custo</h2>
+                                <p>Cadastre cada demanda que poderá receber propostas</p>
                             </div>
-                            <span className="criar-evento-org-etiqueta operacional">Operacional</span>
+                            <span className="criar-evento-org-etiqueta operacional">Obrigatório</span>
                         </header>
-
                         <div className="criar-evento-org-secao-conteudo">
-                            <fieldset className="criar-evento-org-categorias">
-                                <legend>Categorias necessárias para cotação <em>*</em></legend>
-                                <p>Selecione todas as frentes de fornecimento que participarão desta RFP</p>
-                                <div className="criar-evento-org-grade-categorias">
-                                    {dadosMock.map((categoria) => (
-                                        <label className="criar-evento-org-categoria" key={categoria.id}>
+                            {itensCusto.map((item, indice) => (
+                                <fieldset className="criar-evento-org-item-custo" key={indice}>
+                                    <legend>Item de custo {indice + 1}</legend>
+                                    <div className="criar-evento-org-grade-campos">
+                                        <label className="criar-evento-org-campo">
+                                            Categoria <em>*</em>
                                             <input
-                                                type="checkbox"
-                                                checked={categoriasSelecionadas.includes(categoria.id)}
-                                                onChange={() => alternarCategoria(categoria.id)}
+                                                value={item.categoria}
+                                                maxLength="100"
+                                                required
+                                                onChange={(event) =>
+                                                    atualizarItem(indice, "categoria", event.target.value)
+                                                }
+                                                placeholder="Ex.: Segurança"
                                             />
-                                            <span className="criar-evento-org-checkbox" aria-hidden="true" />
-                                            <span>
-                                                <strong>{categoria.nome}</strong>
-                                                <small>{categoria.descricao}</small>
-                                            </span>
                                         </label>
-                                    ))}
-                                </div>
-                            </fieldset>
-
-                            <label className="criar-evento-org-campo">
-                                Descrição de requisitos técnicos específicos
-                                <span className="criar-evento-org-ajuda">Normas &amp; conformidades</span>
-                                <textarea
-                                    name="requisitos"
-                                    rows="3"
-                                    placeholder="Ex.: Obrigatório apresentação de ART de montagem elétrica, laudo acústico calibrado para emissão máxima de 85dB nos limites perimetrais, conformidade com NR-10 e NR-35 para equipe técnica, seguros de responsabilidade civil..."
-                                />
-                            </label>
-
-                            <fieldset className="criar-evento-org-upload">
-                                <legend>Anexar plantas baixas, rider técnico ou briefing (PDF)</legend>
-                                <label className="criar-evento-org-dropzone">
-                                    <input type="file" accept=".pdf,.docx,.zip,application/pdf" multiple onChange={selecionarArquivos} />
-                                    <span className="criar-evento-org-upload-icone" aria-hidden="true">⇧</span>
-                                    <strong><u>Clique para selecionar arquivos ou arraste e solte aqui</u></strong>
-                                    <small>Formatos aceitos: PDF, DOCX, ZIP (Tamanho máximo por arquivo: 50MB por arquivo)</small>
-                                </label>
-                                {arquivos.length > 0 && (
-                                    <ul className="criar-evento-org-arquivos">
-                                        {arquivos.map((arquivo) => (
-                                            <li key={`${arquivo.name}-${arquivo.lastModified}`}>
-                                                <span aria-hidden="true">{arquivo.name.split(".").pop().toUpperCase()}</span>
-                                                <strong>{arquivo.name}</strong>
-                                                <small>{(arquivo.size / (1024 * 1024)).toFixed(2)} MB</small>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-                            </fieldset>
+                                        <label className="criar-evento-org-campo">
+                                            Quantidade <em>*</em>
+                                            <input
+                                                type="number"
+                                                min="0.0000000001"
+                                                step="any"
+                                                value={item.quantidade}
+                                                required
+                                                onChange={(event) =>
+                                                    atualizarItem(indice, "quantidade", event.target.value)
+                                                }
+                                            />
+                                        </label>
+                                    </div>
+                                    <label className="criar-evento-org-campo">
+                                        Descrição do item <em>*</em>
+                                        <textarea
+                                            value={item.informacao_geral}
+                                            maxLength="255"
+                                            rows="2"
+                                            required
+                                            onChange={(event) =>
+                                                atualizarItem(indice, "informacao_geral", event.target.value)
+                                            }
+                                            placeholder="Detalhe o serviço, material ou requisito esperado."
+                                        />
+                                    </label>
+                                    {itensCusto.length > 1 && (
+                                        <button
+                                            className="criar-evento-org-remover-item"
+                                            type="button"
+                                            onClick={() => removerItem(indice)}
+                                        >
+                                            Remover item
+                                        </button>
+                                    )}
+                                </fieldset>
+                            ))}
+                            <button
+                                className="criar-evento-org-adicionar-item"
+                                type="button"
+                                onClick={adicionarItem}
+                            >
+                                + Adicionar item de custo
+                            </button>
                         </div>
                     </section>
 
-                    {/* Ações finais do formulário e mensagem local de confirmação. */}
                     <footer className="criar-evento-org-rodape-formulario">
-                        <p><span aria-hidden="true">ⓘ</span> As informações cadastradas serão submetidas à verificação de compliance antes da abertura das cotações.</p>
-                        {mensagem && <span className="criar-evento-org-feedback" role="status">{mensagem}</span>}
+                        <p>
+                            <span aria-hidden="true">ⓘ</span>
+                            O evento e todos os itens serão salvos juntos. Se algum item não puder
+                            ser cadastrado, nenhuma parte da operação será persistida.
+                        </p>
+                        {erro && (
+                            <span className="criar-evento-org-erro" role="alert">
+                                {erro}
+                            </span>
+                        )}
                         <div>
                             <button
-                                className="criar-evento-org-salvar"
-                                type="button"
-                                onClick={() => setMensagem("Rascunho salvo apenas nesta demonstração.")}
+                                className="criar-evento-org-publicar-demanda"
+                                type="submit"
+                                disabled={enviando}
                             >
-                                Salvar Rascunho
-                            </button>
-                            <button className="criar-evento-org-publicar-demanda" type="submit">
-                                <span aria-hidden="true">♧</span> Publicar Demanda para Fornecedores
+                                {enviando ? "Salvando evento..." : "Criar Evento"}
                             </button>
                         </div>
                     </footer>

@@ -10,11 +10,9 @@ import Eventos from './paginas/Eventos';
 import DetalheEventoOrg from './paginas/DetalheEventoOrg';
 import DetalheEvento from './paginas/DetalheEvento';
 import CriarEventoOrg from './paginas/CriarEventoOrg';
-import DetalhePropostaOrg from './paginas/DetalhePropostaOrg';
+import DetalheProposta from './paginas/DetalheProposta';
 import ComparacaoPropostaOrg from './paginas/ComparacaoPropostaOrg';
-import DetalhePropostaFor from './paginas/DetalhePropostaFor';
 import EnvioPropostaFor from './paginas/EnvioPropostaFor';
-import MinhasPropostasFor from './paginas/MinhasPropostasFor';
 import SolicitacoesCadastro from './paginas/SolicitacoesCadastro';
 import Relatorios from './paginas/Relatorios';
 import Usuarios from './paginas/Usuarios';
@@ -101,13 +99,13 @@ function App() {
               <CriarEventoOrg/>
             </RotaProtegida>
           } />
-          <Route path='/propostas/:id' element={
-            <RotaProtegida perfil={perfil} perfisPermitidos={['organizador']}>
-              <DetalhePropostaOrg/>
+          <Route path='/propostas/:codItem/:idFornecedor' element={
+            <RotaProtegida perfil={perfil} perfisPermitidos={['admin', 'organizador', 'fornecedor']}>
+              <DetalheProposta/>
             </RotaProtegida>
           } />
           <Route path='/comparacao-proposta-org' element={
-            <RotaProtegida perfil={perfil} perfisPermitidos={['admin', 'organizador']}>
+            <RotaProtegida perfil={perfil} perfisPermitidos={['admin', 'organizador', 'fornecedor']}>
               <ComparacaoPropostaOrg/>
             </RotaProtegida>
           } />
@@ -125,7 +123,7 @@ function App() {
           } />
           <Route path='/fornecedor/eventos/:id' element={
             <RotaProtegida perfil={perfil} perfisPermitidos={['fornecedor']}>
-              <DetalhePropostaFor/>
+              <DetalheEvento/>
             </RotaProtegida>
           } />
           <Route path='/fornecedor/eventos/:id/proposta' element={
@@ -135,7 +133,7 @@ function App() {
           } />
           <Route path='/fornecedor/propostas' element={
             <RotaProtegida perfil={perfil} perfisPermitidos={['fornecedor']}>
-              <MinhasPropostasFor/>
+              <ComparacaoPropostaOrg/>
             </RotaProtegida>
           } />
 
