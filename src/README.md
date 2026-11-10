@@ -77,3 +77,7 @@
 ***Declaro que o uso acima descrito está em conformidade com o GUIA PARA O USO RESPONSÁVEL DE
 INTELIGÊNCIA ARTIFICIAL NA FECAP e que o conteúdo final é de minha plena responsabilidade
 autoral.***
+
+---
+### 📄 Declarações do Grupo
+- [Visualizar a Declaração de Concordância sobre o uso de IA](./Assinatura-DeclaracaoIA_assinado_assinado.pdf)
